@@ -1,0 +1,30 @@
+.tabela {
+    display: grid;
+    grid-template-columns: repeat(var(--pistas),100px);
+    grid-auto-rows: 100px;
+    background-color: rgba(0, 0, 0, 0.61);
+    gap: 2px;
+    width: max-content;
+    margin: 20px auto;
+}
+.celula {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carro {
+    width: 80px; /* tamanho base */
+    transition: transform 0.2s;
+}
+
+.linha-1 .carro { transform: scale(0.4); opacity: 0.5; }
+.linha-2 .carro { transform: scale(0.5); opacity: 0.6; }
+.linha-3 .carro { transform: scale(0.6); opacity: 0.7; }
+.linha-4 .carro { transform: scale(0.7); opacity: 0.8; }
+.linha-5 .carro { transform: scale(0.8); }
+.linha-6 .carro { transform: scale(0.9); }
+.linha-7 .carro { transform: scale(1.0); }
+.linha-8 .carro { transform: scale(1.1); }
+.linha-9 .carro { transform: scale(1.2); }
+.linha-10 .carro { transform: scale(1.3); }
