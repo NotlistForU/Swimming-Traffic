@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="src/css/tabela.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic-Game</title>
+  <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
-    <select id="cenario">
-        <option value="3">Cenário 1</option>
-        <option value="5">Cenário 2</option>
-        <option value="7">Cenário 3</option>
-    </select>
+  <div class="game">
+    <div id="road"></div>
+    <div id="player"></div>
+  </div>
 
-    <div class="tabela" id="tabela" style="--pistas:3"></div>
-    <script src="src/js/tabela.js"></script>
-    
+  <script src="src/js/player.js"></script>
+  <script src="src/js/traffic.js"></script>
+  <script src="src/js/main.js"></script>
 </body>
 </html>
