@@ -1,69 +1,25 @@
-body {
-  margin: 0;
-  overflow: hidden;
-  background: #333;
+#conteiner {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-content: center;
 }
 
-.game {
-  position: relative;
-  width: 100vw;
+.pista1 {
+  width: 200px;
   height: 100vh;
-  overflow: hidden;
-  background: #555;
+  border-width: 4px;
+  border-style: dashed;
+  border-right-color: white;
+  background-color: black;
+
 }
 
-#road {
-  position: absolute;
-  width: 100%;
-  height: 200%;
-  top: -100%;
-  z-index: 0;
+.pista5 {
+  width: 200px;
+  height: 100vh;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+  background-color: black;
 
-  /* Laterais verdes + área da estrada (60% centro) */
-  background: linear-gradient(to right,
-    #2d5c2d 0%,        /* grama esquerda */
-    #2d5c2d 20%,
-    #222 20%,          /* estrada */
-    #222 80%,
-    #2d5c2d 80%,       /* grama direita */
-    #2d5c2d 100%
-  );
-}
-
-#road::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  /* 5 pistas = 4 linhas brancas dentro da área central */
-  background: linear-gradient(to right,
-    transparent 20%, white 20.5%, transparent 20.5%,   /* linha 1 */
-    transparent 32%, white 32.5%, transparent 32.5%,   /* linha 2 */
-    transparent 44%, white 44.5%, transparent 44.5%,   /* linha 3 */
-    transparent 56%, white 56.5%, transparent 56.5%,   /* linha 4 */
-    transparent 68%, white 68.5%, transparent 68.5%,   /* linha 5 */
-    transparent 80%
-  );
-  pointer-events: none;
-}
-
-#player {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  width: 100px;
-  height: auto;  /* deixa o tamanho ser ajustado pela proporção da imagem */
-  aspect-ratio: 1 / 2; /* mantém a proporção (carro mais alto que largo) */
-  background: url("../assets/images/playerCars/car3.png") no-repeat center contain;
-  transform: translateX(-50%);
-  transition: transform 0.2s;
-  z-index: 2;
-}
-
-
-.car {
-  position: absolute;
-  background-size: contain;  /* mantém proporção */
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1;
 }
