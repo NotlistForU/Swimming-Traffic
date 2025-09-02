@@ -1,16 +1,23 @@
 #conteiner {
+  margin-top: -9px;
+  height: 100vh;
   display: grid;
   grid-template-columns: repeat(5, auto);
   justify-content: center;
 }
 
 .pista1 {
+  position: relative;
+  display:grid;
+  grid-template-rows: repeat(12,auto);
   width: 200px;
   height: 100vh;
   border-width: 4px;
   border-style: dashed;
   border-right-color: white;
   background-color: black;
+  opacity: 0.9;
+  justify-content: center;
 
 }
 
@@ -20,6 +27,21 @@
   border-width: 4px;
   border-style: solid;
   border-color: black;
+  opacity: 0.9;
   background-color: black;
 
 }
+
+.cel {
+  width: 200px;
+  height: 200px;
+}
+
+  .carro {
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 170px;
+    height: 200px;
+  }
