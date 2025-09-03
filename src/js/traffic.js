@@ -6,9 +6,8 @@ function spwanCar(numPista){
     const carro = document.createElement("img");
     carro.src = `src/assets/images/TrafficCars/car${numCar}.png`;
     carro.alt = "TrafficCar"
-    carro.classList.add("carro");
+    carro.classList.add("carroBaixo");
     coluna.appendChild(carro);
-    const div = document.getElementsByTagName("div");
   /*for(let i = 0; i < numPista -1; i++){
     
     
