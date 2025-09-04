@@ -38,8 +38,8 @@
 }
 
 .player, #player {
-  
-  top: 95%;
+  animation:ease;
+  top: 7200px;
   width: 170px;
   height: 200px;
   transform: translate(-50%, -50%);
