@@ -8,11 +8,15 @@ function spwanCar(numPista){
     carro.alt = "TrafficCar"
     carro.classList.add("carroBaixo");
     coluna.appendChild(carro);
-  /*for(let i = 0; i < numPista -1; i++){
-    
-    
-  }*/
   
 }
 
 spwanCar(5);
+
+
+
+$(document).ready(function(){
+  carro.getElementById("carro");
+  carro.style.top
+  
+})

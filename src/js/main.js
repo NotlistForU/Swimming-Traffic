@@ -1,10 +1,4 @@
 
-$(document).ready(function(){
-  $(".carroBaixo").animate({
-    top: "-=2000"
-  }, 10000)
-})
-
 
 /*$(document).ready(function(){
   $(".pista1").animate({
