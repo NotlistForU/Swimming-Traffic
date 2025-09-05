@@ -54,12 +54,14 @@ document.addEventListener('keydown', function(event){
    else if (event.key === 'S' || event.key === 's' || event.key === 'ArrowDown'){
       playerY += 3;
   } else if (event.key === 'A' || event.key === 'a' || event.key === 'ArrowLeft'){
+    playerX -= 40;
     anguloAtual = -2;
-    playerX -= 15;
+    
 
   } else if (event.key === 'D' || event.key === 'd' || event.key === 'ArrowRight'){
+    playerX += 40;
     anguloAtual = +2;
-    playerX += 15;
+    
   }
   updatePlayer();
 
