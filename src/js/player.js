@@ -73,8 +73,10 @@ document.addEventListener('keyup', function(event) {
     event.key === 'A' || event.key === 'a' || event.key === 'ArrowLeft' ||
     event.key === 'D' || event.key === 'd' || event.key === 'ArrowRight'
   ) {
-    anguloAtual = 0;
-    updatePlayer();
+    setTimeout(() => {
+      anguloAtual = 0;
+      updatePlayer();
+    }, 100);
   }
 });
 
