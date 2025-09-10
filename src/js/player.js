@@ -35,7 +35,7 @@ const angulo = 0;
 let anguloAtual = 0;
 let playerY = 7200; 
 let colisao = false;
-let velocidade = 1;
+let velocidade = 2;
 
 let movimento = setInterval(() => {
   if (!colisao) {
@@ -44,7 +44,7 @@ let movimento = setInterval(() => {
   } else {
     clearInterval(movimento);
   }
-}, 1);
+}, 16);
 
 document.addEventListener('keydown', function(event){
   if(event.key === 'W' || event.key === 'w' || event.key === 'ArrowUp'){
