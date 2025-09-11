@@ -59,6 +59,19 @@
   height: 200px;
 }
 
+.blink {
+  animation: blinkEffect 0.4s alternate infinite;
+}
+
+@keyframes blinkEffect {
+  from {
+    filter: brightness(2);
+  }
+  to {
+    filter: brightness(1);
+  }
+}
+
 .carroCima {
   left: 50%;
   right: 50%;
