@@ -83,10 +83,16 @@ function updateCars(){
               }
             }
             if (livre) {
+              c.el.classList.add("blink");
               // muda de faixa
-              let novaColDiv = document.getElementById(`col-${novaCol}`);
-              novaColDiv.appendChild(c.el);
-              c.col = novaCol;
+              setTimeout(() => {
+                  let novaColDiv = document.getElementById(`col-${novaCol}`);
+                  novaColDiv.appendChild(c.el);
+                  c.col = novaCol;
+
+                  // para de piscar
+                  c.el.classList.remove("blink");
+                }, 400);
               moved = true;
               break;
             }
