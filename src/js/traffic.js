@@ -7,7 +7,7 @@ function spwanCar(numPista, quantCar){
     let numCol, numY;
 
     while(!valido){
-      numY = Math.floor(Math.random() * 6000) + 1;
+      numY = Math.floor(Math.random() * 7000) + 1;
       numCol = Math.floor(Math.random() * numPista) + 1;
 
       valido = true;
@@ -43,18 +43,69 @@ function spwanCar(numPista, quantCar){
 
     coluna.appendChild(carro);
 
-    // salva posição + elemento
-    carrosSpawnados.push({ col: numCol, y: numY, el: carro });
+    // velocidade aleatória entre 2 e 3
+    let vel = 2 + Math.random(); 
+
+    // salva posição + velocidade + elemento
+    carrosSpawnados.push({ col: numCol, y: numY, el: carro, vel: vel });
   }
 }
 
 // atualiza movimento dos carros
 function updateCars(){
   for (let c of carrosSpawnados) {
-    c.y -= 3; // velocidade fixa = 1
+    // verifica se tem carro à frente na mesma coluna
+    let carroFrente = null;
+    for (let outro of carrosSpawnados) {
+      if (outro.col === c.col && outro.y < c.y) {
+        if (!carroFrente || outro.y > carroFrente.y) {
+          carroFrente = outro; // pega o mais próximo
+        }
+      }
+    }
+
+    if (carroFrente && (c.y - carroFrente.y) < alturaCarro * 1.2) {
+      // está muito perto do carro da frente
+      if (c.vel > carroFrente.vel) {
+        // tenta mudar de faixa
+        let moved = false;
+        for (let dir of [-1, 1]) { // tenta esquerda depois direita
+          let novaCol = c.col + dir;
+          if (novaCol >= 1 && novaCol <= 5) {
+            // verifica se a nova faixa está livre
+            let livre = true;
+            for (let outro of carrosSpawnados) {
+              if (outro.col === novaCol) {
+                if (Math.abs(outro.y - c.y) < alturaCarro * 1.2) {
+                  livre = false; // tem carro perto, não pode mudar
+                  break;
+                }
+              }
+            }
+            if (livre) {
+              // muda de faixa
+              let novaColDiv = document.getElementById(`col-${novaCol}`);
+              novaColDiv.appendChild(c.el);
+              c.col = novaCol;
+              moved = true;
+              break;
+            }
+          }
+        }
+
+        if (!moved) {
+          // não conseguiu mudar → iguala velocidade ao da frente
+          c.vel = carroFrente.vel;
+        }
+      }
+    }
+
+    // move carro
+    c.y -= c.vel;
     c.el.style.top = c.y + "px";
   }
 }
+
 
 // loop dos carros
 let movimentoCarros = setInterval(() => {
@@ -65,4 +116,4 @@ let movimentoCarros = setInterval(() => {
   }
 }, 16); // ~60fps
 
-spwanCar(5,20);
+spwanCar(5,30);
