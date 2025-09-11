@@ -46,29 +46,29 @@ let movimento = setInterval(() => {
   }
 }, 16);
 
-document.addEventListener('keydown', function(event){
-  if(event.key === 'W' || event.key === 'w' || event.key === 'ArrowUp'){
-    playerY -= 7;
-  }
-  else if (event.key === 'S' || event.key === 's' || event.key === 'ArrowDown'){
-    playerY += 3;
-  } 
-  else if (event.key === 'A' || event.key === 'a' || event.key === 'ArrowLeft'){
+let keysPressed = {};
+
+document.addEventListener('keydown', function(event) {
+  keysPressed[event.key.toLowerCase()] = true;
+
+  // troca de faixa (executa só uma vez por pressionamento)
+  if (event.key === 'a' || event.key === 'A' || event.key === 'ArrowLeft') {
     if (colunaAtual > 1) {
-      colunaAtual--; // muda para a coluna à esquerda
+      colunaAtual--; 
       anguloAtual = -10;
     }
   } 
-  else if (event.key === 'D' || event.key === 'd' || event.key === 'ArrowRight'){
+  else if (event.key === 'd' || event.key === 'D' || event.key === 'ArrowRight') {
     if (colunaAtual < 5) {
-      colunaAtual++; // muda para a coluna à direita
+      colunaAtual++; 
       anguloAtual = 10;
     }
   }
-  updatePlayer();
 });
 
 document.addEventListener('keyup', function(event) {
+  keysPressed[event.key.toLowerCase()] = false;
+
   if (
     event.key === 'A' || event.key === 'a' || event.key === 'ArrowLeft' ||
     event.key === 'D' || event.key === 'd' || event.key === 'ArrowRight'
@@ -79,6 +79,18 @@ document.addEventListener('keyup', function(event) {
     }, 100);
   }
 });
+
+// loop contínuo
+setInterval(() => {
+  if (keysPressed['w'] || keysPressed['arrowup']) {
+    playerY -= 6;
+  }
+  if (keysPressed['s'] || keysPressed['arrowdown']) {
+    playerY += 2;
+  }
+
+  updatePlayer();
+}, 16); // ~60fps
 
 creatPlayer(3); // começa na coluna 3 (meio)
 updatePlayer();
