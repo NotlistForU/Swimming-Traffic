@@ -1,5 +1,5 @@
 let carrosSpawnados = []; 
-const alturaCarro = 200;
+const alturaCarro = 340;
 
 function spwanCar(numPista, quantCar){
   for(let i = 0; i < quantCar; i++){
@@ -7,7 +7,7 @@ function spwanCar(numPista, quantCar){
     let numCol, numY;
 
     while(!valido){
-      numY = Math.floor(Math.random() * 7000) + 1;
+      numY = Math.floor(Math.random() * 55000) + 1;
       numCol = Math.floor(Math.random() * numPista) + 1;
 
       valido = true;
@@ -122,4 +122,4 @@ let movimentoCarros = setInterval(() => {
   }
 }, 16); // ~60fps
 
-spwanCar(5,30);
+spwanCar(8,400);

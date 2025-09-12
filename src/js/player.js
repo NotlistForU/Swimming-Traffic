@@ -1,10 +1,11 @@
-let colunaAtual = 3; // começa na coluna do meio (1 a 5)
+let colunaAtual = 5; // começa na coluna do meio (1 a 5)
 const AceleroSound = new Audio("src/assets/sounds/AcelerandoGTR.mp3");
 AceleroSound.loop = true;
 AceleroSound.volume = 1;
 const motorSound = new Audio("src/assets/sounds/NaManhaGTR.mp3");
 motorSound.loop = true;
 motorSound.volume = 0.3;
+
 
 
 function creatPlayer(numPista) {
@@ -16,7 +17,6 @@ function creatPlayer(numPista) {
   player.classList.add("player");
   player.id = "player";
   col.appendChild(player);
-  motorSound.currentTime = 0;
   motorSound.play().catch(err => console.log("Erro motor:", err));
 
 }
@@ -43,7 +43,7 @@ function updatePlayer() {
 
 const angulo = 0;
 let anguloAtual = 0;
-let playerY = 7200; 
+let playerY = 57500; 
 let colisao = false;
 let velocidade = 2;
 
@@ -69,7 +69,7 @@ document.addEventListener('keydown', function(event) {
     }
   } 
   else if (event.key === 'd' || event.key === 'D' || event.key === 'ArrowRight') {
-    if (colunaAtual < 5) {
+    if (colunaAtual < 8) {
       colunaAtual++; 
       anguloAtual = 10;
     }
@@ -88,7 +88,6 @@ document.addEventListener('keyup', function(event) {
             AceleroSound.pause();
             AceleroSound.currentTime = 0; // reinicia o som
             AceleroSound.volume = 1;
-            motorSound.currentTime = 0;
             motorSound.play().catch(err => console.log("Erro motor:", err));      // garante que na próxima vez começa cheio
           }
         }, 50); // a cada 50ms (0.05s)
@@ -120,5 +119,5 @@ setInterval(() => {
   updatePlayer();
 }, 16); // ~60fps
 
-creatPlayer(3); // começa na coluna 3 (meio)
+creatPlayer(5); // começa na coluna 3 (meio)
 updatePlayer();
