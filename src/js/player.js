@@ -1,4 +1,11 @@
 let colunaAtual = 3; // começa na coluna do meio (1 a 5)
+const AceleroSound = new Audio("src/assets/sounds/AcelerandoGTR.mp3");
+AceleroSound.loop = true;
+AceleroSound.volume = 1;
+const motorSound = new Audio("src/assets/sounds/NaManhaGTR.mp3");
+motorSound.loop = true;
+motorSound.volume = 0.3;
+
 
 function creatPlayer(numPista) {
   colunaAtual = numPista; // define onde vai nascer
@@ -9,6 +16,9 @@ function creatPlayer(numPista) {
   player.classList.add("player");
   player.id = "player";
   col.appendChild(player);
+  motorSound.currentTime = 0;
+  motorSound.play().catch(err => console.log("Erro motor:", err));
+
 }
 
 function updatePlayer() {
@@ -68,6 +78,21 @@ document.addEventListener('keydown', function(event) {
 
 document.addEventListener('keyup', function(event) {
   keysPressed[event.key.toLowerCase()] = false;
+    if (event.key === 'w' || event.key === 'W' || event.key === 'ArrowUp') {
+        // inicia fade-out suave
+        fadeOutInterval = setInterval(() => {
+          if (AceleroSound.volume > 0.05) {
+            AceleroSound.volume -= 0.05; // reduz 5% do volume
+          } else {
+            clearInterval(fadeOutInterval);
+            AceleroSound.pause();
+            AceleroSound.currentTime = 0; // reinicia o som
+            AceleroSound.volume = 1;
+            motorSound.currentTime = 0;
+            motorSound.play().catch(err => console.log("Erro motor:", err));      // garante que na próxima vez começa cheio
+          }
+        }, 50); // a cada 50ms (0.05s)
+      }
 
   if (
     event.key === 'A' || event.key === 'a' || event.key === 'ArrowLeft' ||
@@ -84,6 +109,9 @@ document.addEventListener('keyup', function(event) {
 setInterval(() => {
   if (keysPressed['w'] || keysPressed['arrowup']) {
     playerY -= 6;
+    motorSound.pause();
+    AceleroSound.volume = 1;
+    AceleroSound.play();
   }
   if (keysPressed['s'] || keysPressed['arrowdown']) {
     playerY += 2;
