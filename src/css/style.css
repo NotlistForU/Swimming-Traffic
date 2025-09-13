@@ -6,17 +6,40 @@ body {
 }
 
 
-/* #Cenario1 {
-  background-image: url("../assets/images/Road/Cenario_Jogo_Cyberpunk_FuturistaEsquerda.png");
-  width: 100%;
-  height: 100vh;
-}
+    #menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999; /* fica na frente */
+    }
 
-#Cenario2 {
-  background-image: url("../assets/images/Road/Cenario_Jogo_Cyberpunk_FuturistaDireita.png");
-  width: 100%;
-  height: 100vh;
-} */
+    #menu h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    #menu button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: #28a745;
+      color: white;
+      transition: 0.3s;
+    }
+
+    #menu button:hover {
+      background: #218838;
+    }
 
 #conteiner {
   margin-top: -9px;

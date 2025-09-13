@@ -1,3 +1,6 @@
+let gameStarted = false;
+
+
 let colunaAtual = 5; // começa na coluna do meio (1 a 5)
 const AceleroSound = new Audio("src/assets/sounds/AcelerandoGTR.mp3");
 AceleroSound.loop = true;
@@ -59,6 +62,8 @@ let movimento = setInterval(() => {
 let keysPressed = {};
 
 document.addEventListener('keydown', function(event) {
+
+  if(!gameStarted) return;
   keysPressed[event.key.toLowerCase()] = true;
 
   // troca de faixa (executa só uma vez por pressionamento)
@@ -77,6 +82,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 document.addEventListener('keyup', function(event) {
+  if (!gameStarted) return;
   keysPressed[event.key.toLowerCase()] = false;
     if (event.key === 'w' || event.key === 'W' || event.key === 'ArrowUp') {
         // inicia fade-out suave
@@ -106,10 +112,10 @@ document.addEventListener('keyup', function(event) {
 
 // loop contínuo
 setInterval(() => {
+  if (!gameStarted) return;
   if (keysPressed['w'] || keysPressed['arrowup']) {
-    playerY -= 6;
+    playerY -= 100;
     motorSound.pause();
-    AceleroSound.volume = 1;
     AceleroSound.play();
   }
   if (keysPressed['s'] || keysPressed['arrowdown']) {
@@ -119,5 +125,3 @@ setInterval(() => {
   updatePlayer();
 }, 16); // ~60fps
 
-creatPlayer(5); // começa na coluna 3 (meio)
-updatePlayer();
