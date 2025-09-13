@@ -4,7 +4,7 @@ let gameStarted = false;
 let colunaAtual = 5; // começa na coluna do meio (1 a 5)
 const AceleroSound = new Audio("src/assets/sounds/AcelerandoGTR.mp3");
 AceleroSound.loop = true;
-AceleroSound.volume = 1;
+AceleroSound.volume = 0.3;
 const motorSound = new Audio("src/assets/sounds/NaManhaGTR.mp3");
 motorSound.loop = true;
 motorSound.volume = 0.3;
@@ -61,19 +61,27 @@ let movimento = setInterval(() => {
 
 let keysPressed = {};
 
+let acelerarTimner = null;
+let acelerando = false;
+
 document.addEventListener('keydown', function(event) {
 
   if(!gameStarted) return;
   keysPressed[event.key.toLowerCase()] = true;
+  if(event.key === 'w'){
+    acelerarTimner = setInterval(()=>{
+      acelerando = true;
+    }, 2000);
+  }
 
   // troca de faixa (executa só uma vez por pressionamento)
-  if (event.key === 'a' || event.key === 'A' || event.key === 'ArrowLeft') {
+  if (event.key === 'a'||  event.key === 'ArrowLeft') {
     if (colunaAtual > 1) {
       colunaAtual--; 
       anguloAtual = -10;
     }
   } 
-  else if (event.key === 'd' || event.key === 'D' || event.key === 'ArrowRight') {
+  else if (event.key === 'd' || event.key === 'ArrowRight') {
     if (colunaAtual < 8) {
       colunaAtual++; 
       anguloAtual = 10;
@@ -84,15 +92,14 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('keyup', function(event) {
   if (!gameStarted) return;
   keysPressed[event.key.toLowerCase()] = false;
-    if (event.key === 'w' || event.key === 'W' || event.key === 'ArrowUp') {
-        // inicia fade-out suave
-        fadeOutInterval = setInterval(() => {
-            clearInterval(fadeOutInterval);
-            AceleroSound.pause();
-            AceleroSound.currentTime = 0;
-            motorSound.play().catch(err => console.log("Erro motor:", err));      // garante que na próxima vez começa cheio
-        }, 50); // a cada 50ms (0.05s)
-      }
+  if (event.key === 'w' || event.key === 'W'|| event.key === 'ArrowUp') {
+    acelerando = false;
+    console.log(acelerando);
+    AceleroSound.pause();
+    AceleroSound.currentTime = 0;
+    
+    motorSound.play().catch(err => console.log("Erro motor:", err));
+  }
 
   if (
     event.key === 'A' || event.key === 'a' || event.key === 'ArrowLeft' ||
@@ -108,9 +115,10 @@ document.addEventListener('keyup', function(event) {
 // loop contínuo
 setInterval(() => {
   if (!gameStarted) return;
-  if (keysPressed['w'] || keysPressed['arrowup']) {
+  if ((keysPressed['w'] || keysPressed['arrowup']) && acelerando) {
     playerY -= 7;
     motorSound.pause();
+    motorSound.currentTime = 0;
     AceleroSound.play();
   }
   if (keysPressed['s'] || keysPressed['arrowdown']) {
