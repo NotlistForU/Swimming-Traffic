@@ -87,15 +87,10 @@ document.addEventListener('keyup', function(event) {
     if (event.key === 'w' || event.key === 'W' || event.key === 'ArrowUp') {
         // inicia fade-out suave
         fadeOutInterval = setInterval(() => {
-          if (AceleroSound.volume > 0.05) {
-            AceleroSound.volume -= 0.05; // reduz 5% do volume
-          } else {
             clearInterval(fadeOutInterval);
             AceleroSound.pause();
-            AceleroSound.currentTime = 0; // reinicia o som
-            AceleroSound.volume = 1;
+            AceleroSound.currentTime = 0;
             motorSound.play().catch(err => console.log("Erro motor:", err));      // garante que na próxima vez começa cheio
-          }
         }, 50); // a cada 50ms (0.05s)
       }
 
@@ -114,7 +109,7 @@ document.addEventListener('keyup', function(event) {
 setInterval(() => {
   if (!gameStarted) return;
   if (keysPressed['w'] || keysPressed['arrowup']) {
-    playerY -= 100;
+    playerY -= 7;
     motorSound.pause();
     AceleroSound.play();
   }
