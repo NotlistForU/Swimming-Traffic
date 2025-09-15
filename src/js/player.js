@@ -1,3 +1,4 @@
+
 let gameStarted = false;
 
 
@@ -112,11 +113,14 @@ document.addEventListener('keyup', function(event) {
   }
 });
 
+
+
+
 // loop contínuo
 setInterval(() => {
   if (!gameStarted) return;
   if ((keysPressed['w'] || keysPressed['arrowup']) && acelerando) {
-    playerY -= 7;
+    playerY -= 100;
     motorSound.pause();
     motorSound.currentTime = 0;
     AceleroSound.play();
