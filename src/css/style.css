@@ -150,3 +150,13 @@ body {
   height: 200px;
 
 }
+
+/* TUDO DE nitro     -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=             */
+.nitro {
+  width: 70px;
+  height: 90px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}

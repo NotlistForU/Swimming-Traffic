@@ -7,7 +7,9 @@ function spwanCar(numPista, quantCar){
     let numCol, numY;
 
     while(!valido){
+      // numY vai ser onde o carro vai spwanar em dentro da coluna
       numY = Math.floor(Math.random() * 55000) + 1;
+      // numCol vai ser em que coluna o carro vai spwanar
       numCol = Math.floor(Math.random() * numPista) + 1;
 
       valido = true;
@@ -122,4 +124,4 @@ let movimentoCarros = setInterval(() => {
   }
 }, 16); // ~60fps
 
-spwanCar(8,400);
+spwanCar(8,350);
