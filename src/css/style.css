@@ -1,3 +1,5 @@
+
+
 body {
   margin: 0;
   height: 100vh;
@@ -62,7 +64,7 @@ body {
 /* TUDO DE RUA     -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=             */
 #conteiner {
   margin-top: -9px;
-  height: 6000vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: repeat(8, auto);
   justify-content: center;
@@ -71,22 +73,40 @@ body {
 
 .pista1 {
   position: relative;
-  display:grid;
-
+  display: grid;
   width: 200px;
-  height: 6000vh;
+  height: 100vh;
   background-color: rgb(20, 19, 19);
   justify-content: center;
   z-index: 1;
-  border-right: 4px solid transparent; /* largura da "borda" */
-  border-image: repeating-linear-gradient(
-      to bottom,
-      white 0px,       /* cor do traço começa */
-      white 30px,      /* tamanho do traço */
-      transparent 10px, /* espaço começa */
-      transparent 60px  /* tamanho do espaço */
-    )
-    1; /* divide proporcionalmente */
+  overflow: hidden; /* garante que o pseudo não vaze */
+}
+
+/* cria a faixa branca na borda direita */
+.pista1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0; /* fica na lateral direita */
+  width: 4px; /* largura da faixa */
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    white 0px,
+    white 30px,
+    transparent 30px,
+    transparent 60px
+  );
+  animation: moverFaixa 1s linear infinite;
+}
+
+@keyframes moverFaixa {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 60px; /* desloca o padrão */
+  }
 }
 
 
@@ -95,7 +115,7 @@ body {
   position: relative;
   display: grid;
   width: 200px;
-  height: 6000vh;
+  height: 100vh;
   border-width: 4px;
   border-style: solid;
   border-color: rgb(20, 19, 19);
@@ -112,14 +132,13 @@ body {
   animation:ease;
   width: 170px;
   height: 200px;
-
+  top: 70%;
   position: relative;
 
   z-index: 2;
 }
 
 .carroBaixo {
-  top: 6000px;
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
@@ -139,16 +158,6 @@ body {
   to {
     filter: brightness(1);
   }
-}
-
-.carroCima {
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  width: 170px;
-  height: 200px;
-
 }
 
 /* TUDO DE nitro     -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=             */

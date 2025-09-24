@@ -29,36 +29,22 @@ function updatePlayer() {
   const player = document.getElementById("player");
   if (player) {
     player.style.transform = `rotate(${anguloAtual}deg)`;
-    player.style.top = playerY + "px";
 
     // garante que o player esteja sempre na coluna certa
     let col = document.getElementById(`col-${colunaAtual}`);
     if (!col.contains(player)) {
       col.appendChild(player);
     }
-
-    window.scrollTo({
-      top: playerY - window.innerHeight / 2,
-      left: 0,
-      behavior: "auto"
-    });
   }
 }
 
 const angulo = 0;
 let anguloAtual = 0;
-let playerY = 57500; 
 let colisao = false;
 let velocidade = 2;
 
-let movimento = setInterval(() => {
-  if (!colisao) {
-    playerY -= velocidade;
-    updatePlayer();
-  } else {
-    clearInterval(movimento);
-  }
-}, 16);
+
+
 
 let keysPressed = {};
 
@@ -120,13 +106,11 @@ document.addEventListener('keyup', function(event) {
 setInterval(() => {
   if (!gameStarted) return;
   if ((keysPressed['w'] || keysPressed['arrowup']) && acelerando) {
-    playerY -= 100;
     motorSound.pause();
     motorSound.currentTime = 0;
     AceleroSound.play();
   }
   if (keysPressed['s'] || keysPressed['arrowdown']) {
-    playerY += 2;
   }
 
   updatePlayer();

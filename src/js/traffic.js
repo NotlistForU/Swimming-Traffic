@@ -1,127 +1,91 @@
-let carrosSpawnados = []; 
-const alturaCarro = 340;
+let carrosSpawnados = [];
+const alturaCarro = 120; // altura do sprite
+const larguraPista = 200; // largura de cada coluna
+const numPistas = 5;
 
-function spwanCar(numPista, quantCar){
-  for(let i = 0; i < quantCar; i++){
-    let valido = false;
-    let numCol, numY;
+let caminhosLivresAtuais = [];
 
-    while(!valido){
-      // numY vai ser onde o carro vai spwanar em dentro da coluna
-      numY = Math.floor(Math.random() * 55000) + 1;
-      // numCol vai ser em que coluna o carro vai spwanar
-      numCol = Math.floor(Math.random() * numPista) + 1;
+// inicializa caminho começando no meio
+function inicializarCaminho() {
+  caminhosLivresAtuais = [Math.ceil(numPistas / 2)];
+}
 
-      valido = true;
-      for(let c of carrosSpawnados){
-        // mesma coluna → checa sobreposição
-        if(c.col === numCol){
-          if(!(numY + alturaCarro < c.y || numY > c.y + alturaCarro)){
-            valido = false;
-            break;
-          }
-        }
+// cria uma fileira de carros no topo
+function spawnFileira() {
+  let novosLivres = new Set();
 
-        // coluna adjacente → checa proximidade
-        if(Math.abs(c.col - numCol) === 1){
-          if(Math.abs(c.y - numY) < alturaCarro){
-            valido = false;
-            break;
-          }
-        }
-      }
+  // 🔹 Escolhe caminho principal
+  let caminhoPrincipal = caminhosLivresAtuais[
+    Math.floor(Math.random() * caminhosLivresAtuais.length)
+  ];
+  novosLivres.add(caminhoPrincipal);
+
+  // 🔹 Chance de abrir para esquerda/direita
+  if (caminhoPrincipal > 1 && Math.random() < 0.4) {
+    novosLivres.add(caminhoPrincipal - 1);
+  }
+  if (caminhoPrincipal < numPistas && Math.random() < 0.4) {
+    novosLivres.add(caminhoPrincipal + 1);
+  }
+
+  // 🔹 Chance de manter outros caminhos livres antigos
+  caminhosLivresAtuais.forEach(caminho => {
+    if (caminho !== caminhoPrincipal && Math.random() < 0.2) {
+      novosLivres.add(caminho);
     }
+  });
 
-    // cria carro novo
-    let coluna = document.getElementById(`col-${numCol}`);
-    let numCar = Math.floor(Math.random() * 9) + 1;
-    let carro = document.createElement("img");
+  // Atualiza para próxima rodada
+  caminhosLivresAtuais = Array.from(novosLivres);
 
-    carro.src = `src/assets/images/TrafficCars/car${numCar}.png`;
-    carro.alt = "TrafficCar";
-    carro.classList.add("carroBaixo"); 
-    carro.style.position = "absolute";
-    carro.style.top = numY + "px";
+  // 🔹 Cria carros em todas as colunas exceto as livres
+  for (let pista = 1; pista <= numPistas; pista++) {
+    if (!novosLivres.has(pista)) {
+      let coluna = document.getElementById(`col-${pista}`);
+      let numCar = Math.floor(Math.random() * 9) + 1;
+      let carro = document.createElement("img");
 
-    coluna.appendChild(carro);
+      carro.src = `src/assets/images/TrafficCars/car${numCar}.png`;
+      carro.alt = "TrafficCar";
+      carro.classList.add("carro");
+      carro.style.position = "absolute";
+      carro.style.top = -alturaCarro + "px"; // começa fora da tela
+      carro.style.left = "0px";
 
-    // velocidade aleatória entre 2 e 3
-    let vel = 2 + Math.random(); 
+      coluna.appendChild(carro);
 
-    // salva posição + velocidade + elemento
-    carrosSpawnados.push({ col: numCol, y: numY, el: carro, vel: vel });
+      carrosSpawnados.push({ col: pista, y: -alturaCarro, el: carro, vel: 3 });
+    }
   }
 }
 
 // atualiza movimento dos carros
-function updateCars(){
+function updateCars() {
   for (let c of carrosSpawnados) {
-    // verifica se tem carro à frente na mesma coluna
-    let carroFrente = null;
-    for (let outro of carrosSpawnados) {
-      if (outro.col === c.col && outro.y < c.y) {
-        if (!carroFrente || outro.y > carroFrente.y) {
-          carroFrente = outro; // pega o mais próximo
-        }
-      }
-    }
-
-    if (carroFrente && (c.y - carroFrente.y) < alturaCarro * 1.2) {
-      // está muito perto do carro da frente
-      if (c.vel > carroFrente.vel) {
-        // tenta mudar de faixa
-        let moved = false;
-        for (let dir of [-1, 1]) { // tenta esquerda depois direita
-          let novaCol = c.col + dir;
-          if (novaCol >= 1 && novaCol <= 5) {
-            // verifica se a nova faixa está livre
-            let livre = true;
-            for (let outro of carrosSpawnados) {
-              if (outro.col === novaCol) {
-                if (Math.abs(outro.y - c.y) < alturaCarro * 1.2) {
-                  livre = false; // tem carro perto, não pode mudar
-                  break;
-                }
-              }
-            }
-            if (livre) {
-              c.el.classList.add("blink");
-              // muda de faixa
-              setTimeout(() => {
-                  let novaColDiv = document.getElementById(`col-${novaCol}`);
-                  novaColDiv.appendChild(c.el);
-                  c.col = novaCol;
-
-                  // para de piscar
-                  c.el.classList.remove("blink");
-                }, 400);
-              moved = true;
-              break;
-            }
-          }
-        }
-
-        if (!moved) {
-          // não conseguiu mudar → iguala velocidade ao da frente
-          c.vel = carroFrente.vel;
-        }
-      }
-    }
-
-    // move carro
-    c.y -= c.vel;
+    c.y += c.vel;
     c.el.style.top = c.y + "px";
+
+    // remove se saiu da tela
+    if (c.y > window.innerHeight) {
+      c.el.remove();
+    }
   }
+
+  // limpa array de carros removidos
+  carrosSpawnados = carrosSpawnados.filter(c => c.y <= window.innerHeight);
 }
 
+// loop principal
+function startTraffic() {
+  inicializarCaminho();
 
-// loop dos carros
-let movimentoCarros = setInterval(() => {
-  if (!colisao) {
+  setInterval(() => {
+    spawnFileira();
+  }, 1000); // a cada 1s cria uma nova fileira
+
+  setInterval(() => {
     updateCars();
-  } else {
-    clearInterval(movimentoCarros);
-  }
-}, 16); // ~60fps
+  }, 16); // ~60fps
+}
 
-spwanCar(8,350);
+startTraffic();
