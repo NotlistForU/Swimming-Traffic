@@ -61,7 +61,7 @@ function spawnFileira() {
       }
     }
   }
-  spawnCoins(caminhosLivresAtuais, posY);
+  spawnItens(caminhosLivresAtuais, posY);
 }
 
 // atualiza movimento dos carros
@@ -91,6 +91,7 @@ function startTraffic() {
   setInterval(() => {
     updateCars();
     updateCoins();
+    updateGas();
   }, 16); // ~60fps
 }
 

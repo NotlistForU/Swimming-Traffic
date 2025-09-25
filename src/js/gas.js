@@ -1,21 +1,22 @@
-let coinsSpawnadas = [];
-const alturaCoin = 60; // altura da imagem da moeda
-const coinFrames = [
-  "src/assets/images/Coins/coin1.png",
-  "src/assets/images/Coins/coin2.png",
-  "src/assets/images/Coins/coin3.png"
+let gasSpawnadas = [];
+const alturaGas = 100; // altura da imagem da gasolina
+const gasFrames = [
+  "src/assets/images/Gas/gas1.png",
+  "src/assets/images/Gas/gas2.png",
+  "src/assets/images/Gas/gas3.png"
 ];
 
-function updateCoins() {
-  for (let c of coinsSpawnadas) {
+
+function updateGas() {
+  for (let c of gasSpawnadas) {
     // movimento para baixo
     c.y += c.vel;
 
     // animação de sprite (troca a cada ~10 frames)
     c.frameTimer++;
     if (c.frameTimer > 20) {
-      c.frame = (c.frame + 1) % coinFrames.length;
-      c.el.src = coinFrames[c.frame];
+      c.frame = (c.frame + 1) % gasFrames.length;
+      c.el.src = gasFrames[c.frame];
       c.frameTimer = 0;
     }
 
@@ -34,5 +35,5 @@ function updateCoins() {
     }
   }
 
-  coinsSpawnadas = coinsSpawnadas.filter(c => c.y <= window.innerHeight);
+  gasSpawnadas = gasSpawnadas.filter(c => c.y <= window.innerHeight);
 }
