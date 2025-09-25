@@ -1,7 +1,7 @@
 let carrosSpawnados = [];
-const alturaCarro = 120; // altura do sprite
+const alturaCarro = 140; // altura do sprite
 const larguraPista = 200; // largura de cada coluna
-const numPistas = 5;
+const numPistas = 8;
 
 let caminhosLivresAtuais = [];
 
@@ -9,9 +9,12 @@ let caminhosLivresAtuais = [];
 function inicializarCaminho() {
   caminhosLivresAtuais = [Math.ceil(numPistas / 2)];
 }
-
+let linhaAtual = 0;
 // cria uma fileira de carros no topo
 function spawnFileira() {
+  linhaAtual++;
+  // altura inicial da fileira (cada linha nasce mais acima que a anterior)
+  let posY = -alturaCarro - (linhaAtual * 220); // 150px de espaço entre fileiras
   let novosLivres = new Set();
 
   // 🔹 Escolhe caminho principal
@@ -41,22 +44,24 @@ function spawnFileira() {
   // 🔹 Cria carros em todas as colunas exceto as livres
   for (let pista = 1; pista <= numPistas; pista++) {
     if (!novosLivres.has(pista)) {
-      let coluna = document.getElementById(`col-${pista}`);
-      let numCar = Math.floor(Math.random() * 9) + 1;
-      let carro = document.createElement("img");
+      // 40% chance de aparecer carro.
+      if(Math.random() < 0.4){
+        let coluna = document.getElementById(`col-${pista}`);
+        let numCar = Math.floor(Math.random() * 9) + 1;
+        let carro = document.createElement("img");
 
-      carro.src = `src/assets/images/TrafficCars/car${numCar}.png`;
-      carro.alt = "TrafficCar";
-      carro.classList.add("carro");
-      carro.style.position = "absolute";
-      carro.style.top = -alturaCarro + "px"; // começa fora da tela
-      carro.style.left = "0px";
+        carro.src = `src/assets/images/TrafficCars/car${numCar}.png`;
+        carro.alt = "TrafficCar";
+        carro.classList.add("carroBaixo");
+        carro.style.position = "absolute";
+        carro.style.top = posY + "px"; // começa fora da tela
 
-      coluna.appendChild(carro);
-
-      carrosSpawnados.push({ col: pista, y: -alturaCarro, el: carro, vel: 3 });
+        coluna.appendChild(carro);
+        carrosSpawnados.push({ col: pista, y: posY, el: carro, vel: 3 });
+      }
     }
   }
+  spawnCoins(caminhosLivresAtuais, posY);
 }
 
 // atualiza movimento dos carros
@@ -85,6 +90,7 @@ function startTraffic() {
 
   setInterval(() => {
     updateCars();
+    updateCoins();
   }, 16); // ~60fps
 }
 

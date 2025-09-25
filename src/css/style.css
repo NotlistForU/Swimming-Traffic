@@ -97,7 +97,7 @@ body {
     transparent 30px,
     transparent 60px
   );
-  animation: moverFaixa 1s linear infinite;
+  animation: moverFaixa 0.2s linear infinite;
 }
 
 @keyframes moverFaixa {
@@ -169,3 +169,13 @@ body {
   right: 50%;
   transform: translate(-50%, -50%);
 }
+
+.coins {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+/* TUDO DE coins -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
