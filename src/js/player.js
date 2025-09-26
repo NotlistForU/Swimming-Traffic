@@ -65,13 +65,13 @@ document.addEventListener('keydown', function(event) {
   if (event.key === 'a'||  event.key === 'ArrowLeft') {
     if (colunaAtual > 1) {
       colunaAtual--; 
-      anguloAtual = -10;
+      anguloAtual = -5;
     }
   } 
   else if (event.key === 'd' || event.key === 'ArrowRight') {
     if (colunaAtual < 8) {
       colunaAtual++; 
-      anguloAtual = 10;
+      anguloAtual = 5;
     }
   }
 });
@@ -114,5 +114,6 @@ setInterval(() => {
   }
 
   updatePlayer();
+  checkCollisions();
 }, 16); // ~60fps
 
