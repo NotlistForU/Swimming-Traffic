@@ -3,10 +3,10 @@ let gameStarted = false;
 
 
 let colunaAtual = 5; // começa na coluna do meio (1 a 5)
-const AceleroSound = new Audio("src/assets/sounds/AcelerandoGTR.mp3");
+const AceleroSound = new Audio("src/assets/sounds/AcelerandoBMW3.mp3");
 AceleroSound.loop = true;
 AceleroSound.volume = 0.3;
-const motorSound = new Audio("src/assets/sounds/NaManhaGTR.mp3");
+const motorSound = new Audio("src/assets/sounds/naManhaBMW3.mp3");
 motorSound.loop = true;
 motorSound.volume = 0.3;
 
@@ -16,7 +16,7 @@ function creatPlayer(numPista) {
   colunaAtual = numPista; // define onde vai nascer
   let col = document.getElementById(`col-${colunaAtual}`);
   const player = document.createElement("img");
-  player.src = `src/assets/images/PlayerCars/car7.png`;
+  player.src = `src/assets/images/PlayerCars/car3.png`;
   player.alt = "player";
   player.classList.add("player");
   player.id = "player";
