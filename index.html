@@ -6,7 +6,27 @@
   <title>Traffic-Game</title>
   <link rel="stylesheet" href="./src/css/style.css">
 </head>
-  <body>  
+  <body>   
+      <!-- HUD (fica escondido até começar o jogo) -->
+        <div id="hud">
+          <!-- Combustível -->
+          <div id="fuelContainer">
+            <div id="fuelBar"></div>
+            <span>⛽</span>
+          </div>
+
+          <!-- Velocímetro / Score -->
+          <div id="hudRight">
+            <div id="speedometer">
+              <div id="speedNeedle"></div>
+              <div class="speedLabel">KM/H</div>
+            </div>
+            <div id="scoreboard">
+              <div id="coinsDisplay">💰 0</div>
+              <div id="pointsDisplay">🏆 0</div>
+            </div>
+          </div>
+        </div>
       <div id="menu">
         <h1>🚗 Traffic Game 🚦</h1>
         <div id="config">
@@ -22,17 +42,6 @@
         </div>
         
       </div>
-   <!--<div id="conteiner">
-      <div id="col-1"class="pista1"></div>
-      <div id="col-2"class="pista1"></div>
-      <div id="col-3"class="pista1"></div>
-      <div id="col-4"class="pista1"></div>
-      <div id="col-5"class="pista1"></div>
-      <div id="col-6"class="pista1"></div>
-      <div id="col-7"class="pista1"></div>
-      <div id="col-8"class="pista5"></div>
-    </div> -->
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="src/js/pista.js"></script>
     <script src="src/js/coins.js"></script>

@@ -193,3 +193,100 @@ body {
   transform: translate(-50%, -50%);
 
 }
+
+
+
+
+/* TUDO DE HUD -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* HUD geral */
+#hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* HUD não atrapalha cliques */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 900;
+   /* aparece só quando o jogo começa */
+}
+
+/* Combustível à esquerda */
+#fuelContainer {
+  position: relative;
+  width: 40px;
+  height: 300px;
+  background: #333;
+  border: 2px solid #666;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#fuelBar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #28a745, #6fdc6f);
+  transition: height 0.2s;
+}
+
+#fuelContainer span {
+  position: absolute;
+  top: -25px;
+  font-size: 18px;
+  color: white;
+}
+
+/* Lado direito */
+#hudRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Velocímetro */
+#speedometer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 6px solid #666;
+  border-radius: 50%;
+  background: #111;
+}
+
+#speedNeedle {
+  position: absolute;
+  width: 4px;
+  height: 70px;
+  background: red;
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translate(-50%, -100%) rotate(-90deg); /* começa no zero */
+  transition: transform 0.1s linear;
+}
+
+.speedLabel {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+}
+
+/* Placar */
+#scoreboard {
+  text-align: center;
+  color: white;
+  font-size: 18px;
+}
