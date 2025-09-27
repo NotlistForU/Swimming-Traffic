@@ -29,6 +29,14 @@ body {
   margin-bottom: 20px;
 }
 
+#imageIcon {
+  width: 420px;
+  height: 440px;
+  background-image: url(../assets/images/PlayerIcons/maxVersatappen.png);
+}
+
+
+
 #menu button {
   padding: 10px 20px;
   font-size: 18px;

@@ -1,3 +1,4 @@
+
 const motorVol = document.getElementById("motorVol");
 const aceleroVol = document.getElementById("aceleroVol");
 
@@ -7,6 +8,7 @@ motorVol.addEventListener("input", () => {
 aceleroVol.addEventListener("input", () => {
   AceleroSound.volume = parseFloat(aceleroVol.value);
 });
+
 
 document.getElementById("btnPlay").addEventListener("click",() =>{
     document.getElementById("menu").style.display = "none";

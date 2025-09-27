@@ -3,7 +3,7 @@ let gameStarted = false;
 
 
 let colunaAtual = 5; // começa na coluna do meio (1 a 5)
-const AceleroSound = new Audio("src/assets/sounds/AcelerandoBMW3.mp3");
+const AceleroSound = new Audio("src/assets/sounds/AcelerandoGTR.mp3");
 AceleroSound.loop = true;
 AceleroSound.volume = 0.3;
 const motorSound = new Audio("src/assets/sounds/naManhaBMW3.mp3");
