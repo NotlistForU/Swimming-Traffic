@@ -1,5 +1,8 @@
+.hidden {
+  display: none;
+}
 
-
+/* ====== BASE ====== */
 body {
   margin: 0;
   height: 100vh;
@@ -7,7 +10,7 @@ body {
   background: black;
 }
 
-
+/* ====== MENU PRINCIPAL ====== */
 #menu {
   position: fixed;
   top: 0;
@@ -17,12 +20,12 @@ body {
   background: #111;
   color: white;
   display: flex;
-  gap: 4px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   z-index: 999; /* fica na frente */
-  }
+}
 
 #menu h1 {
   font-size: 2em;
@@ -34,8 +37,6 @@ body {
   height: 440px;
   background-image: url(../assets/images/PlayerIcons/maxVersatappen.png);
 }
-
-
 
 #menu button {
   padding: 10px 20px;
@@ -52,12 +53,14 @@ body {
   background: #218838;
 }
 
-#config {
+/* ====== MENU CONFIG ====== */
+.menuConfig {
   display: grid;
   gap: 4px;
 }
 
-#volMotor, #volAcel {
+#volMotor,
+#volAcel {
   padding: 5px 10px;
   border-radius: 8px;
   width: auto;
@@ -65,11 +68,7 @@ body {
   background-color: lightslategrey;
 }
 
-#divBtn {
-
-}
-
-/* TUDO DE RUA     -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=             */
+/* ====== PISTA ====== */
 #conteiner {
   margin-top: -9px;
   height: 100vh;
@@ -90,13 +89,13 @@ body {
   overflow: hidden; /* garante que o pseudo não vaze */
 }
 
-/* cria a faixa branca na borda direita */
+/* faixa branca na borda direita */
 .pista1::before {
   content: "";
   position: absolute;
   top: 0;
-  right: 0; /* fica na lateral direita */
-  width: 4px; /* largura da faixa */
+  right: 0;
+  width: 4px;
   height: 100%;
   background-image: repeating-linear-gradient(
     to bottom,
@@ -113,44 +112,37 @@ body {
     background-position-y: 0;
   }
   to {
-    background-position-y: 60px; /* desloca o padrão */
+    background-position-y: 60px;
   }
 }
-
-
 
 .pista5 {
   position: relative;
   display: grid;
   width: 200px;
   height: 100vh;
-  border-width: 4px;
-  border-style: solid;
-  border-color: rgb(20, 19, 19);
+  border: 4px solid rgb(20, 19, 19);
   background-color: rgb(20, 19, 19);
   justify-content: center;
   z-index: 0;
 }
 
-
-
-
-/* TUDO DE CARRO     -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=             */
-.player, #player {
-  animation:ease;
+/* ====== CARROS ====== */
+.player,
+#player {
+  animation: ease;
   width: 170px;
   height: 200px;
   top: 70%;
   position: relative;
-
   z-index: 2;
 }
 
 .carroBaixo {
+  position: absolute;
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
   width: 170px;
   height: 200px;
 }
@@ -168,62 +160,53 @@ body {
   }
 }
 
-/* TUDO DE nitro     -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=             */
+/* ====== NITRO ====== */
 .nitro {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
   width: 70px;
   height: 90px;
+}
+
+/* ====== COINS ====== */
+.coins {
   position: absolute;
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
-}
-
-
-/* TUDO DE coins -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-
-.coins {
   width: 60px;
   height: 60px;
+}
+
+/* ====== GAS ====== */
+.gas {
   position: absolute;
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
-}
-
-/* TUDO DE gas -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-
-.gas {
   width: 100px;
   height: 120px;
-  position: absolute;
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%, -50%);
-
 }
 
-
-
-
-/* TUDO DE HUD -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-/* HUD geral */
+/* ====== HUD ====== */
 #hud {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* HUD não atrapalha cliques */
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  z-index: 900;
-   /* aparece só quando o jogo começa */
+  pointer-events: none; /* HUD não atrapalha cliques */
+  z-index: 900; /* aparece só quando o jogo começa */
 }
 
-/* Combustível à esquerda */
+/* Combustível (lado esquerdo) */
 #fuelContainer {
   position: relative;
   width: 40px;
@@ -253,7 +236,7 @@ body {
   color: white;
 }
 
-/* Lado direito */
+/* HUD lado direito */
 #hudRight {
   display: flex;
   flex-direction: column;
@@ -273,11 +256,11 @@ body {
 
 #speedNeedle {
   position: absolute;
+  top: 50%;
+  left: 50%;
   width: 4px;
   height: 70px;
   background: red;
-  top: 50%;
-  left: 50%;
   transform-origin: bottom center;
   transform: translate(-50%, -100%) rotate(-90deg); /* começa no zero */
   transition: transform 0.1s linear;
@@ -288,13 +271,13 @@ body {
   bottom: 10px;
   width: 100%;
   text-align: center;
-  color: white;
   font-size: 14px;
+  color: white;
 }
 
 /* Placar */
 #scoreboard {
   text-align: center;
-  color: white;
   font-size: 18px;
+  color: white;
 }
