@@ -58,17 +58,17 @@ document.addEventListener('keydown', function(event) {
   if(event.key === 'w'){
     acelerarTimner = setInterval(()=>{
       acelerando = true;
-    }, 2000);
+    }, 1000);
   }
 
   // troca de faixa (executa só uma vez por pressionamento)
-  if (event.key === 'a'||  event.key === 'ArrowLeft') {
+  if (event.key === 'a'|| event.key === 'A'|| event.key === 'ArrowLeft') {
     if (colunaAtual > 1) {
       colunaAtual--; 
       anguloAtual = -5;
     }
   } 
-  else if (event.key === 'd' || event.key === 'ArrowRight') {
+  else if (event.key === 'd' || event.key === 'D' || event.key === 'ArrowRight') {
     if (colunaAtual < 8) {
       colunaAtual++; 
       anguloAtual = 5;

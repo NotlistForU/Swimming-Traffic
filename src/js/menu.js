@@ -1,14 +1,40 @@
 
 const motorVol = document.getElementById("motorVol");
 const aceleroVol = document.getElementById("aceleroVol");
+const motorPreview = new Audio("src/assets/sounds/naManhaBMW3.mp3");
+const aceleroPreview = new Audio("src/assets/sounds/AcelerandoGTR.mp3");
 
 motorVol.addEventListener("input", () => {
-  motorSound.volume = parseFloat(motorVol.value);
-});
-aceleroVol.addEventListener("input", () => {
-  AceleroSound.volume = parseFloat(aceleroVol.value);
+  const vol = parseFloat(motorVol.value);
+  motorSound.volume = vol;
+
+  // preview curtinho
+  motorPreview.volume = vol;
+  motorPreview.currentTime = 5;
+  motorPreview.play();
+
+  // para depois de 500ms (meio segundo)
+  setTimeout(() => {
+    motorPreview.pause();
+    motorPreview.currentTime = 5;
+  }, 2000);
 });
 
+aceleroVol.addEventListener("input", () => {
+  const vol = parseFloat(aceleroVol.value);
+  AceleroSound.volume = vol;
+
+  // preview curtinho
+  aceleroPreview.volume = vol;
+  aceleroPreview.currentTime = 3;
+  aceleroPreview.play();
+
+  // para depois de 500ms
+  setTimeout(() => {
+    aceleroPreview.pause();
+    aceleroPreview.currentTime = 3;
+  }, 1500);
+});
 
 let config = document.getElementById("config");
 let btnconfig = document.getElementById("btnConfig");
@@ -42,10 +68,24 @@ document.getElementById("btnVoltar").addEventListener("click",() =>{
     btnconfig.classList.remove("hidden");
 })
 
+let menu = document.getElementById("menu");
+window.addEventListener("load", () => {
+  atualizarMoedasUI(); // mostra moedas assim que a página carrega
+});
+
+
+let moedasRun = 0;
 document.getElementById("btnPlay").addEventListener("click",() =>{
-    document.getElementById("menu").style.display = "none";
+    menu.style.display = "none";
+    atualizarMoedasUI();
+    moedasRun = 0;
+    atualizarMoedasRunUI();
     gameStarted = true;
+    resetGame();
     creatPlayer(5); // começa na coluna 3 (meio)
+    spawnFileira();
     updatePlayer();
 });
+
+
 

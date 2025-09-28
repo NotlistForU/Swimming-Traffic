@@ -35,10 +35,21 @@ function checkCollisions() {
   coinsSpawnadas.forEach((coin, i) => {
     const coinRect = coin.el.getBoundingClientRect();
     if (isColliding(playerRect, coinRect)) {
+      coinSound.play();
       coin.el.remove();
       coinsSpawnadas.splice(i, 1);
-      console.log("💰 Moeda coletada!");
-      // aqui aumenta score
+
+      // aumenta moedas do jogador
+      moedasJogador++;
+      moedasRun++;
+      localStorage.setItem("moedas", moedasJogador);
+
+      console.log("💰 Moeda coletada! Total:", moedasJogador);
+
+      // (opcional) atualizar UI
+      atualizarMoedasUI();
+      atualizarMoedasRunUI();
+
     }
   });
 

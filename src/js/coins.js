@@ -5,7 +5,10 @@ const coinFrames = [
   "src/assets/images/Coins/coin2.png",
   "src/assets/images/Coins/coin3.png"
 ];
+const coinSound = new Audio("src/assets/sounds/goldCoinSound.mp3");
+coinSound.volume = 1;
 
+let moedasJogador = parseInt(localStorage.getItem("moedas")) || 0;
 function updateCoins() {
   for (let c of coinsSpawnadas) {
     // movimento para baixo

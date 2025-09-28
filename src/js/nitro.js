@@ -39,4 +39,4 @@ function spwanNitro(numPista, quantNitro) {
     }
     
 }
-spwanNitro(8, 100);
+// spwanNitro(8, 100);
