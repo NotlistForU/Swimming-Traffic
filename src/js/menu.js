@@ -40,13 +40,15 @@ let config = document.getElementById("config");
 let btnconfig = document.getElementById("btnConfig");
 let voltar = document.getElementById("divBtnVoltar");
 let btnPlay = document.getElementById("btnPlay");
+let hud = document.getElementById("hud");
 
 $(document).ready(function() {
-  let config = document.getElementById("config");
   config.classList.remove("menuConfig");
   config.classList.add("hidden");
-  let voltar = document.getElementById("divBtnVoltar");
   voltar.classList.add("hidden");
+
+
+
 });
 
 document.getElementById("btnConfig").addEventListener("click",() =>{
@@ -77,6 +79,9 @@ window.addEventListener("load", () => {
 let moedasRun = 0;
 document.getElementById("btnPlay").addEventListener("click",() =>{
     menu.style.display = "none";
+    hud.classList.remove("hidden");
+    hud.classList.add("flex");
+
     atualizarMoedasUI();
     moedasRun = 0;
     atualizarMoedasRunUI();

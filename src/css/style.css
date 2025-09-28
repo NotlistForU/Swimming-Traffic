@@ -11,14 +11,19 @@ body {
 }
 
 /* ====== MENU PRINCIPAL ====== */
+
+.backGroundLight{
+  background: pink;
+  color: white;
+}
+
 #menu {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: pink;
-  color: white;
+ 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,7 +48,7 @@ body {
 #perfil {
   display: flex;
   align-content: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 
@@ -77,6 +82,7 @@ body {
 /* ====== MENU ranking ====== */
 
 #ranking {
+  margin-right: -5px;
   margin-top: -20px;
   border-style: solid;
   border-width: 10px;
@@ -233,6 +239,9 @@ h3 {
 }
 
 /* ====== HUD ====== */
+.flex{
+  display: flex;
+}
 #hud {
   position: fixed;
   top: 0;
@@ -241,7 +250,6 @@ h3 {
   height: 100%;
   padding: 20px;
   box-sizing: border-box;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   pointer-events: none; /* HUD não atrapalha cliques */
