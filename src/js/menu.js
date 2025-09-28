@@ -81,6 +81,10 @@ document.getElementById("btnPlay").addEventListener("click",() =>{
     menu.style.display = "none";
     hud.classList.remove("hidden");
     hud.classList.add("flex");
+    startTime = Date.now();   // 🔹 marca o início da run
+    tempoVivo = 0;
+    kmPercorridos = 0;
+    atualizarScoreUI();
 
     atualizarMoedasUI();
     moedasRun = 0;

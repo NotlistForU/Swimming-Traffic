@@ -15,5 +15,3 @@ function criarPista(quantPista){
     }
     document.body.appendChild(conteiner);
 }
-
-criarPista(8);

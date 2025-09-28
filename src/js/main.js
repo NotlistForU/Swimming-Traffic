@@ -12,45 +12,21 @@ document.addEventListener('wheel', function (event) {
 }, { passive: false });
 
 
-function gameOver() {
-  gameStarted = false;
-  motorSound.pause();
-  motorSound.currentTime = 0;
-  AceleroSound.pause();
-  AceleroSound.currentTime = 0;
 
-  // 🔹 Mostra o menu de novo
-  menu.style.display = "flex";
 
-  // 🔹 Remove o player e carros da tela
-  const player = document.getElementById("player");
-  if (player) {
-    player.remove();
+
+setInterval(() => {
+  if (!gameStarted) return;
+  if ((keysPressed['w'] || keysPressed['arrowup']) && acelerando) {
+    motorSound.pause();
+    motorSound.currentTime = 0;
+    AceleroSound.play();
   }
-  carrosSpawnados.forEach(c => c.el.remove());
-  carrosSpawnados = [];
+  if (keysPressed['s'] || keysPressed['arrowdown']) {
+  }
 
-  // Se tiver moedas/gasolina, limpa também
-  coinsSpawnadas.forEach(m => m.el.remove());
-  coinsSpawnadas = [];
-  gasSpawnadas.forEach(g => g.el.remove());
-  gasSpawnadas = [];
-
-  // 🔹 (Opcional) resetar variáveis de jogo
-  linhaAtual = 0;
-  caminhosLivresAtuais = [];
-}
-
-function resetGame() {
-  // zera arrays
-  carrosSpawnados = [];
-  coinsSpawnadas = [];
-  gasSpawnadas = [];
-
-  // zera variáveis
-  linhaAtual = 0;
-  caminhosLivresAtuais = [];
-
-  // garante que o caminho inicial existe
-  inicializarCaminho();
-}
+  updatePlayer();
+  checkCollisions();
+}, 16); // ~60fps
+startTraffic();
+criarPista(8);

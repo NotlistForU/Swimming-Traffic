@@ -49,3 +49,27 @@ function resetarMoedas() {
 function atualizarMoedasRunUI() {
   document.getElementById("coinsDisplay").textContent = "💰 " + moedasRun;
 }
+// SCORE DO RANKING  ==================
+
+let startTime = 0;       // quando a run começou
+let tempoVivo = 0;       // em segundos
+let kmPercorridos = 0;   // distância acumulada
+let velocidadeKmH = 60;  // velocidade base (pode ser ligada ao velocímetro)
+
+function atualizarScore() {
+  if (!gameStarted) return;
+
+  // tempo vivo em segundos
+  tempoVivo = (Date.now() - startTime) / 1000;
+
+  // distância percorrida em km
+  kmPercorridos = (tempoVivo / 3600) * velocidadeKmH;
+
+  atualizarScoreUI();
+}
+
+function atualizarScoreUI() {
+   document.getElementById("pointsDisplay").innerHTML =
+    `<div>🏆 ${kmPercorridos.toFixed(2)} km</div>
+     <div>⏱ ${tempoVivo.toFixed(1)}s</div>`;
+}

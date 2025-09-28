@@ -49,7 +49,7 @@ function checkCollisions() {
       // (opcional) atualizar UI
       atualizarMoedasUI();
       atualizarMoedasRunUI();
-
+      
     }
   });
 

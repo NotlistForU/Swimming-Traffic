@@ -35,6 +35,7 @@ function updatePlayer() {
     if (!col.contains(player)) {
       col.appendChild(player);
     }
+    atualizarScore()
   }
 }
 
@@ -76,6 +77,10 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
+
+
+
+
 document.addEventListener('keyup', function(event) {
   if (!gameStarted) return;
   keysPressed[event.key.toLowerCase()] = false;
@@ -100,20 +105,47 @@ document.addEventListener('keyup', function(event) {
 });
 
 
+function gameOver() {
+  gameStarted = false;
+  motorSound.pause();
+  motorSound.currentTime = 0;
+  AceleroSound.pause();
+  AceleroSound.currentTime = 0;
 
+  // 🔹 Mostra o menu de novo
+  menu.style.display = "flex";
 
-// loop contínuo
-setInterval(() => {
-  if (!gameStarted) return;
-  if ((keysPressed['w'] || keysPressed['arrowup']) && acelerando) {
-    motorSound.pause();
-    motorSound.currentTime = 0;
-    AceleroSound.play();
+  // 🔹 Remove o player e carros da tela
+  const player = document.getElementById("player");
+  if (player) {
+    player.remove();
   }
-  if (keysPressed['s'] || keysPressed['arrowdown']) {
-  }
+  carrosSpawnados.forEach(c => c.el.remove());
+  carrosSpawnados = [];
 
-  updatePlayer();
-  checkCollisions();
-}, 16); // ~60fps
+  // Se tiver moedas/gasolina, limpa também
+  coinsSpawnadas.forEach(m => m.el.remove());
+  coinsSpawnadas = [];
+  gasSpawnadas.forEach(g => g.el.remove());
+  gasSpawnadas = [];
 
+  // 🔹 (Opcional) resetar variáveis de jogo
+  linhaAtual = 0;
+  caminhosLivresAtuais = [];
+  hud.classList.remove("flex");
+  hud.classList.add("hidden");
+}
+
+function resetGame() {
+  // zera arrays
+  carrosSpawnados = [];
+  coinsSpawnadas = [];
+  gasSpawnadas = [];
+
+  // zera variáveis
+  linhaAtual = 0;
+  caminhosLivresAtuais = [];
+
+  // garante que o caminho inicial existe
+  inicializarCaminho();
+}

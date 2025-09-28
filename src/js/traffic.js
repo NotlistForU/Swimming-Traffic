@@ -97,5 +97,4 @@ function startTraffic() {
   }, 16); // ~60fps
 }
 
-startTraffic();
 
