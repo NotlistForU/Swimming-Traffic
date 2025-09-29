@@ -56,6 +56,13 @@ let tempoVivo = 0;       // em segundos
 let kmPercorridos = 0;   // distância acumulada
 let velocidadeKmH = 60;  // velocidade base (pode ser ligada ao velocímetro)
 
+let fuelBar = document.getElementById("fuelBar");
+function updateFuelBar(){
+
+  
+}
+
+
 function atualizarScore() {
   if (!gameStarted) return;
 

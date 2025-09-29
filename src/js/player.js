@@ -134,6 +134,7 @@ function gameOver() {
   caminhosLivresAtuais = [];
   hud.classList.remove("flex");
   hud.classList.add("hidden");
+  anguloAtual = 0;
 }
 
 function resetGame() {
