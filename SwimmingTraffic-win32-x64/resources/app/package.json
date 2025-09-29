@@ -1,0 +1,23 @@
+{
+  "name": "swimming-traffic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "play.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NotlistForU/Swimming-Traffic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NotlistForU/Swimming-Traffic/issues"
+  },
+  "homepage": "https://github.com/NotlistForU/Swimming-Traffic#readme",
+  "devDependencies": {
+    "electron": "^38.2.0"
+  }
+}

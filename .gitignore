@@ -1,0 +1,26 @@
+# Dependências
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Builds do Electron
+/dist
+/out
+/build
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Configs de sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Cache
+.cache
+coverage
