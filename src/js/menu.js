@@ -48,7 +48,6 @@ $(document).ready(function() {
   voltar.classList.add("hidden");
   mostrarRanking();
 
-
 });
 
 document.getElementById("btnConfig").addEventListener("click",() =>{

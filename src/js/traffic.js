@@ -1,7 +1,7 @@
 let carrosSpawnados = [];
 const alturaCarro = 140; // altura do sprite
 const larguraPista = 200; // largura de cada coluna
-const numPistas = 8;
+const numPistas = 7;
 let dificuldade = 1; // fator inicial
 let dificuldadeTimer = null;
 let spawnInterval = 1000;   // começa spawnando a cada 1s

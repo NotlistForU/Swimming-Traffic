@@ -70,7 +70,7 @@ document.addEventListener('keydown', function(event) {
     }
   } 
   else if (event.key === 'd' || event.key === 'D' || event.key === 'ArrowRight') {
-    if (colunaAtual < 8) {
+    if (colunaAtual < numPistas) {
       colunaAtual++; 
       anguloAtual = 5;
     }
@@ -140,8 +140,11 @@ function gameOver() {
   currentFuel = maxFuel;
   velocidadeKmH = 60;
   dificuldade = 1;
+  // 🔹 limpa timers
   clearInterval(dificuldadeTimer);
   dificuldadeTimer = null;
+  clearInterval(spawnTimer);
+  spawnTimer = null;
   atualizarVelocimetro();
   atualizarVelocidadeFaixa();
 }

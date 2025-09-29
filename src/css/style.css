@@ -42,6 +42,7 @@ body {
   font-size: 2em;
   font-family:cursive;
   margin-bottom: 20px;
+  color: rgb(80, 49, 49);
 }
 
 /* perfil */
@@ -82,6 +83,7 @@ body {
 /* ====== MENU ranking ====== */
 
 #ranking {
+  padding: 5px;
   margin-right: -5px;
   margin-top: -20px;
   border-style: solid;
