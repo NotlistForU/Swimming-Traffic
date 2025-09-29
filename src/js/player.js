@@ -135,6 +135,15 @@ function gameOver() {
   hud.classList.remove("flex");
   hud.classList.add("hidden");
   anguloAtual = 0;
+  salvarPontuacao(kmPercorridos, tempoVivo);
+  mostrarRanking();
+  currentFuel = maxFuel;
+  velocidadeKmH = 60;
+  dificuldade = 1;
+  clearInterval(dificuldadeTimer);
+  dificuldadeTimer = null;
+  atualizarVelocimetro();
+  atualizarVelocidadeFaixa();
 }
 
 function resetGame() {

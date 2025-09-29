@@ -46,7 +46,7 @@ $(document).ready(function() {
   config.classList.remove("menuConfig");
   config.classList.add("hidden");
   voltar.classList.add("hidden");
-
+  mostrarRanking();
 
 
 });
@@ -91,7 +91,7 @@ document.getElementById("btnPlay").addEventListener("click",() =>{
     atualizarMoedasRunUI();
     gameStarted = true;
     resetGame();
-    creatPlayer(5); // começa na coluna 3 (meio)
+    creatPlayer(4); // começa na coluna 3 (meio)
     spawnFileira();
     updatePlayer();
 });

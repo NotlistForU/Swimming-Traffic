@@ -29,4 +29,4 @@ setInterval(() => {
   checkCollisions();
 }, 16); // ~60fps
 startTraffic();
-criarPista(8);
+criarPista(7);

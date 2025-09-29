@@ -1,15 +1,15 @@
-function salvarPontuacao(score) {
+function salvarPontuacao(km, tempo) {
   // pega ranking atual ou cria vazio
   let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
 
-  // adiciona nova pontuação
-  ranking.push(score);
+  // adiciona nova pontuação como objeto
+  ranking.push({ km: km, tempo: tempo });
 
-  // ordena do maior para o menor
-  ranking.sort((a, b) => b - a);
+  // ordena do maior km para o menor
+  ranking.sort((a, b) => b.km - a.km);
 
   // mantém só os 5 melhores
-  ranking = ranking.slice(0, 5);
+  ranking = ranking.slice(0, 10);
 
   // salva de volta no localStorage
   localStorage.setItem("ranking", JSON.stringify(ranking));
@@ -22,13 +22,12 @@ function mostrarRanking() {
 
   lista.innerHTML = ""; // limpa antes de preencher
 
-  ranking.forEach((score, i) => {
+  ranking.forEach((item, i) => {
     let li = document.createElement("li");
-    li.textContent = `${i + 1}º - ${score} pontos`;
+    li.textContent = `${i + 1}º - ${item.km.toFixed(2)} km | ${item.tempo.toFixed(1)}s`;
     lista.appendChild(li);
   });
 }
-
 
 function atualizarMoedasUI() {
   const h3 = document.querySelector("#moedasDisplay h3");

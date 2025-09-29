@@ -12,7 +12,7 @@ let moedasJogador = parseInt(localStorage.getItem("moedas")) || 0;
 function updateCoins() {
   for (let c of coinsSpawnadas) {
     // movimento para baixo
-    c.y += c.vel;
+    c.y += c.vel * dificuldade;
 
     // animação de sprite (troca a cada ~10 frames)
     c.frameTimer++;
