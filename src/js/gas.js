@@ -38,4 +38,3 @@ function updateGas() {
   gasSpawnadas = gasSpawnadas.filter(c => c.y <= window.innerHeight);
 }
 
-let fuelBar = document.getElementById("fuelBar");
