@@ -287,6 +287,11 @@ h3 {
   color: white;
 }
 
+@keyframes blink {
+  from { opacity: 1; }
+  to { opacity: 0.4; }
+}
+
 /* HUD lado direito */
 #hudRight {
   margin-right: -10px;

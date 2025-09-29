@@ -61,6 +61,7 @@ function checkCollisions() {
       gasSpawnadas.splice(i, 1);
       console.log("⛽ Gasolina coletada!");
       // aqui aumenta combustível
+      reabastecer(100);
     }
   });
 

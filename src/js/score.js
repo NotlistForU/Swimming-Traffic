@@ -55,11 +55,6 @@ let startTime = 0;       // quando a run começou
 let tempoVivo = 0;       // em segundos
 let kmPercorridos = 0;   // distância acumulada
 let velocidadeKmH = 60;  // velocidade base (pode ser ligada ao velocímetro)
-let fuelBar = document.getElementById("fuelBar");
-// function updateFuelBar(){
-
-  
-// }
 
 
 function atualizarScore() {
@@ -72,10 +67,54 @@ function atualizarScore() {
   kmPercorridos = (tempoVivo / 3600) * velocidadeKmH;
 
   atualizarScoreUI();
+  updateFuelBar();
 }
 
 function atualizarScoreUI() {
    document.getElementById("pointsDisplay").innerHTML =
     `<div>🏆 ${kmPercorridos.toFixed(2)} km</div>
      <div>⏱ ${tempoVivo.toFixed(1)}s</div>`;
+}
+
+
+let fuelBar = document.getElementById("fuelBar");
+// valor máximo de combustível (100%)
+let maxFuel = 30/100;
+// combustível atual (começa cheio)
+let currentFuel = maxFuel;
+
+// define quantos km o tanque dura
+let kmL = 12/10; // exemplo: a cada 360 km o tanque zera
+let tempoDecorridoSegundos = 1/60; // Exemplo para 60 frames por segundo
+function updateFuelBar() {
+  // diminui combustível conforme a distância
+  // exemplo: 1 km gasta 10 de fuel
+  let velocidadeKmS = velocidadeKmH / 3600; // 3600 segundos em uma hora
+   // 2. Calcula a distância percorrida no último frame (em km)
+  let distanciaPercorridaKm = velocidadeKmS * tempoDecorridoSegundos;
+  let consumoLitros = distanciaPercorridaKm / kmL;
+  currentFuel -= consumoLitros; 
+  currentFuel = Math.max(0, currentFuel);
+
+  // calcula porcentagem
+  let fuelPercent = (currentFuel / maxFuel) * 100;
+  fuelBar.style.height = fuelPercent + "%";
+
+  // cores
+  if (fuelPercent > 50) {
+    fuelBar.style.background = "linear-gradient(to top, #28a745, #6fdc6f)";
+  } else if (fuelPercent > 20) {
+    fuelBar.style.background = "linear-gradient(to top, #ffc107, #ffe066)";
+  } else {
+    fuelBar.style.background = "linear-gradient(to top, #dc3545, #ff6f6f)";
+  }
+
+  if (currentFuel <= 0) {
+    gameOver();
+  }
+}
+
+function reabastecer(qtd) {
+  let g = qtd * 10;
+  currentFuel = Math.min(maxFuel, currentFuel + g); 
 }
