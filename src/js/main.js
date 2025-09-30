@@ -48,8 +48,18 @@ function gameLoop(timestamp) {
 
   // Dificuldade
   dificuldadeTimer += delta;
-  if (dificuldadeTimer >= 10) {
-    dificuldade += 0.5;
+    if (dificuldadeTimer >= 10) {
+      const carroId = parseInt(localStorage.getItem("carroSelecionado")) || 1;
+
+      if (carroId === 1) { // Golf GTI
+        dificuldade += 0.2;
+      } else if (carroId === 3) { // Supra
+        dificuldade += 0.3;
+      } else if (carroId === 5) { // Ferrari
+        dificuldade += 0.8;
+      } else {
+        dificuldade += 0.5; // padrão para os outros
+      }
     velocidadeKmH += 10;
     atualizarVelocimetro();
     atualizarVelocidadeFaixa();
