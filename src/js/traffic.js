@@ -2,11 +2,6 @@ let carrosSpawnados = [];
 const alturaCarro = 140; // altura do sprite
 const larguraPista = 200; // largura de cada coluna
 const numPistas = 7;
-let dificuldade = 1; // fator inicial
-let dificuldadeTimer = null;
-let spawnInterval = 1000;   // começa spawnando a cada 1s
-let spawnTimer = null;      // guarda o setInterval do spawn
-
 let caminhosLivresAtuais = [];
 
 // inicializa caminho começando no meio
@@ -71,9 +66,10 @@ function spawnFileira() {
 }
 
 // atualiza movimento dos carros
-function updateCars() {
+function updateCars(delta) {
   for (let c of carrosSpawnados) {
-    c.y += c.vel * dificuldade;
+    // movimento baseado no tempo real
+    c.y += c.vel * dificuldade * delta * 60; 
     c.el.style.top = c.y + "px";
 
     // remove se saiu da tela
@@ -84,36 +80,6 @@ function updateCars() {
 
   // limpa array de carros removidos
   carrosSpawnados = carrosSpawnados.filter(c => c.y <= window.innerHeight);
-}
-
-// loop principal
-function startTraffic() {
-  inicializarCaminho();
-
-  setInterval(() => {
-    spawnFileira();
-  }, 1000); // a cada 1s cria uma nova fileira
-
-  setInterval(() => {
-    updateCars();
-    updateCoins();
-    updateGas();
-  }, 16); // ~60fps
-
-  dificuldadeTimer = setInterval(() => {
-    dificuldade += 0.3; // aumenta gradualmente a dificulade
-    velocidadeKmH += 10;// aumenta a o kmh
-    atualizarVelocimetro();
-    atualizarVelocidadeFaixa();
-    // diminui intervalo de spawn, mas nunca menos que 300ms
-    spawnInterval = Math.max(5000, spawnInterval - 100);
-
-    // reinicia o timer de spawn com o novo intervalo
-    clearInterval(spawnTimer);
-    spawnTimer = setInterval(spawnFileira, spawnInterval);
-    atualizarVelocidadeFaixa();
-    console.log("Dificuldade:", dificuldade);
-  }, 10000);
 }
 
 

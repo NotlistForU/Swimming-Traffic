@@ -6,16 +6,16 @@ const coinFrames = [
   "src/assets/images/Coins/coin3.png"
 ];
 const coinSound = new Audio("src/assets/sounds/goldCoinSound.mp3");
-coinSound.volume = 1;
+coinSound.volume = 0.5;
 
 let moedasJogador = parseInt(localStorage.getItem("moedas")) || 0;
-function updateCoins() {
+function updateCoins(delta) {
   for (let c of coinsSpawnadas) {
-    // movimento para baixo
-    c.y += c.vel * dificuldade;
+    // movimento para baixo baseado no tempo real
+    c.y += c.vel * dificuldade * delta * 60; 
 
-    // animação de sprite (troca a cada ~10 frames)
-    c.frameTimer++;
+    // animação de sprite (troca a cada ~20 frames normalizados)
+    c.frameTimer += delta * 60;
     if (c.frameTimer > 20) {
       c.frame = (c.frame + 1) % coinFrames.length;
       c.el.src = coinFrames[c.frame];

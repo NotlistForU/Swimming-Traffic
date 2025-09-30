@@ -35,7 +35,6 @@ function updatePlayer() {
     if (!col.contains(player)) {
       col.appendChild(player);
     }
-    atualizarScore()
   }
 }
 
@@ -54,13 +53,13 @@ let acelerando = false;
 
 document.addEventListener('keydown', function(event) {
 
-  if(!gameStarted) return;
-  keysPressed[event.key.toLowerCase()] = true;
-  if(event.key === 'w'){
-    acelerarTimner = setInterval(()=>{
-      acelerando = true;
-    }, 1000);
-  }
+  // if(!gameStarted) return;
+  // keysPressed[event.key.toLowerCase()] = true;
+  // if(event.key === 'w'){
+  //   acelerarTimner = setInterval(()=>{
+  //     acelerando = true;
+  //   }, 1000);
+  // }
 
   // troca de faixa (executa só uma vez por pressionamento)
   if (event.key === 'a'|| event.key === 'A'|| event.key === 'ArrowLeft') {

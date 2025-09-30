@@ -57,6 +57,7 @@ function checkCollisions() {
   gasSpawnadas.forEach((gas, i) => {
     const gasRect = gas.el.getBoundingClientRect();
     if (isColliding(playerRect, gasRect)) {
+      gasSound.play();
       gas.el.remove();
       gasSpawnadas.splice(i, 1);
       console.log("⛽ Gasolina coletada!");

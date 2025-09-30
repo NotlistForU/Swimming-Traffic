@@ -14,19 +14,57 @@ document.addEventListener('wheel', function (event) {
 
 
 
+let spawnInterval = 1; // segundos
+let spawnTimer = 0;
+let dificuldadeTimer = 0;
+let dificuldade = 1;
+let lastTime = 0;
 
-setInterval(() => {
-  if (!gameStarted) return;
-  if ((keysPressed['w'] || keysPressed['arrowup']) && acelerando) {
-    motorSound.pause();
-    motorSound.currentTime = 0;
-    AceleroSound.play();
-  }
-  if (keysPressed['s'] || keysPressed['arrowdown']) {
+function gameLoop(timestamp) {
+  if (!lastTime) lastTime = timestamp;
+  const delta = (timestamp - lastTime) / 1000;
+  lastTime = timestamp;
+
+  if (!gameStarted) {
+    requestAnimationFrame(gameLoop);
+    return;
   }
 
+  // Atualizações
+  atualizarScore(delta);  
+  updateFuelBar(delta);      
   updatePlayer();
   checkCollisions();
-}, 16); // ~60fps
-startTraffic();
+  updateCars(delta);
+  updateCoins(delta);
+  updateGas(delta);
+
+  // Spawn
+  spawnTimer += delta;
+  if (spawnTimer >= spawnInterval) {
+    spawnFileira();
+    spawnTimer = 0;
+  }
+
+  // Dificuldade
+  dificuldadeTimer += delta;
+  if (dificuldadeTimer >= 10) {
+    dificuldade += 0.5;
+    velocidadeKmH += 10;
+    atualizarVelocimetro();
+    atualizarVelocidadeFaixa();
+
+    spawnInterval = Math.max(0.5, spawnInterval - 0.1);
+    dificuldadeTimer = 0;
+
+    console.log("Dificuldade:", dificuldade);
+  }
+
+  requestAnimationFrame(gameLoop);
+}
+
+
+// Inicia o loop
+requestAnimationFrame(gameLoop);
+
 criarPista(7);

@@ -1,26 +1,25 @@
-function salvarPontuacao(km, tempo) {
-  // pega ranking atual ou cria vazio
+function salvarPontuacao(km, tempo, moedas) {
   let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
 
-  // adiciona nova pontuação como objeto
-  ranking.push({ km: km, tempo: tempo });
+  ranking.push({ km, tempo, moedas });
 
-  // ordena do maior km para o menor
-  ranking.sort((a, b) => b.km - a.km);
+  // ordena: maior km primeiro, em empate menor tempo
+  ranking.sort((a, b) => {
+    if (b.km !== a.km) return b.km - a.km;
+    return a.tempo - b.tempo;
+  });
 
-  // mantém só os 5 melhores
+  // mantém só os 10 melhores
   ranking = ranking.slice(0, 10);
 
-  // salva de volta no localStorage
   localStorage.setItem("ranking", JSON.stringify(ranking));
 }
-
 
 function mostrarRanking() {
   let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
   let lista = document.getElementById("rankingList");
 
-  lista.innerHTML = ""; // limpa antes de preencher
+  lista.innerHTML = "";
 
   ranking.forEach((item, i) => {
     let li = document.createElement("li");
@@ -32,67 +31,64 @@ function mostrarRanking() {
 function atualizarMoedasUI() {
   const h3 = document.querySelector("#moedasDisplay h3");
   if (h3) {
-    h3.textContent = "Moedas: " + moedasJogador + "🪙";
+    h3.textContent = "Moedas: " + moedasJogador + " 🪙";
   }
 }
 
 function resetarMoedas() {
   moedasJogador = 0;
+  moedasRun = 0;
   localStorage.setItem("moedas", moedasJogador);
-  atualizarMoedasUI(); // atualiza a interface
+  atualizarMoedasUI();
+  atualizarMoedasRunUI();
   console.log("💰 Moedas resetadas!");
 }
 
-
-// SCORE DA RUN ==================
 function atualizarMoedasRunUI() {
   document.getElementById("coinsDisplay").textContent = "💰 " + moedasRun;
 }
+
 // SCORE DO RANKING  ==================
 
 let startTime = 0;       // quando a run começou
 let tempoVivo = 0;       // em segundos
 let kmPercorridos = 0;   // distância acumulada
-let velocidadeKmH = 60;  // velocidade base (pode ser ligada ao velocímetro)
+let velocidadeKmH = 60;  // velocidade base
 
-
-function atualizarScore() {
+function atualizarScore(delta) {
   if (!gameStarted) return;
 
-  // tempo vivo em segundos
-  tempoVivo = (Date.now() - startTime) / 1000;
+  // acumula tempo vivo
+  tempoVivo += delta;
 
   // distância percorrida em km
-  kmPercorridos = (tempoVivo / 3600) * velocidadeKmH;
-
+  kmPercorridos += (velocidadeKmH / 3600) * delta;
+console.log("delta:", delta, "tempoVivo:", tempoVivo, "km:", kmPercorridos, "vel:", velocidadeKmH);
   atualizarScoreUI();
-  updateFuelBar();
 }
 
 function atualizarScoreUI() {
-   document.getElementById("pointsDisplay").innerHTML =
+  document.getElementById("pointsDisplay").innerHTML =
     `<div>🏆 ${kmPercorridos.toFixed(2)} km</div>
      <div>⏱ ${tempoVivo.toFixed(1)}s</div>`;
 }
 
-
+// Combustível ==================
 let fuelBar = document.getElementById("fuelBar");
-// valor máximo de combustível (100%)
-let maxFuel = 30/100;
-// combustível atual (começa cheio)
+let maxFuel = 30;       // litros
 let currentFuel = maxFuel;
+let kmL = 0.03;           // km por litro
 
-// define quantos km o tanque dura
-let kmL = 12/10; // exemplo: a cada 360 km o tanque zera
-let tempoDecorridoSegundos = 1/60; // Exemplo para 60 frames por segundo
-function updateFuelBar() {
-  // diminui combustível conforme a distância
-  // exemplo: 1 km gasta 10 de fuel
-  let velocidadeKmS = velocidadeKmH / 3600; // 3600 segundos em uma hora
-   // 2. Calcula a distância percorrida no último frame (em km)
-  let distanciaPercorridaKm = velocidadeKmS * tempoDecorridoSegundos;
+function updateFuelBar(delta) {
+  // velocidade em km/s
+  let velocidadeKmS = velocidadeKmH / 3600;
+
+  // distância percorrida nesse frame (em km)
+  let distanciaPercorridaKm = velocidadeKmS * delta;
+
+  // consumo em litros
   let consumoLitros = distanciaPercorridaKm / kmL;
-  currentFuel -= consumoLitros; 
+  currentFuel -= consumoLitros;
   currentFuel = Math.max(0, currentFuel);
 
   // calcula porcentagem
@@ -114,6 +110,6 @@ function updateFuelBar() {
 }
 
 function reabastecer(qtd) {
-  let g = qtd * 10;
-  currentFuel = Math.min(maxFuel, currentFuel + g); 
+  let g = qtd * 10; // cada qtd = 10 litros
+  currentFuel = Math.min(maxFuel, currentFuel + g);
 }

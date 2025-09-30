@@ -5,15 +5,16 @@ const gasFrames = [
   "src/assets/images/Gas/gas2.png",
   "src/assets/images/Gas/gas3.png"
 ];
+const gasSound = new Audio("src/assets/sounds/gasSound.mp3");
+gasSound.volume = 0.2;
 
-
-function updateGas() {
+function updateGas(delta) {
   for (let c of gasSpawnadas) {
-    // movimento para baixo
-    c.y += c.vel * dificuldade;
+    // movimento para baixo baseado no tempo real
+    c.y += c.vel * dificuldade * delta * 60; 
 
-    // animação de sprite (troca a cada ~10 frames)
-    c.frameTimer++;
+    // animação de sprite (troca a cada ~20 frames)
+    c.frameTimer += delta * 60; 
     if (c.frameTimer > 20) {
       c.frame = (c.frame + 1) % gasFrames.length;
       c.el.src = gasFrames[c.frame];
