@@ -28,6 +28,17 @@ function mostrarRanking() {
   });
 }
 
+function getMelhorKm() {
+  let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+  if (ranking.length === 0) return 0;
+
+  // pega o maior km do ranking
+  let melhor = ranking.reduce((max, item) => Math.max(max, item.km), 0);
+  return melhor;
+}
+
+
+
 function atualizarMoedasUI() {
   const h3 = document.querySelector("#moedasDisplay h3");
   if (h3) {

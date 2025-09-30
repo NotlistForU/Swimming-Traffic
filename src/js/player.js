@@ -3,27 +3,29 @@ let gameStarted = false;
 
 
 let colunaAtual = 5; // começa na coluna do meio (1 a 5)
-const AceleroSound = new Audio("src/assets/sounds/AcelerandoGTR.mp3");
-AceleroSound.loop = true;
-AceleroSound.volume = 0.3;
-const motorSound = new Audio("src/assets/sounds/naManhaBMW3.mp3");
-motorSound.loop = true;
-motorSound.volume = 0.3;
-
-
-
 function creatPlayer(numPista) {
-  colunaAtual = numPista; // define onde vai nascer
+  colunaAtual = numPista;
   let col = document.getElementById(`col-${colunaAtual}`);
+
+  // pega carro selecionado
+  const carroId = localStorage.getItem("carroSelecionado") || 1;
+  const carro = carros.find(c => c.id == carroId);
+
+  // cria imagem do player
   const player = document.createElement("img");
-  player.src = `src/assets/images/PlayerCars/car3.png`;
+  player.src = `src/assets/images/PlayerCars/${carro.prefix}.png`;
   player.alt = "player";
   player.classList.add("player");
   player.id = "player";
   col.appendChild(player);
-  motorSound.play().catch(err => console.log("Erro motor:", err));
 
+  // cria som do motor
+  motorSound = new Audio(`src/assets/sounds/${carro.prefix}-${carro.id}-${carro.id}.mp3`);
+  motorSound.loop = true;
+  motorSound.volume = 0.3;
+  motorSound.play().catch(err => console.log("Erro motor:", err));
 }
+
 
 function updatePlayer() {
   const player = document.getElementById("player");
@@ -83,14 +85,14 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('keyup', function(event) {
   if (!gameStarted) return;
   keysPressed[event.key.toLowerCase()] = false;
-  if (event.key === 'w' || event.key === 'W'|| event.key === 'ArrowUp') {
-    acelerando = false;
-    console.log(acelerando);
-    AceleroSound.pause();
-    AceleroSound.currentTime = 0;
+  // if (event.key === 'w' || event.key === 'W'|| event.key === 'ArrowUp') {
+  //   acelerando = false;
+  //   console.log(acelerando);
+  //   AceleroSound.pause();
+  //   AceleroSound.currentTime = 0;
     
-    motorSound.play().catch(err => console.log("Erro motor:", err));
-  }
+  //   motorSound.play().catch(err => console.log("Erro motor:", err));
+  // }
 
   if (
     event.key === 'A' || event.key === 'a' || event.key === 'ArrowLeft' ||
@@ -108,9 +110,6 @@ function gameOver() {
   gameStarted = false;
   motorSound.pause();
   motorSound.currentTime = 0;
-  AceleroSound.pause();
-  AceleroSound.currentTime = 0;
-
   // 🔹 Mostra o menu de novo
   menu.style.display = "flex";
 

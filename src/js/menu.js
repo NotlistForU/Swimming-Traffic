@@ -1,39 +1,19 @@
 
 const motorVol = document.getElementById("motorVol");
-const aceleroVol = document.getElementById("aceleroVol");
-const motorPreview = new Audio("src/assets/sounds/naManhaBMW3.mp3");
-const aceleroPreview = new Audio("src/assets/sounds/AcelerandoGTR.mp3");
+const motorPreview = new Audio("src/assets/sounds/car5-5-5.mp3");
 
 motorVol.addEventListener("input", () => {
   const vol = parseFloat(motorVol.value);
-  motorSound.volume = vol;
-
   // preview curtinho
   motorPreview.volume = vol;
-  motorPreview.currentTime = 5;
+  motorPreview.currentTime = 3.50;
   motorPreview.play();
 
   // para depois de 500ms (meio segundo)
   setTimeout(() => {
     motorPreview.pause();
-    motorPreview.currentTime = 5;
-  }, 2000);
-});
-
-aceleroVol.addEventListener("input", () => {
-  const vol = parseFloat(aceleroVol.value);
-  AceleroSound.volume = vol;
-
-  // preview curtinho
-  aceleroPreview.volume = vol;
-  aceleroPreview.currentTime = 3;
-  aceleroPreview.play();
-
-  // para depois de 500ms
-  setTimeout(() => {
-    aceleroPreview.pause();
-    aceleroPreview.currentTime = 3;
-  }, 1500);
+    motorPreview.currentTime = 3.50;
+  }, 2340);
 });
 
 let config = document.getElementById("config");
@@ -41,12 +21,17 @@ let btnconfig = document.getElementById("btnConfig");
 let voltar = document.getElementById("divBtnVoltar");
 let btnPlay = document.getElementById("btnPlay");
 let hud = document.getElementById("hud");
+let shop = document.getElementById("shop");
+let ranking = document.getElementById("ranking");
 
 $(document).ready(function() {
   config.classList.remove("menuConfig");
   config.classList.add("hidden");
   voltar.classList.add("hidden");
   mostrarRanking();
+  renderShop();
+  ranking.classList.add("flex");
+  shop.classList.add("hidden");
 
 });
 
@@ -67,7 +52,20 @@ document.getElementById("btnVoltar").addEventListener("click",() =>{
     config.classList.add("hidden");
     btnPlay.classList.remove("hidden");
     btnconfig.classList.remove("hidden");
-})
+});
+
+document.getElementById("btnShop").addEventListener("click",() =>{
+    ranking.classList.remove("flex");
+    ranking.classList.add("hidden");
+    shop.classList.remove("hidden");
+});
+
+document.getElementById("btnRanking").addEventListener("click",() =>{
+
+    shop.classList.add("hidden");
+    ranking.classList.remove("hidden");
+    ranking.classList.add("flex");
+});
 
 let menu = document.getElementById("menu");
 window.addEventListener("load", () => {

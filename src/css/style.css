@@ -93,7 +93,6 @@ body {
   width: 440px;
   border-radius: 30px;
   background-color: rgb(187, 216, 230);
-  display: flex;
   justify-content: center;
   gap: 10px;
 }
@@ -362,4 +361,41 @@ li {
   color: rgb(80, 49, 49);
 }
 
+/*shopping */
+#shop {
+  border-width: 10px;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: rgb(221, 135, 36);
+  background-color: rgb(187, 216, 230);
+}
+#shop h3 {
+  margin-left: 5px;
+}
 
+#carList {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.carItem {
+  background: rgb(187, 216, 230);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: 150px;
+}
+
+.carImg {
+  width: 100%;
+  border-radius: 5px;
+}
+
+/*  botões */
+
+#botoes {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, auto);
+}
