@@ -5,6 +5,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Builds do Electron
+/SwimmingTraffic-win32-x64
 /dist
 /out
 /build
