@@ -1,3 +1,4 @@
+// @ts-nocheck
 let gasSpawnadas = [];
 const alturaGas = 100; // altura da imagem da gasolina
 const gasFrames = [

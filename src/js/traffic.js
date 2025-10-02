@@ -1,3 +1,4 @@
+// @ts-nocheck
 let carrosSpawnados = [];
 const alturaCarro = 140; // altura do sprite
 const larguraPista = 200; // largura de cada coluna
@@ -47,7 +48,7 @@ function spawnFileira() {
           // 40% chance de aparecer carro.
           if(Math.random() < 0.4){
             let coluna = document.getElementById(`col-${pista}`);
-            let numCar = Math.floor(Math.random() * 9) + 1;
+            let numCar = Math.floor(Math.random() * 13) + 1;
             let carro = document.createElement("img");
 
             carro.src = `src/assets/images/TrafficCars/car${numCar}.png`;
@@ -55,7 +56,6 @@ function spawnFileira() {
             carro.classList.add("carroBaixo");
             carro.style.position = "absolute";
             carro.style.top = posY + "px"; // começa fora da tela
-
             coluna.appendChild(carro);
             carrosSpawnados.push({ col: pista, y: posY, el: carro, vel: 3 });
           }

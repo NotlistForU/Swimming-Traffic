@@ -1,3 +1,4 @@
+// @ts-nocheck
 function salvarPontuacao(km, tempo, moedas) {
   let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
 

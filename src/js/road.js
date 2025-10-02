@@ -1,3 +1,4 @@
+ // @ts-nocheck
  let novaVelocidade = 0.2;
 function atualizarVelocidadeFaixa() {
   // quanto maior a dificuldade, menor a duração da animação

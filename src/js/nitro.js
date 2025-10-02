@@ -1,3 +1,4 @@
+// @ts-nocheck
 let nitrosSpawnados = [];
 const alturaNitro = 600;
 

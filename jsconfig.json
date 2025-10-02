@@ -1,0 +1,17 @@
+// @ts-nocheck
+{
+  "compilerOptions": {
+    "target": "es6",          // Suporte a ES6+
+    "checkJs": true,          // Ativa checagem de erros em arquivos .js
+    "module": "esnext",       // Suporte a import/export modernos
+    "allowJs": true           // Permite arquivos JS no projeto
+  },
+  "include": [
+    "./**/*.js"               // Inclui todos os arquivos .js da pasta
+  ],
+  "exclude": [
+    "node_modules",           // Ignora dependências
+    "**/dist",                // Ignora pasta de build, se existir
+    "**/build"
+  ]
+}

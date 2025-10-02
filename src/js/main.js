@@ -1,3 +1,4 @@
+// @ts-nocheck
 document.addEventListener('keydown', function (event) {
   if ((event.ctrlKey || event.metaKey) && 
       (event.key === '+' || event.key === '-' || event.key === '=')) {

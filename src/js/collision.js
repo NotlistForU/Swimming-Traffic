@@ -1,3 +1,4 @@
+// @ts-nocheck
 function shrinkRect(rect, shrinkFactor = 0.8) {
   const width = rect.width * shrinkFactor;
   const height = rect.height * shrinkFactor;

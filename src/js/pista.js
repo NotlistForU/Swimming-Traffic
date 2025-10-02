@@ -1,3 +1,4 @@
+// @ts-nocheck
 function criarPista(quantPista){
 
     let conteiner = document.createElement('div');

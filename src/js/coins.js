@@ -1,3 +1,4 @@
+// @ts-nocheck
 let coinsSpawnadas = [];
 const alturaCoin = 60; // altura da imagem da moeda
 const coinFrames = [

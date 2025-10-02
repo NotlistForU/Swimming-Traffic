@@ -1,3 +1,4 @@
+// @ts-nocheck
 function spawnItens(novosLivres, posY) {
   novosLivres.forEach(pista => {
     // chance de spawnar algum item

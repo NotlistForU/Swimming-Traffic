@@ -1,4 +1,5 @@
 
+// @ts-nocheck
 const motorVol = document.getElementById("motorVol");
 const motorPreview = new Audio("src/assets/sounds/car5-5-5.mp3");
 
