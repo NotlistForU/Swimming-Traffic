@@ -398,3 +398,24 @@ li {
   gap: 8px;
   grid-template-columns: repeat(4, auto);
 }
+
+
+/* Padrão desktop */
+#conteiner {
+  transform: scale(1);
+  transform-origin: top center; /* Mantém centralizado */
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  #conteiner {
+    transform: scale(0.85);
+  }
+}
+
+/* Celular */
+@media (max-width: 768px) {
+  #conteiner {
+    transform: scale(0.7);
+  }
+}
