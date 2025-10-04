@@ -70,6 +70,19 @@
   /* =========================
      ROAD (centro) — múltiplas faixas
      ========================= */
+
+  #pause {
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,0.6);
+  color:white;
+  font-size:40px;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  }    
+
+
   #road {
     flex: 8;
     display: flex;

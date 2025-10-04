@@ -16,15 +16,26 @@ document.addEventListener('wheel', function (event) {
 
 
 let gamePaused = false;
+let pause = document.getElementById("pause");
 
 // escuta a tecla P
 document.addEventListener("keydown", (e) => {
   if (e.key.toLowerCase() === "p") {
     gamePaused = !gamePaused; // alterna entre true/false
+
+    if (gamePaused) {
+      // jogo pausado → mostra overlay
+      pause.classList.add("flex");
+      pause.classList.remove("hidden");
+    } else {
+      // jogo retomado → esconde overlay
+      pause.classList.remove("flex");
+      pause.classList.add("hidden");
+    }
+
     console.log(gamePaused ? "Jogo pausado" : "Jogo retomado");
   }
 });
-
 
 let spawnInterval = 1; // segundos
 let spawnTimer = 0;
@@ -45,10 +56,7 @@ function gameLoop(timestamp) {
     requestAnimationFrame(gameLoop);
     return;
   }
-   if (gamePaused) {
-    requestAnimationFrame(gameLoop);
-    return;
-  }
+  
 
   // Atualizações
   atualizarScore(delta);  
