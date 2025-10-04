@@ -34,3 +34,9 @@ dist/swimming-traffic-win32-x64/swimming-traffic.exe
 Não apague a pasta dist
 
 Se quiser atualizar o app, altere os arquivos e rode npm run pack novamente
+====== 60 segundos ======
+golf gti 180kmh
+bm4 240kmh
+supra 350kmh
+gt-r 430kmh
+ferrari 800kmh

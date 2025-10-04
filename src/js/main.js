@@ -65,22 +65,22 @@ function gameLoop(timestamp) {
       dificuldade += 0.4;
       difIntervalo = 0.2;
       dificuldadeIntervalo = 9;
-      velocidadeMultiplicador = 1.0;
+      velocidadeMultiplicador = 1.2;
     } else if (carroId === 3) {
       dificuldade += 0.6;
       difIntervalo = 0.2;
       dificuldadeIntervalo = 8;
-      velocidadeMultiplicador = 1.0;
+      velocidadeMultiplicador = 1.4;
     } else if (carroId === 4) {
       dificuldade += 0.7;
       difIntervalo = 0.3;
       dificuldadeIntervalo = 7;
-      velocidadeMultiplicador = 1.0;
+      velocidadeMultiplicador = 1.6;
     } else if (carroId === 5) {
       dificuldade += 1;
       difIntervalo = 0.4;
       dificuldadeIntervalo = 5; // aumenta dificuldade bem rápido
-      velocidadeMultiplicador = 1.0;
+      velocidadeMultiplicador = 2.0;
     } else {
       dificuldade += 0.5;
       difIntervalo = 0.2;
