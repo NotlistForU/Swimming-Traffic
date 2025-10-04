@@ -43,6 +43,7 @@ document.getElementById("btnShop").addEventListener("click",() =>{
     config.classList.add("hidden");
     ranking.classList.remove("flex");
     ranking.classList.add("hidden");
+    shop.classList.add("flex");
     shop.classList.remove("hidden");
 });
 

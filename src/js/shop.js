@@ -2,6 +2,7 @@
 // =====================
 // LISTA DE CARROS
 // =====================
+
 let carros = [
   { id: 1, nome: "Golf GTI", prefix: "car1", preco: 0, kmNecessario: 0, comprado: true },
   { id: 2, nome: "BMW M4 cs", prefix: "car2", preco: 60, kmNecessario: 1.3, comprado: false },
@@ -25,6 +26,7 @@ let carroSelecionado = localStorage.getItem("carroSelecionado") || 1;
 // RENDERIZA A LOJA
 // =====================
 function renderShop() {
+
   const carList = document.getElementById("carList");
   carList.innerHTML = "";
 

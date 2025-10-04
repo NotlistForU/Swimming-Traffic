@@ -41,10 +41,10 @@ function getMelhorKm() {
 
 
 function atualizarMoedasUI() {
-  const h3 = document.querySelector("#moedasDisplay h3");
-  if (h3) {
-    h3.textContent = "Moedas: " + moedasJogador + " 🪙";
-  }
+  const h3 = document.querySelector("#Moedas h3");
+  if (h3) {h3.textContent = "Moedas: " + moedasJogador + " 🪙";}
+  const moedaShop = document.querySelector("#MoedaShop h3");
+  if(moedaShop){moedaShop.textContent = "Moedas: " + moedasJogador + " 🪙"};
 }
 
 function resetarMoedas() {

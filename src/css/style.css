@@ -6,6 +6,7 @@
     overflow: hidden;
     background-color: rgb(187, 216, 230);
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(80, 49, 49);
   }
   .hidden { display: none; }
   .flex { display: flex; }
@@ -265,7 +266,7 @@
   /* ranking / shop / config boxes */
   #divRanking, #shop, #config {
     flex-direction: column;
-    gap: 8px;
+    gap: 2px;
     padding: 12px;
     min-width: 360px;
     height: 440px;
@@ -274,16 +275,11 @@
     background-color: rgb(187, 216, 230);
   }
 
-  #Moedas {
+  #Moedas , #MoedaShop h3{
     margin-top: auto; /* cola o bloco no fim do container */
     text-align: center;
-    font-family: cursive;
     font-size: 18px;
-    color: rgb(80, 49, 49);
-  }
-
-  #Moedas h3 {
-    margin: 0;
+    margin: 0px;
   }
   #divInternaRanking {
     display: flex;
@@ -296,8 +292,7 @@
     background: rgba(255,255,255,0.02);
     border-radius: 10px;
   }
-  #rankingList { margin: 0; padding-left: 18px; color: rgb(80,49,49); font-family: cursive; }
-  #lbShop {color: rgb(80,49,49);}
+  #rankingList { margin: 0; padding-left: 18px; }
   #carList {
     display: flex;
     gap: 12px;
