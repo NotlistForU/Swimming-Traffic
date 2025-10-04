@@ -119,8 +119,9 @@
      CARRO DO JOGADOR e elementos
      ========================= */
   .player, #player {
-    width: 170px;
-    height: 200px;
+    width: 80%;
+    height: auto;
+    max-width: 170px;
     position: relative;
     z-index: 5;
     transition: transform 0.08s linear;
@@ -133,8 +134,9 @@
     left: 50%;
     bottom: 10%;
     transform: translateX(-50%);
-    width: 170px;
-    height: 200px;
+    width: 80%;
+    height: auto;
+    max-width: 170px;
     z-index: 4;
   }
 
@@ -154,8 +156,8 @@
     z-index: 3;
   }
   .nitro { width: 70px; height: 90px; bottom: 45%; }
-  .coins { width: 60px; height: 60px; bottom: 45%; }
-  .gas { width: 100px; height: 120px; bottom: 45%; }
+  .coins { width: 80%; height: auto; max-width: 70px;}
+  .gas { width: 80%; height: auto;  max-width: 90px;}
 
   /* =========================
      HUD DIREITA (velocímetro + scoreboard)
