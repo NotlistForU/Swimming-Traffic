@@ -76,11 +76,13 @@ document.getElementById("btnPlay").addEventListener("click", () => {
 document.getElementById("btnNormal").addEventListener("click", () =>{
   gameMode = "normal";
   startGame(gameMode);
+  atualizarVisibilidade(gameMode);
 });
 
 document.getElementById("btnNevoa").addEventListener("click", () =>{
   gameMode = "nevoa";
   startGame(gameMode);
+  atualizarVisibilidade(gameMode);
 });
 
 document.getElementById("btnVoltar").addEventListener("click", () => {

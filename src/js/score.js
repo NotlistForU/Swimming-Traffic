@@ -71,7 +71,7 @@ function atualizarScore(delta) {
   if (!gameStarted) return;
 
   tempoVivo += delta;
-  velocidadeKmH = velocidadeBase * velocidadeMultiplicador * dificuldade * 12;
+  velocidadeKmH = velocidadeBase * velocidadeMultiplicador * dificuldade * 5;
   // distância percorrida em km
   kmPercorridos += (velocidadeKmH / 3600) * delta;
 

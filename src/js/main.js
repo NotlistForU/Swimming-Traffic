@@ -27,10 +27,13 @@ document.addEventListener("keydown", (e) => {
       // jogo pausado → mostra overlay
       pause.classList.add("flex");
       pause.classList.remove("hidden");
+      motorSound.pause();
+      motorSound.currentTime = 0;
     } else {
       // jogo retomado → esconde overlay
       pause.classList.remove("flex");
-      pause.classList.add("hidden");
+      pause.classList.add("hidden");  
+      motorSound.play();
     }
 
     console.log(gamePaused ? "Jogo pausado" : "Jogo retomado");
