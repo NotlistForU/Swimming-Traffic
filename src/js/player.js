@@ -55,6 +55,8 @@ let acelerarTimner = null;
 let acelerando = false;
 
 document.addEventListener('keydown', function(event) {
+  if (!gameStarted) return;
+  if (!gameStarted || gamePaused) return; // 🚫 ignora teclas se pausado
 
   // if(!gameStarted) return;
   // keysPressed[event.key.toLowerCase()] = true;
@@ -85,6 +87,7 @@ document.addEventListener('keydown', function(event) {
 
 document.addEventListener('keyup', function(event) {
   if (!gameStarted) return;
+  if (!gameStarted || gamePaused) return; // 🚫 ignora teclas se pausado
   keysPressed[event.key.toLowerCase()] = false;
   // if (event.key === 'w' || event.key === 'W'|| event.key === 'ArrowUp') {
   //   acelerando = false;

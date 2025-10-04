@@ -15,6 +15,17 @@ document.addEventListener('wheel', function (event) {
 
 
 
+let gamePaused = false;
+
+// escuta a tecla P
+document.addEventListener("keydown", (e) => {
+  if (e.key.toLowerCase() === "p") {
+    gamePaused = !gamePaused; // alterna entre true/false
+    console.log(gamePaused ? "Jogo pausado" : "Jogo retomado");
+  }
+});
+
+
 let spawnInterval = 1; // segundos
 let spawnTimer = 0;
 let dificuldadeTimer = 0;
@@ -30,7 +41,11 @@ function gameLoop(timestamp) {
   const delta = (timestamp - lastTime) / 1000;
   lastTime = timestamp;
 
-  if (!gameStarted) {
+  if (!gameStarted || gamePaused) {
+    requestAnimationFrame(gameLoop);
+    return;
+  }
+   if (gamePaused) {
     requestAnimationFrame(gameLoop);
     return;
   }
