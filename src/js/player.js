@@ -53,7 +53,7 @@ let keysPressed = {};
 
 let acelerarTimner = null;
 let acelerando = false;
-
+let gameMode = "normal";
 document.addEventListener('keydown', function(event) {
   if (!gameStarted) return;
   if (!gameStarted || gamePaused) return; // 🚫 ignora teclas se pausado
@@ -71,12 +71,14 @@ document.addEventListener('keydown', function(event) {
     if (colunaAtual > 1) {
       colunaAtual--; 
       anguloAtual = -5;
+      atualizarVisibilidade(gameMode);
     }
   } 
   else if (event.key === 'd' || event.key === 'D' || event.key === 'ArrowRight') {
     if (colunaAtual < numPistas) {
       colunaAtual++; 
       anguloAtual = 5;
+      atualizarVisibilidade(gameMode);
     }
   }
 });
@@ -110,6 +112,29 @@ document.addEventListener('keyup', function(event) {
 });
 
 
+function atualizarVisibilidade(gameMode) {
+  if (gameMode !== "nevoa") {
+    // modo normal → remove nevoa de todas
+    for (let i = 1; i <= numPistas; i++) {
+      document.getElementById(`col-${i}`).classList.remove("nevoa");
+    }
+    return;
+  }
+
+  // modo nevoa → só a coluna atual fica clara
+  for (let i = 1; i <= numPistas; i++) {
+    const col = document.getElementById(`col-${i}`);
+    if (i === colunaAtual) {
+      col.classList.remove("nevoa");
+    } else {
+      col.classList.add("nevoa");
+    }
+  }
+}
+
+
+
+
 function gameOver() {
   gameStarted = false;
   motorSound.pause();
@@ -135,8 +160,7 @@ function gameOver() {
   // 🔹 (Opcional) resetar variáveis de jogo
   linhaAtual = 0;
   caminhosLivresAtuais = [];
-  menu.classList.remove("hidden");
-  menu.classList.add("flex");
+  mostrar(menu);
   anguloAtual = 0;
   salvarPontuacao(kmPercorridos, tempoVivo);
   mostrarRanking();

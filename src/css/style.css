@@ -104,6 +104,16 @@
     box-shadow: 0 6px 18px rgba(0,0,0,0.6) inset;
   }
 
+  .faixa, .ultima {
+  transition: filter 0.3s, opacity 0.3s;
+  }
+
+  .faixa.nevoa ,.ultima.nevoa {
+  filter: grayscale(100%) brightness(0.5);
+  opacity: 0;
+  }
+
+
   /* faixa branca lateral (marca que se move) */
   .faixa::before {
     content: "";
@@ -319,12 +329,13 @@
   .carImg { width: 100%; border-radius: 5px; }
 
   /* botoes do menu */
-  #btns {
+
+  #btns{
     display: flex;
     gap: 12px;
     align-items: center;
   }
-  #btns > div {
+  #btns > div{
     padding: 12px 20px;
     border-radius: 8px;
     background: #28a745;
@@ -333,7 +344,7 @@
     font-family: cursive;
     user-select: none;
   }
-  #btns > div:hover { background: #218838; }
+  #btns > div:hover{ background: #218838; }
 
   #btnSom {
     border-radius: 20px;
