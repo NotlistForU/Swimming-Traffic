@@ -84,7 +84,7 @@ function comprarCarro(id) {
     renderShop();
     alert(`Você comprou o ${carro.nome}!`);
   } else {
-    alert("Você não tem moedas suficientes ou km necessário!");
+    alert("Você não tem moedas suficientes!");
   }
 }
 

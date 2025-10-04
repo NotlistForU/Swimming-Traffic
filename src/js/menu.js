@@ -16,6 +16,72 @@ motorVol.addEventListener("input", () => {
   }, 2340);
 });
 
+const musicList = [
+  "src/assets/sounds/Running90s.mp3",
+  "src/assets/sounds/GetLow.mp3"
+];
+const seekBar = document.getElementById("musicSeek");
+let currentTrack = 0;
+let bgMusic = new Audio(musicList[currentTrack]);
+bgMusic.volume = 0.5;
+
+document.getElementById("playPauseMusic").addEventListener("click", () => {
+  if (bgMusic.paused) {
+    bgMusic.play();
+  } else {   
+    bgMusic.pause();
+  }
+});
+
+document.getElementById("nextMusic").addEventListener("click", () => {
+  bgMusic.pause();
+  currentTrack = (currentTrack + 1) % musicList.length;
+  bgMusic = new Audio(musicList[currentTrack]);
+
+  bgMusic.volume = document.getElementById("musicVol").value;
+  bgMusic.play();
+});
+
+document.getElementById("prevMusic").addEventListener("click", () => {
+  bgMusic.pause();
+  currentTrack = (currentTrack - 1 + musicList.length) % musicList.length;
+  bgMusic = new Audio(musicList[currentTrack]);
+
+  bgMusic.volume = document.getElementById("musicVol").value;
+  bgMusic.play();
+});
+
+document.getElementById("musicVol").addEventListener("input", (e) => {
+  bgMusic.volume = e.target.value;
+});
+
+// 🔹 Permite arrastar a barra para mudar o tempo
+seekBar.addEventListener("input", () => {
+  const seekTime = (seekBar.value / 100) * bgMusic.duration;
+  bgMusic.currentTime = seekTime;
+});
+
+// 🔹 Quando a música acabar, toca a próxima
+bgMusic.addEventListener("ended", () => {
+  currentTrack = (currentTrack + 1) % musicList.length;
+  bgMusic = new Audio(musicList[currentTrack]);
+  bgMusic.volume = document.getElementById("musicVol").value;
+  bgMusic.play();
+
+  // reanexa os eventos na nova música
+  bgMusic.addEventListener("timeupdate", () => {
+    if (bgMusic.duration) {
+      const progress = (bgMusic.currentTime / bgMusic.duration) * 100;
+      seekBar.value = progress;
+    }
+  });
+});
+
+
+
+
+
+let imageIcon = document.getElementById("imageIcon");
 let config = document.getElementById("config");
 let btnConfig = document.getElementById("btnConfig");
 let btnPlay = document.getElementById("btnPlay");
@@ -43,6 +109,12 @@ function esconder(el) {
 $(document).ready(function() {
   mostrarRanking();
   renderShop();
+});
+
+document.getElementById("imageIcon").addEventListener("click", () => {
+  esconder(ranking);
+  esconder(shop);
+  esconder(config);
 });
 
 document.getElementById("btnConfig").addEventListener("click", () => {
