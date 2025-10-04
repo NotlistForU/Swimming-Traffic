@@ -6,65 +6,67 @@
   <title>Traffic-Game</title>
   <link rel="stylesheet" href="./src/css/style.css">
 </head>
-  <body>   
-      <!-- HUD (fica escondido até começar o jogo) -->
-        <div id="hud" class="hidden">
-          <!-- Combustível -->
-          <div id="fuelContainer">
-            <div id="fuelBar"></div>
-            <span>⛽</span>
-          </div>
-
-          <!-- Velocímetro / Score -->
-          <div id="hudRight">
-            <div id="speedometer">
-              <div id="speedNeedle"></div>
-              <div class="speedLabel">60 KM/H</div>
-            </div>
-            <div id="scoreboard">
-              <div id="coinsDisplay">💰 0</div>
-              <div id="pointsDisplay">🏆 0</div>
-            </div>
-          </div>
+<body>
+  <div id="gameArea">
+    <div id="hudLeft">
+        <div id="fuelContainer">
+          <div id="fuelBar"></div>
+          <span>⛽</span>
         </div>
-      <div id="menu">
-        <h1>🚗 Endeless Traffic Game 🚦</h1>
-        <div id="perfil">
-          <div id="imageIcon"></div>
-          <div id="ranking">
-            <h3>Ranking</h3>
-            <ol id="rankingList"></ol>
-            <div id="moedasDisplay"> <h3> Moedas: </h3></div>
-          </div>
-          <div id="shop">
-              <h3>Loja de Carros</h3>
-              <div id="carList"></div>
-          </div>
+    </div>
+    <div id="road"></div>
+    <div id="hudRight">
+      <div id="speedometer">
+        <div id="speedNeedle"></div>
+          <div class="speedLabel">60 KM/H</div>
         </div>
-        <div id="botoes">
-          <div id="divBtn">
-            <button id="btnPlay">Jogar</button>
-          </div>
-          <div id="divBtnShop">
-            <button id="btnShop">Garagem</button>
-          </div>
-          <div id="divBtnRanking">
-            <button id="btnRanking">Ranking 🏆</button>
-          </div>
-          <div id="divBtnConfig">
-            <button id="btnConfig">Configurações</button>
-          </div>
-          <div id="config" class="hidden">
-            <div id="volMotor">
-              <label id="lbVolMotor">Volume Motor: <input id="motorVol" type="range" min="0" max="1" step="0.1" value="0.3"></label><br>
-            </div>
-          </div>
-          <div id="divBtnVoltar">
-            <button id="btnVoltar">Voltar</button>
-          </div>
-        </div>
-        
+      <div id="scoreboard">
+        <div id="coinsDisplay">💰 0</div>
+        <div id="pointsDisplay">🏆 0</div>
       </div>
+    </div>
+  </div>
+  <div id="menu" class="flex">
+    <div><h1>🚗 Endeless Traffic Game 🚦</h1></div>
+    <div id="perfil">
+      <div id="imageIcon"></div>
+      <div id="divRanking" class="hidden">
+          <div id="divInternaRanking">
+            <div id="lbRanking"> <h3>Ranking</h3></div>
+            <div id="ranking">
+              <ol id="rankingList"></ol>
+            </div>
+          </div>
+          <div id="Moedas"><h3>🪙 Moedas: </h3></div>
+      </div>
+      <div id="shop" class="hidden">
+          <div id="lbShop"><h3>Garagem</h3></div>
+          <div id="carList"></div>
+          <div id="Moedas"><h3>🪙 Moedas: </h3></div>
+      </div>
+      <div id="config" class="hidden">
+          <div id="lbVolMotor">Configurações de som do carro</div>
+          <div>
+            <button id="btnSom">On/Off</button>
+          </div>
+          <div id="volMotor">
+              <label id="lbVolMotor">Volume Motor: <input id="motorVol" type="range" min="0" max="1" step="0.1" value="0.3"></label><br>
+          </div>
+      </div>
+      
+    </div>
+    <div id="btns">
+      <div id="btnPlay">Jogar</div>
+      <div id="gameMode" class="hidden">
+        <div id="btnNormal">Normal</div>
+        <div id="btnHard">Túnel</div>
+      </div>
+      <div id="btnShop">Garagem</div>
+      <div id="btnRanking">Ranking</div>
+      <div id="btnConfig">Configurações</div>
+    </div>
+    </div>
+  </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="src/js/pista.js"></script>
     <script src="src/js/road.js"></script>
@@ -79,6 +81,5 @@
     <script src="src/js/collision.js"></script>
     <script src="src/js/main.js"></script>
     <script src="src/js/menu.js"></script>
-    
-  </body>
+</body>
 </html>

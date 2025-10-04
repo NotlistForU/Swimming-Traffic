@@ -70,12 +70,16 @@ let velocidadeKmH = 60;  // velocidade base
 function atualizarScore(delta) {
   if (!gameStarted) return;
 
-  // acumula tempo vivo
   tempoVivo += delta;
-
+  velocidadeKmH = velocidadeBase * velocidadeMultiplicador * dificuldade * 12;
   // distância percorrida em km
   kmPercorridos += (velocidadeKmH / 3600) * delta;
-console.log("delta:", delta, "tempoVivo:", tempoVivo, "km:", kmPercorridos, "vel:", velocidadeKmH);
+
+  // opcional: aumenta a velocidade conforme a distância
+  // ex: a cada 1 km percorrido, aumenta 5 km/h
+  velocidadeKmH = 60 + kmPercorridos * 6;
+
+  atualizarVelocimetro();
   atualizarScoreUI();
 }
 

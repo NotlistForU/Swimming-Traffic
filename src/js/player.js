@@ -112,7 +112,8 @@ function gameOver() {
   motorSound.pause();
   motorSound.currentTime = 0;
   // 🔹 Mostra o menu de novo
-  menu.style.display = "flex";
+  menu.classList.add("flex");
+  menu.classList.remove("hidden");
 
   // 🔹 Remove o player e carros da tela
   const player = document.getElementById("player");
@@ -131,8 +132,8 @@ function gameOver() {
   // 🔹 (Opcional) resetar variáveis de jogo
   linhaAtual = 0;
   caminhosLivresAtuais = [];
-  hud.classList.remove("flex");
-  hud.classList.add("hidden");
+  menu.classList.remove("hidden");
+  menu.classList.add("flex");
   anguloAtual = 0;
   salvarPontuacao(kmPercorridos, tempoVivo);
   mostrarRanking();

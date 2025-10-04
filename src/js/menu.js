@@ -19,51 +19,38 @@ motorVol.addEventListener("input", () => {
 
 let config = document.getElementById("config");
 let btnconfig = document.getElementById("btnConfig");
-let voltar = document.getElementById("divBtnVoltar");
 let btnPlay = document.getElementById("btnPlay");
 let hud = document.getElementById("hud");
 let shop = document.getElementById("shop");
-let ranking = document.getElementById("ranking");
+let ranking = document.getElementById("divRanking");
 
 $(document).ready(function() {
-  config.classList.remove("menuConfig");
-  config.classList.add("hidden");
-  voltar.classList.add("hidden");
   mostrarRanking();
   renderShop();
-  ranking.classList.add("flex");
-  shop.classList.add("hidden");
-
 });
 
 document.getElementById("btnConfig").addEventListener("click",() =>{
-    
+    ranking.classList.remove("flex");
+    ranking.classList.add("hidden");
+    shop.classList.remove("flex");
+    shop.classList.add("hidden");
     config.classList.remove("hidden");
-    config.classList.add("menuConfig");
-    btnconfig.classList.add("hidden");
-
-    voltar.classList.remove("hidden");
-
-    btnPlay.classList.add("hidden");
+    config.classList.add("flex");
 })
 
-document.getElementById("btnVoltar").addEventListener("click",() =>{
-    voltar.classList.add("hidden");
-    config.classList.remove("menuConfig");
-    config.classList.add("hidden");
-    btnPlay.classList.remove("hidden");
-    btnconfig.classList.remove("hidden");
-});
-
 document.getElementById("btnShop").addEventListener("click",() =>{
+    config.classList.remove("flex");
+    config.classList.add("hidden");
     ranking.classList.remove("flex");
     ranking.classList.add("hidden");
     shop.classList.remove("hidden");
 });
 
 document.getElementById("btnRanking").addEventListener("click",() =>{
-
+    shop.classList.remove("flex");
     shop.classList.add("hidden");
+    config.classList.remove("flex");
+    config.classList.add("hidden");
     ranking.classList.remove("hidden");
     ranking.classList.add("flex");
 });
@@ -76,9 +63,8 @@ window.addEventListener("load", () => {
 
 let moedasRun = 0;
 document.getElementById("btnPlay").addEventListener("click",() =>{
-    menu.style.display = "none";
-    hud.classList.remove("hidden");
-    hud.classList.add("flex");
+    menu.classList.remove("flex");
+    menu.classList.add("hidden");
     startTime = Date.now();   // 🔹 marca o início da run
     tempoVivo = 0;
     kmPercorridos = 0;

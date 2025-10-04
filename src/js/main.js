@@ -18,8 +18,12 @@ document.addEventListener('wheel', function (event) {
 let spawnInterval = 1; // segundos
 let spawnTimer = 0;
 let dificuldadeTimer = 0;
+let difIntervalo = 0;
 let dificuldade = 1;
+let dificuldadeIntervalo = 10;
 let lastTime = 0;
+let velocidadeBase = 60; // velocidade inicial padrão
+let velocidadeMultiplicador = 1; // varia por carro
 
 function gameLoop(timestamp) {
   if (!lastTime) lastTime = timestamp;
@@ -49,28 +53,49 @@ function gameLoop(timestamp) {
 
   // Dificuldade
   dificuldadeTimer += delta;
-    if (dificuldadeTimer >= 10) {
-      const carroId = parseInt(localStorage.getItem("carroSelecionado")) || 1;
+  if (dificuldadeTimer >= dificuldadeIntervalo) {
+    const carroId = parseInt(localStorage.getItem("carroSelecionado")) || 1;
 
-      if (carroId === 1) { // Golf GTI
-        dificuldade += 0.2;
-      } else if (carroId === 3) { // Supra
-        dificuldade += 0.3;
-      } else if (carroId === 5) { // Ferrari
-        dificuldade += 0.8;
-      } else {
-        dificuldade += 0.5; // padrão para os outros
-      }
-    velocidadeKmH += 10;
+    if (carroId === 1) {
+      dificuldade += 0.3;
+      difIntervalo = 0.1;
+      dificuldadeIntervalo = 12; // demora mais pra aumentar
+      velocidadeMultiplicador = 1.0;
+    } else if (carroId === 2) {
+      dificuldade += 0.4;
+      difIntervalo = 0.2;
+      dificuldadeIntervalo = 9;
+      velocidadeMultiplicador = 1.0;
+    } else if (carroId === 3) {
+      dificuldade += 0.6;
+      difIntervalo = 0.2;
+      dificuldadeIntervalo = 8;
+      velocidadeMultiplicador = 1.0;
+    } else if (carroId === 4) {
+      dificuldade += 0.7;
+      difIntervalo = 0.3;
+      dificuldadeIntervalo = 7;
+      velocidadeMultiplicador = 1.0;
+    } else if (carroId === 5) {
+      dificuldade += 1;
+      difIntervalo = 0.4;
+      dificuldadeIntervalo = 5; // aumenta dificuldade bem rápido
+      velocidadeMultiplicador = 1.0;
+    } else {
+      dificuldade += 0.5;
+      difIntervalo = 0.2;
+      dificuldadeIntervalo = 10;
+      velocidadeMultiplicador = 1.0;
+    }
+
     atualizarVelocimetro();
     atualizarVelocidadeFaixa();
 
-    spawnInterval = Math.max(0.5, spawnInterval - 0.1);
+    spawnInterval = Math.max(0.5, spawnInterval - difIntervalo);
     dificuldadeTimer = 0;
 
     console.log("Dificuldade:", dificuldade);
   }
-
   requestAnimationFrame(gameLoop);
 }
 

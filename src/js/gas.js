@@ -45,7 +45,8 @@ function atualizarVelocimetro() {
   const needle = document.getElementById("speedNeedle");
 
   // Atualiza o texto
-  speedLabel.textContent = `${velocidadeKmH} KM/H`;
+  let velocimetro = Math.trunc(velocidadeKmH) ;
+  speedLabel.textContent = `${velocimetro} KM/H`;
 
   // 🔹 Atualiza o ponteiro (0–240 km/h → -90° até 90°)
   let maxVel = 240;

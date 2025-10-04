@@ -44,10 +44,10 @@ function renderShop() {
     div.innerHTML = `
       <img src="src/assets/images/PlayerCars/${carro.prefix}-${carro.id}.png" 
            alt="${carro.nome}" class="carImg">
-      <h4>${carro.nome}</h4>
-      <p>Preço: ${carro.preco} 🪙</p>
-      <p>Desbloqueia com ${carro.kmNecessario} km</p>
-      <button 
+      <h4 class="label">${carro.nome}</h4>
+      <p class="label">Preço: ${carro.preco} 🪙</p>
+      <p class="label">Desbloqueia com ${carro.kmNecessario} km</p>
+      <button class="btn"
         ${!desbloqueado ? "disabled" : ""}
         onclick="comprarCarro(${carro.id})">
         ${btnTexto}
