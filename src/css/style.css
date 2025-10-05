@@ -14,6 +14,14 @@
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(80, 49, 49);
   }
+    img {
+    -webkit-user-drag: none; /* For Chrome, Safari, and newer Opera */
+    -khtml-user-drag: none; /* For older Konqueror */
+    -moz-user-drag: none; /* For Firefox */
+    -o-user-drag: none; /* For older Opera */
+    user-drag: none; /* Standard property */
+  }
+
 
   /* =========================
      GAME AREA (3 colunas)
