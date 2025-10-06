@@ -79,8 +79,9 @@
      ROAD (centro) — múltiplas faixas
      ========================= */
 
-  #pause {
+  #pause, #gameOver {
   position:absolute;
+  flex-direction: column;
   top:0; left:0; right:0; bottom:0;
   background:rgba(0,0,0,0.6);
   color:white;
@@ -338,12 +339,21 @@
 
   /* botoes do menu */
 
-  #btns{
+  #btns, #btnGameOver, #btnsVolume{
     display: flex;
     gap: 12px;
     align-items: center;
   }
-  #btns > div{
+  #btnsVolume {
+    padding: 4px;
+    border-radius: 10px;
+    border: 10px solid rgb(221, 135, 36);
+    background: rgb(241, 225, 228);
+   }
+  #btnsVolume > div:hover{
+    font-size: x-large;
+  }
+  #btns > div, #btnGameOver > div{
     padding: 12px 20px;
     border-radius: 8px;
     background: #28a745;
@@ -352,7 +362,7 @@
     font-family: cursive;
     user-select: none;
   }
-  #btns > div:hover{ background: #218838; }
+  #btns > div:hover, #btnGameOver > div:hover{ background: #218838; border-radius: 4px; }
 
   #btnSom {
     border-radius: 20px;
@@ -368,76 +378,71 @@
 
   /* MUSICAAAAAAAAAA */
 
-  #musicPlayer {
-    margin-top: 15px;
-    padding: 10px;
-    border: 2px solid #444;
-    border-radius: 8px;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    text-align: center;
-  }
-  
-  #musicControls {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  #musicControls button {
-    margin: 5px;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  #musicControls input[type="range"] {
-    width: 100px;
-  }
-
-/* estilo geral para todos os sliders */
-/* Volume → verde */
-#musicVol, #motorVol {
+ /* ===== SLIDERS BONITOS UNIVERSAIS ===== */
+.range {
   -webkit-appearance: none;
   width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, #fff, #444);
+  height: 10px;
+  background: linear-gradient(90deg, #ff8800 0%, #ffc107 100%);
   border-radius: 5px;
+  outline: none;
+  transition: opacity 0.2s;
   cursor: pointer;
-}
-#musicVol::-webkit-slider-thumb{
-  -webkit-appearance: none;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid #444;
-  margin-top: -4px;
-}
-#musicVol::-moz-range-thumb {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid #444;
 }
 
-/* Duração → azul */
-#musicSeek {
+.range:hover {
+  opacity: 0.9;
+}
+
+/* bolinha do slider */
+.range::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, #0088ff, #0044cc);
-  border-radius: 5px;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff6b00;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
   cursor: pointer;
 }
-#musicSeek::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 14px; height: 14px;
+
+.range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #fff;
-  border: 2px solid #0088ff;
-  margin-top: -4px;
+  background: #ff6b00;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  cursor: pointer;
 }
-#musicSeek::-moz-range-thumb {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid #0088ff;
+
+/* ===== container geral ===== */
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.control-row span {
+  color: rgb(80,49,49);
+  font-family: cursive;
+  font-size: 16px;
+}
+
+#musicControls button {
+  background: #ff8800;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+#musicControls button:hover {
+  background: #e86d00;
 }

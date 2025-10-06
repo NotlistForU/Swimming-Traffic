@@ -132,17 +132,22 @@ function atualizarVisibilidade(gameMode) {
   }
 }
 
+const telaGameOver = document.getElementById("gameOver");
+const kmFinal = document.getElementById("kmFinal");
+const moedasFinal = document.getElementById("moedasFinal");
 
+
+function mostrarGameOver(){
+  kmFinal.textContent = kmPercorridos.toFixed(1);
+  moedasFinal.textContent = moedasRun;
+  mostrar(telaGameOver);
+}
 
 
 function gameOver() {
   gameStarted = false;
   motorSound.pause();
   motorSound.currentTime = 0;
-  // 🔹 Mostra o menu de novo
-  menu.classList.add("flex");
-  menu.classList.remove("hidden");
-
   // 🔹 Remove o player e carros da tela
   const player = document.getElementById("player");
   if (player) {
@@ -160,7 +165,6 @@ function gameOver() {
   // 🔹 (Opcional) resetar variáveis de jogo
   linhaAtual = 0;
   caminhosLivresAtuais = [];
-  mostrar(menu);
   anguloAtual = 0;
   salvarPontuacao(kmPercorridos, tempoVivo);
   mostrarRanking();
@@ -174,6 +178,7 @@ function gameOver() {
   spawnTimer = null;
   atualizarVelocimetro();
   atualizarVelocidadeFaixa();
+  mostrarGameOver();
 }
 
 function resetGame() {
