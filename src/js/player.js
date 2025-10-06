@@ -23,7 +23,7 @@ function creatPlayer(numPista) {
   // cria som do motor
   motorSound = new Audio(`src/assets/sounds/${carro.prefix}-${carro.id}-${carro.id}.mp3`);
   motorSound.loop = true;
-  motorSound.volume = 0.3;
+  motorSound.volume = vol;
   motorSound.play().catch(err => console.log("Erro motor:", err));
 }
 

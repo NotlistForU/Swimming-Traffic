@@ -1,19 +1,25 @@
 // @ts-nocheck
-const motorVol = document.getElementById("motorVol");
+let vol = 0.3;
+// preview de som curto (para feedback no slider)
 const motorPreview = new Audio("src/assets/sounds/car5-5-5.mp3");
-
+motorPreview.volume = vol;
 motorVol.addEventListener("input", () => {
-  const vol = parseFloat(motorVol.value);
-  // preview curtinho
+  vol = parseFloat(motorVol.value);
+  // preview curto
   motorPreview.volume = vol;
-  motorPreview.currentTime = 3.50;
+  motorPreview.currentTime = 3.5;
+
+  // cancela preview anterior se estiver tocando
+  motorPreview.pause();
+  clearTimeout(motorPreview._stopTimeout);
+
   motorPreview.play();
 
-  // para depois de 500ms (meio segundo)
-  setTimeout(() => {
+  // para o som após ~2.3 segundos
+  motorPreview._stopTimeout = setTimeout(() => {
     motorPreview.pause();
-    motorPreview.currentTime = 3.50;
-  }, 2340);
+    motorPreview.currentTime = 3.5;
+  }, 2300);
 });
 
 const musicList = [
@@ -90,6 +96,8 @@ let btnShop = document.getElementById("btnShop");
 let btnNormal = document.getElementById("btnNormal");
 let btnNevoa = document.getElementById("btnNevoa");
 let btnVoltar = document.getElementById("btnVoltar");
+let btnRestart = document.getElementById("btnRestart");
+let btnVoltarMenu = document.getElementById("btnVoltarMenu");
 let hud = document.getElementById("hud");
 let shop = document.getElementById("shop");
 let ranking = document.getElementById("divRanking");
@@ -166,6 +174,24 @@ document.getElementById("btnVoltar").addEventListener("click", () => {
   mostrar(btnShop);
   mostrar(btnConfig);
   mostrar(btnPlay);
+});
+
+document.getElementById("btnRestart").addEventListener("click", () => {
+  esconder(telaGameOver);
+  startGame(gameMode);
+});
+
+document.getElementById("btnVoltarMenu").addEventListener("click", () => {
+  esconder(telaGameOver);
+  esconder(btnNormal);
+  esconder(btnNevoa);
+  esconder(btnVoltar);
+
+  mostrar(btnRanking);
+  mostrar(btnShop);
+  mostrar(btnConfig);
+  mostrar(btnPlay);
+  mostrar(menu);
 });
 
 let menu = document.getElementById("menu");
