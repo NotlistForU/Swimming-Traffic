@@ -76,3 +76,40 @@ function checkCollisions() {
     }
   });
 }
+
+function gameOver() {
+  gameStarted = false;
+  motorSound.pause();
+  motorSound.currentTime = 0;
+  // 🔹 Remove o player e carros da tela
+  const player = document.getElementById("player");
+  if (player) {
+    player.remove();
+  }
+  carrosSpawnados.forEach(c => c.el.remove());
+  carrosSpawnados = [];
+
+  // Se tiver moedas/gasolina, limpa também
+  coinsSpawnadas.forEach(m => m.el.remove());
+  coinsSpawnadas = [];
+  gasSpawnadas.forEach(g => g.el.remove());
+  gasSpawnadas = [];
+
+  // 🔹 (Opcional) resetar variáveis de jogo
+  linhaAtual = 0;
+  caminhosLivresAtuais = [];
+  anguloAtual = 0;
+  salvarPontuacao(kmPercorridos, tempoVivo);
+  mostrarRanking();
+  currentFuel = maxFuel;
+  velocidadeKmH = 60;
+  dificuldade = 1;
+  // 🔹 limpa timers
+  clearInterval(dificuldadeTimer);
+  dificuldadeTimer = null;
+  clearInterval(spawnTimer);
+  spawnTimer = null;
+  atualizarVelocimetro();
+  atualizarVelocidadeFaixa();
+  mostrarGameOver();
+}

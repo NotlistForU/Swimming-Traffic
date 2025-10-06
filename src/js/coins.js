@@ -1,15 +1,5 @@
 // @ts-nocheck
-let coinsSpawnadas = [];
-const alturaCoin = 60; // altura da imagem da moeda
-const coinFrames = [
-  "src/assets/images/Coins/coin1.png",
-  "src/assets/images/Coins/coin2.png",
-  "src/assets/images/Coins/coin3.png"
-];
-const coinSound = new Audio("src/assets/sounds/goldCoinSound.mp3");
-coinSound.volume = 0.5;
 
-let moedasJogador = parseInt(localStorage.getItem("moedas")) || 0;
 function updateCoins(delta) {
   for (let c of coinsSpawnadas) {
     // movimento para baixo baseado no tempo real

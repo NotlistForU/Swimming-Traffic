@@ -1,15 +1,8 @@
 // @ts-nocheck
-let carrosSpawnados = [];
-const alturaCarro = 140; // altura do sprite
-const larguraPista = 200; // largura de cada coluna
-const numPistas = 7;
-let caminhosLivresAtuais = [];
-
 // inicializa caminho começando no meio
 function inicializarCaminho() {
   caminhosLivresAtuais = [Math.ceil(numPistas / 2)];
 }
-let linhaAtual = 0;
 // cria uma fileira de carros no topo
 function spawnFileira() {
   if(gameStarted){

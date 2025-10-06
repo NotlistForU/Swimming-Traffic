@@ -1,5 +1,4 @@
 // @ts-nocheck
-let vol = 0.3;
 // preview de som curto (para feedback no slider)
 const motorPreview = new Audio("src/assets/sounds/car5-5-5.mp3");
 motorPreview.volume = vol;
@@ -101,18 +100,6 @@ let btnVoltarMenu = document.getElementById("btnVoltarMenu");
 let hud = document.getElementById("hud");
 let shop = document.getElementById("shop");
 let ranking = document.getElementById("divRanking");
-let moedasRun = 0;
-// Funções utilitárias
-function mostrar(el) {
-  el.classList.add("flex");
-  el.classList.remove("hidden");
-}
-
-function esconder(el) {
-  el.classList.remove("flex");
-  el.classList.add("hidden");
-}
-
 
 $(document).ready(function() {
   mostrarRanking();
@@ -186,11 +173,12 @@ document.getElementById("btnVoltarMenu").addEventListener("click", () => {
   esconder(btnNormal);
   esconder(btnNevoa);
   esconder(btnVoltar);
-
   mostrar(btnRanking);
   mostrar(btnShop);
   mostrar(btnConfig);
   mostrar(btnPlay);
+  gameMode = "normal";
+  atualizarVisibilidade(gameMode);
   mostrar(menu);
 });
 
@@ -214,6 +202,12 @@ function startGame(gameMode){
     creatPlayer(4); // começa na coluna 3 (meio)
     spawnFileira();
     updatePlayer();
+}
+
+function mostrarGameOver(){
+  kmFinal.textContent = kmPercorridos.toFixed(1);
+  moedasFinal.textContent = moedasRun;
+  mostrar(telaGameOver);
 }
 
 

@@ -1,13 +1,4 @@
 // @ts-nocheck
-let gasSpawnadas = [];
-const alturaGas = 100; // altura da imagem da gasolina
-const gasFrames = [
-  "src/assets/images/Gas/gas1.png",
-  "src/assets/images/Gas/gas2.png",
-  "src/assets/images/Gas/gas3.png"
-];
-const gasSound = new Audio("src/assets/sounds/gasSound.mp3");
-gasSound.volume = 0.2;
 
 function updateGas(delta) {
   for (let c of gasSpawnadas) {
@@ -38,21 +29,4 @@ function updateGas(delta) {
   }
 
   gasSpawnadas = gasSpawnadas.filter(c => c.y <= window.innerHeight);
-}
-
-function atualizarVelocimetro() {
-  const speedLabel = document.querySelector(".speedLabel");
-  const needle = document.getElementById("speedNeedle");
-
-  // Atualiza o texto
-  let velocimetro = Math.trunc(velocidadeKmH) ;
-  speedLabel.textContent = `${velocimetro} KM/H`;
-
-  // 🔹 Atualiza o ponteiro (0–240 km/h → -90° até 90°)
-  let maxVel = 240;
-  let minAngle = -90;
-  let maxAngle = 90;
-
-  let angle = minAngle + (velocidadeKmH / maxVel) * (maxAngle - minAngle);
-  needle.style.transform = `rotate(${angle}deg)`;
 }

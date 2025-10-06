@@ -14,8 +14,6 @@ document.addEventListener('wheel', function (event) {
 
 
 
-
-let gamePaused = false;
 let pause = document.getElementById("pause");
 
 // escuta a tecla P
@@ -40,15 +38,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-let spawnInterval = 1; // segundos
-let spawnTimer = 0;
-let dificuldadeTimer = 0;
-let difIntervalo = 0;
-let dificuldade = 1;
-let dificuldadeIntervalo = 10;
 let lastTime = 0;
-let velocidadeBase = 60; // velocidade inicial padrão
-let velocidadeMultiplicador = 1; // varia por carro
 
 function gameLoop(timestamp) {
   if (!lastTime) lastTime = timestamp;
@@ -124,6 +114,20 @@ function gameLoop(timestamp) {
   }
   requestAnimationFrame(gameLoop);
 }
+function resetGame() {
+  // zera arrays
+  carrosSpawnados = [];
+  coinsSpawnadas = [];
+  gasSpawnadas = [];
+
+  // zera variáveis
+  linhaAtual = 0;
+  caminhosLivresAtuais = [];
+
+  // garante que o caminho inicial existe
+  inicializarCaminho();
+}
+
 
 
 // Inicia o loop

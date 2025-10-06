@@ -1,9 +1,6 @@
 
 // @ts-nocheck
-let gameStarted = false;
 
-
-let colunaAtual = 5; // começa na coluna do meio (1 a 5)
 function creatPlayer(numPista) {
   colunaAtual = numPista;
   let col = document.getElementById(`col-${colunaAtual}`);
@@ -43,7 +40,6 @@ function updatePlayer() {
 }
 
 const angulo = 0;
-let anguloAtual = 0;
 let colisao = false;
 let velocidade = 2;
 
@@ -54,7 +50,6 @@ let keysPressed = {};
 
 let acelerarTimner = null;
 let acelerando = false;
-let gameMode = "normal";
 document.addEventListener('keydown', function(event) {
   if (!gameStarted) return;
   if (!gameStarted || gamePaused) return; // 🚫 ignora teclas se pausado
@@ -131,67 +126,4 @@ function atualizarVisibilidade(gameMode) {
       col.classList.add("nevoa");
     }
   }
-}
-
-const telaGameOver = document.getElementById("gameOver");
-const kmFinal = document.getElementById("kmFinal");
-const moedasFinal = document.getElementById("moedasFinal");
-
-
-function mostrarGameOver(){
-  kmFinal.textContent = kmPercorridos.toFixed(1);
-  moedasFinal.textContent = moedasRun;
-  mostrar(telaGameOver);
-}
-
-
-function gameOver() {
-  gameStarted = false;
-  motorSound.pause();
-  motorSound.currentTime = 0;
-  // 🔹 Remove o player e carros da tela
-  const player = document.getElementById("player");
-  if (player) {
-    player.remove();
-  }
-  carrosSpawnados.forEach(c => c.el.remove());
-  carrosSpawnados = [];
-
-  // Se tiver moedas/gasolina, limpa também
-  coinsSpawnadas.forEach(m => m.el.remove());
-  coinsSpawnadas = [];
-  gasSpawnadas.forEach(g => g.el.remove());
-  gasSpawnadas = [];
-
-  // 🔹 (Opcional) resetar variáveis de jogo
-  linhaAtual = 0;
-  caminhosLivresAtuais = [];
-  anguloAtual = 0;
-  salvarPontuacao(kmPercorridos, tempoVivo);
-  mostrarRanking();
-  currentFuel = maxFuel;
-  velocidadeKmH = 60;
-  dificuldade = 1;
-  // 🔹 limpa timers
-  clearInterval(dificuldadeTimer);
-  dificuldadeTimer = null;
-  clearInterval(spawnTimer);
-  spawnTimer = null;
-  atualizarVelocimetro();
-  atualizarVelocidadeFaixa();
-  mostrarGameOver();
-}
-
-function resetGame() {
-  // zera arrays
-  carrosSpawnados = [];
-  coinsSpawnadas = [];
-  gasSpawnadas = [];
-
-  // zera variáveis
-  linhaAtual = 0;
-  caminhosLivresAtuais = [];
-
-  // garante que o caminho inicial existe
-  inicializarCaminho();
 }
