@@ -19,6 +19,7 @@ function creatPlayer(numPista) {
   player.classList.add("player");
   player.id = "player";
   col.appendChild(player);
+  atualizarVisibilidade(gameMode);
 
   // cria som do motor
   motorSound = new Audio(`src/assets/sounds/${carro.prefix}-${carro.id}-${carro.id}.mp3`);
