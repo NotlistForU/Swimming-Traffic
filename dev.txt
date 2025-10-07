@@ -1,3 +1,4 @@
+No console do navegador!
 1 -> Se algum dia der localStorage.clear();
 faça:
     localStorage.setItem("carros", JSON.stringify([
