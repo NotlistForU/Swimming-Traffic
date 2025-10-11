@@ -1,42 +1,60 @@
-# Swimming-Traffic
+# 🏎️ Swimming Traffic
 
-🧾 Como gerar um .exe com Electron Packager
+Jogo de corrida divertido e desafiador, onde você controla carros, coleta moedas e percorre pistas evitando obstáculos.
 
-1. Instalar dependências
+![Banner do jogo](assets/maxVestappen.png)
 
-bash
-npm install
-2. Instalar Electron Packager
+---
 
-bash
-npm install --save-dev electron-packager
-3. Editar o package.json
+## 📖 Índice
 
-Adicione o script "pack" dentro de "scripts":
+- [Sobre](#sobre)
+- [Gameplay](#gameplay)
+- [Funcionalidades](#funcionalidades)
+- [Instalação](#instalação)
+- [Como jogar](#como-jogar)
+- [Carros disponíveis](#carros-disponíveis)
+- [Tecnologias](#tecnologias)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
-json
-"scripts": {
-  "start": "electron .",
-  "pack": "electron-packager . swimming-traffic --platform=win32 --arch=x64 --out=dist --overwrite"
-}
-Certifique-se de que "main" aponta para o arquivo principal, como "play.js".
+---
 
-4. Empacotar o app
+## 💡 Sobre
 
-bash
-npm run pack
-5. Local do .exe gerado
+O **Swimming Traffic** é um jogo de corrida desenvolvido para diversão e desafio, simulando corridas em pistas urbanas.  
+O jogador deve controlar o carro, coletar moedas, gerenciar o combustível e evitar colisões para conquistar novos veículos.
 
-Código
-dist/swimming-traffic-win32-x64/swimming-traffic.exe
-6. Para não refazer tudo
+![Tela inicial](assets/images/PlayerIcons/menu.png)
 
-Não apague a pasta dist
+---
 
-Se quiser atualizar o app, altere os arquivos e rode npm run pack novamente
-====== 60 segundos ======
-golf gti 180kmh
-bm4 240kmh
-supra 350kmh
-gt-r 430kmh
-ferrari 800kmh
+## 🎥 Gameplay
+
+![GIF de gameplay normal mode](assets/gifs/ETGgif.gif)
+![GIF de gameplay nevoa mode](assets/gifs/ETGnevoaGif.gif)
+
+---
+
+## ✨ Funcionalidades
+
+- 🛣️ Diversas pistas para correr
+- ⛽ Sistema de combustível dinâmico
+- 💰 Coleta de moedas
+- 🚗 Diferentes carros desbloqueáveis
+- 🛠️ Modo desenvolvedor para testes
+- 🎮 Controles simples e intuitivos
+
+![GIF de funcionalidades](assets/images/PlayerIcon/garagem.png)
+
+---
+
+## 🛠️ Tecnologias
+
+JavaScript – lógica e interação do jogo
+
+HTML/CSS – layout e interface
+
+Electron – empacotamento e execução desktop
+
+Node.js – gerenciamento de dependências

@@ -1,18 +1,19 @@
 {
   "name": "swimming-traffic",
   "version": "1.0.0",
-  "description": "",
+  "description": "Jogo Endless Traffic Game feito com Electron",
   "main": "play.js",
   "scripts": {
     "start": "electron .",
-    "pack": "electron-packager . swimming-traffic --platform=win32 --arch=x64 --out=dist --overwrite"
+    "pack": "electron-packager . swimming-traffic --platform=win32 --arch=x64 --out=dist --overwrite",
+    "build": "electron-builder"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NotlistForU/Swimming-Traffic.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "NotlistForU",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NotlistForU/Swimming-Traffic/issues"
@@ -20,6 +21,27 @@
   "homepage": "https://github.com/NotlistForU/Swimming-Traffic#readme",
   "devDependencies": {
     "electron": "^38.2.0",
+    "electron-builder": "^26.0.12",
     "electron-packager": "^17.1.2"
+  },
+  "build": {
+    "appId": "com.notlistforu.swimmingtraffic",
+    "productName": "EndelessTrafficGame",
+    "copyright": "© 2025 NotlistForU",
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false,
+      "icon": "IconTraffic.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "IconTraffic.ico",
+      "uninstallerIcon": "IconTraffic.ico",
+      "installerHeaderIcon": "IconTraffic.ico"
+    },
+    "directories": {
+      "output": "dist"
+    }
   }
 }
