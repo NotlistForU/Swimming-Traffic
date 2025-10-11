@@ -11,16 +11,16 @@ Jogo de corrida divertido e desafiador, onde você controla carros, coleta moeda
 - [Sobre](#sobre)
 - [Gameplay](#gameplay)
 - [Funcionalidades](#funcionalidades)
-- [Instalação](#instalação)
+- [Instalação](#instalacao)
 - [Como jogar](#como-jogar)
-- [Carros disponíveis](#carros-disponíveis)
+- [Carros disponíveis](#carros-disponiveis)
 - [Tecnologias](#tecnologias)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+- [Contribuição](#contribuicao)
+- [Licença](#licenca)
 
 ---
 
-## 💡 Sobre
+## 💡 Sobre <a name="sobre"></a>
 
 O **Swimming Traffic** é um jogo de corrida desenvolvido para diversão e desafio, simulando corridas em pistas urbanas.  
 O jogador deve controlar o carro, coletar moedas, gerenciar o combustível e evitar colisões para conquistar novos veículos.
@@ -29,14 +29,14 @@ O jogador deve controlar o carro, coletar moedas, gerenciar o combustível e evi
 
 ---
 
-## 🎥 Gameplay
+## 🎥 Gameplay <a name="gameplay"></a>
 
-![GIF de gameplay normal mode](src/assets/gifs/ETGgif.gif)
+![GIF de gameplay normal mode](src/assets/gifs/ETGgif.gif)  
 ![GIF de gameplay nevoa mode](src/assets/gifs/ETGnevoaGif.gif)
 
 ---
 
-## ✨ Funcionalidades
+## ✨ Funcionalidades <a name="funcionalidades"></a>
 
 - 🛣️ Diversas pistas para correr
 - ⛽ Sistema de combustível dinâmico
@@ -45,11 +45,11 @@ O jogador deve controlar o carro, coletar moedas, gerenciar o combustível e evi
 - 🛠️ Modo desenvolvedor para testes
 - 🎮 Controles simples e intuitivos
 
-![GIF de funcionalidades](src/assets/images/PlayerIcon/garagem.png)
+![Loja/Garagem](src/assets/images/PlayerIcons/garagem.png)
 
 ---
 
-## 🛠️ Tecnologias
+## 🧰 Tecnologias <a name="tecnologias"></a>
 
 JavaScript – lógica e interação do jogo
 
