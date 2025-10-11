@@ -95,6 +95,7 @@ let btnShop = document.getElementById("btnShop");
 let btnNormal = document.getElementById("btnNormal");
 let btnNevoa = document.getElementById("btnNevoa");
 let btnVoltar = document.getElementById("btnVoltar");
+let btnAjuda = document.getElementById("btnAjuda");
 let btnRestart = document.getElementById("btnRestart");
 let btnVoltarMenu = document.getElementById("btnVoltarMenu");
 let hud = document.getElementById("hud");
@@ -102,33 +103,19 @@ let shop = document.getElementById("shop");
 let ranking = document.getElementById("divRanking");
 let teclaA = document.getElementById("teclaA");
 let teclaD = document.getElementById("teclaD");
+let tutorial = document.getElementById("tutorial");
+let textTutorial = document.getElementById("textTutorial");
+let btnOkTutorial = document.getElementById("btnOkTutorial");
+
 
 $(document).ready(function() {
   mostrarRanking();
   renderShop();
 });
 
-document.addEventListener("keydown", function(event){
-  if(!gameStarted){return};
-  if (event.key === "a") {
-    teclaA.style.fontSize = "x-large";
-  }
-});
-document.addEventListener("keyup", function(event){
-    if (event.key === "a") {
-    teclaA.style.fontSize = "xx-large";
-  }
-});
-document.addEventListener("keydown", function(event){
-  if(!gameStarted){return};
-  if (event.key === "d") {
-    teclaD.style.fontSize = "x-large";
-  }
-});
-document.addEventListener("keyup", function(event){
-    if (event.key === "d") {
-    teclaD.style.fontSize = "xx-large";
-  }
+document.getElementById("btnOkTutorial").addEventListener("click", () => {
+  esconder(tutorial);
+  mostrar(menu);
 });
 
 document.getElementById("imageIcon").addEventListener("click", () => {
@@ -160,6 +147,7 @@ document.getElementById("btnPlay").addEventListener("click", () => {
   esconder(btnShop);
   esconder(btnConfig);
   esconder(btnPlay);
+  esconder(btnAjuda);
   mostrar(btnNormal);
   mostrar(btnNevoa);
   mostrar(btnVoltar);
@@ -181,11 +169,16 @@ document.getElementById("btnVoltar").addEventListener("click", () => {
   esconder(btnNormal);
   esconder(btnNevoa);
   esconder(btnVoltar);
-
+  mostrar(btnAjuda);
   mostrar(btnRanking);
   mostrar(btnShop);
   mostrar(btnConfig);
   mostrar(btnPlay);
+});
+
+document.getElementById("btnAjuda").addEventListener("click", () => {
+  esconder(menu);
+  mostrar(tutorial);
 });
 
 document.getElementById("btnRestart").addEventListener("click", () => {
@@ -211,6 +204,32 @@ let menu = document.getElementById("menu");
 window.addEventListener("load", () => {
   atualizarMoedasUI(); // mostra moedas assim que a página carrega
 });
+
+
+/* telcas HUD ===================================== */
+document.addEventListener("keydown", function(event){
+  if(!gameStarted){return};
+  if (event.key === "a") {
+    teclaA.style.fontSize = "x-large";
+  }
+});
+document.addEventListener("keyup", function(event){
+    if (event.key === "a") {
+    teclaA.style.fontSize = "xx-large";
+  }
+});
+document.addEventListener("keydown", function(event){
+  if(!gameStarted){return};
+  if (event.key === "d") {
+    teclaD.style.fontSize = "x-large";
+  }
+});
+document.addEventListener("keyup", function(event){
+    if (event.key === "d") {
+    teclaD.style.fontSize = "xx-large";
+  }
+});
+
 
 function startGame(gameMode){
     esconder(menu);

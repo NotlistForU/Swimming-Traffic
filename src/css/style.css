@@ -288,8 +288,56 @@ img {
   font-size: xx-large;
 }
 /* =========================================================
-   MENU / OVERLAYS (menu principal, perfil, shop, config)
+   MENU / OVERLAYS (tutorial, menu principal, perfil, shop, config)
    ========================================================= */
+
+/* TUTORIAL - tela cheia */
+#tutorial {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.6); /* fundo escuro translúcido */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* CONTEÚDO DO TUTORIAL */
+#textTutorial {
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 700px;
+  background: rgba(50, 50, 50, 0.9);
+  border: 2px solid rgb(221, 135, 36);
+  border-radius: 16px;
+  padding: 24px 32px;
+  color: #fff;
+  box-shadow: 0 0 20px rgb(221, 135, 36);
+  font-family: 'Press Start 2P', sans-serif; /* fonte estilo arcade (opcional) */
+}
+
+#textTutorial h1 {
+  color: white;
+  font-size: 22px;
+  text-shadow: 0 0 6px rgb(221, 135, 36);
+}
+
+#textTutorial p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#textTutorial span.etg {
+  color: rgb(221, 135, 36);
+  font-weight: bold;
+  text-transform: uppercase;
+}
 #menu{
   position: fixed;
   top: 0;
@@ -304,72 +352,6 @@ img {
   backdrop-filter: blur(2px);
 }
 
-/* TUTORIAL - tela cheia */
-#tutorial {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(4px);
-  background: rgba(0, 0, 0, 0.6); /* fundo escuro translúcido */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-/* CONTEÚDO DO TUTORIAL */
-#textTutorial {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  max-width: 700px;
-  background: rgba(50, 50, 50, 0.9);
-  border: 2px solid rgb(221, 135, 36);
-  border-radius: 16px;
-  padding: 24px 32px;
-  color: #fff;
-  box-shadow: 0 0 20px chartreuse;
-  font-family: 'Press Start 2P', sans-serif; /* fonte estilo arcade (opcional) */
-}
-
-#textTutorial h1 {
-  color: chartreuse;
-  font-size: 22px;
-  text-shadow: 0 0 6px chartreuse;
-}
-
-#textTutorial p {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-#textTutorial span.etg {
-  color: chartreuse;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-/* BOTÃO "OK" */
-#btnOkTutorial {
-  margin-top: 10px;
-  background: chartreuse;
-  color: #000;
-  padding: 10px 25px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-#btnOkTutorial:hover {
-  background: #b4ff00;
-  transform: scale(1.05);
-}
 
 #menu > div h1 {
   padding: 30px;
@@ -464,7 +446,7 @@ img {
   font-size: x-large;
 }
 
-#btns > div, #btnGameOver > div {
+#btns > div, #btnGameOver > div , #btnOkTutorial{
   padding: 12px 20px;
   border-radius: 8px;
   background: #28a745;
@@ -473,7 +455,7 @@ img {
   font-family: cursive;
   user-select: none;
 }
-#btns > div:hover, #btnGameOver > div:hover{ background: #218838; border-radius: 4px; }
+#btns > div:hover, #btnGameOver > div:hover, #btnOkTutorial:hover{ background: #218838; border-radius: 4px; }
 
 #btnSom { border-radius: 20px; }
 
