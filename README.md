@@ -1,3 +1,4 @@
+````markdown
 # 🏎️ Swimming Traffic
 
 Jogo de corrida divertido e desafiador, onde você controla carros, coleta moedas e percorre pistas evitando obstáculos.
@@ -49,12 +50,100 @@ O jogador deve controlar o carro, coletar moedas, gerenciar o combustível e evi
 
 ---
 
+## 🛠️ Instalação <a name="instalacao"></a>
+
+Para rodar o projeto localmente:
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/swimming-traffic.git
+   ```
+````
+
+2. Entre na pasta do projeto:
+
+   ```bash
+   cd swimming-traffic
+   ```
+
+3. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+4. Execute o projeto:
+
+   ```bash
+   npm start
+   ```
+
+> ⚠️ Certifique-se de ter o **Node.js** instalado na versão recomendada.
+
+---
+
+## 🎮 Como jogar <a name="como-jogar"></a>
+
+- Use as **setas do teclado** para controlar o carro
+- **Colete moedas** e evite colisões
+- **Gerencie o combustível** usando o medidor
+- Desbloqueie **novos carros e pistas** conforme progride
+
+![Tela do jogo](src/assets/images/PlayerIcons/pista.png)
+
+---
+
+## 🚘 Carros disponíveis <a name="carros-disponiveis"></a>
+
+| Carro || Imagem |
+| ---------- || --------------------------------------------------- |
+| 🚗 Carro 1 || ![Carro 1](src/assets/images/PlayerCars/car1-1.png) |
+| 🏎️ Carro 2 || ![Carro 2](src/assets/images/PlayerCars/car2-2.png) |
+| 🚙 Carro 3 || ![Carro 3](src/assets/images/PlayerCars/car5-5.png) |
+
+---
+
 ## 🧰 Tecnologias <a name="tecnologias"></a>
 
-JavaScript – lógica e interação do jogo
+- **JavaScript** – lógica e interação do jogo
+- **HTML/CSS** – layout e interface
+- **Electron** – empacotamento e execução desktop
+- **Node.js** – gerenciamento de dependências
 
-HTML/CSS – layout e interface
+---
 
-Electron – empacotamento e execução desktop
+## 🤝 Contribuição <a name="contribuicao"></a>
 
-Node.js – gerenciamento de dependências
+Contribuições são muito bem-vindas!
+
+1. Faça um **fork** do projeto
+2. Crie uma branch com sua feature:
+
+   ```bash
+   git checkout -b minha-feature
+   ```
+
+3. Faça commit das alterações:
+
+   ```bash
+   git commit -m "Minha contribuição"
+   ```
+
+4. Envie para sua branch:
+
+   ```bash
+   git push origin minha-feature
+   ```
+
+5. Abra um **Pull Request**
+
+---
+
+## 📄 Licença <a name="licenca"></a>
+
+Este projeto está sob a licença **MIT**.
+Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+```
+
+```
