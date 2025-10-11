@@ -46,8 +46,10 @@ img {
    -------------------------------------------------------- */
 #hudLeft {
   flex: 1;
+  gap: 20px;
   min-width: 220px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 18px;
@@ -271,6 +273,20 @@ img {
 #scoreboard > div { margin: 6px 0; }
 
 
+/* =========================================================
+   Teclas HUD Left/Right
+   ========================================================= */
+.teclas {
+  display: flex;
+  justify-content: center;
+  color: rgb(80, 49, 49);
+  padding: 15px 20px;
+  border: 5px solid rgb(221, 135, 36);
+  border-radius: 10px;
+  background-color: pink;
+  font-family: serif;
+  font-size: xx-large;
+}
 /* =========================================================
    MENU / OVERLAYS (menu principal, perfil, shop, config)
    ========================================================= */

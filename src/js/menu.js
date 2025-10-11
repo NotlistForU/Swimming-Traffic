@@ -100,10 +100,35 @@ let btnVoltarMenu = document.getElementById("btnVoltarMenu");
 let hud = document.getElementById("hud");
 let shop = document.getElementById("shop");
 let ranking = document.getElementById("divRanking");
+let teclaA = document.getElementById("teclaA");
+let teclaD = document.getElementById("teclaD");
 
 $(document).ready(function() {
   mostrarRanking();
   renderShop();
+});
+
+document.addEventListener("keydown", function(event){
+  if(!gameStarted){return};
+  if (event.key === "a") {
+    teclaA.style.fontSize = "x-large";
+  }
+});
+document.addEventListener("keyup", function(event){
+    if (event.key === "a") {
+    teclaA.style.fontSize = "xx-large";
+  }
+});
+document.addEventListener("keydown", function(event){
+  if(!gameStarted){return};
+  if (event.key === "d") {
+    teclaD.style.fontSize = "x-large";
+  }
+});
+document.addEventListener("keyup", function(event){
+    if (event.key === "d") {
+    teclaD.style.fontSize = "xx-large";
+  }
 });
 
 document.getElementById("imageIcon").addEventListener("click", () => {
