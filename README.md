@@ -1,4 +1,3 @@
-````markdown
 # 🏎️ Swimming Traffic
 
 Jogo de corrida divertido e desafiador, onde você controla carros, coleta moedas e percorre pistas evitando obstáculos.
@@ -58,6 +57,7 @@ Para rodar o projeto localmente:
    ```bash
    git clone https://github.com/seu-usuario/swimming-traffic.git
    ```
+
 ````
 
 2. Entre na pasta do projeto:
@@ -147,3 +147,4 @@ Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 ```
 
 ```
+````
