@@ -41,7 +41,7 @@ function spawnFileira() {
           // 40% chance de aparecer carro.
           if(Math.random() < 0.4){
             let coluna = document.getElementById(`col-${pista}`);
-            let numCar = Math.floor(Math.random() * 13) + 1;
+            let numCar = Math.floor(Math.random() * 17) + 1;
             let carro = document.createElement("img");
 
             carro.src = `src/assets/images/TrafficCars/car${numCar}.png`;
