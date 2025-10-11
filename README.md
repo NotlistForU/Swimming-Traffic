@@ -95,11 +95,11 @@ Para rodar o projeto localmente:
 
 ## 🚘 Carros disponíveis <a name="carros-disponiveis"></a>
 
-| Carro || Imagem |
-| ---------- || --------------------------------------------------- |
-| 🚗 Carro 1 || ![Carro 1](src/assets/images/PlayerCars/car1-1.png) |
-| 🏎️ Carro 2 || ![Carro 2](src/assets/images/PlayerCars/car2-2.png) |
-| 🚙 Carro 3 || ![Carro 3](src/assets/images/PlayerCars/car5-5.png) |
+![Carro 1](src/assets/images/PlayerCars/car1-1.png) |
+![Carro 2](src/assets/images/PlayerCars/car2-2.png) |
+![Carro 3](src/assets/images/PlayerCars/car3-3.png) |
+![Carro 4](src/assets/images/PlayerCars/car4-4.png) |
+![Carro 5](src/assets/images/PlayerCars/car5-5.png) |
 
 ---
 
