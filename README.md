@@ -145,16 +145,14 @@ Contribuições são muito bem-vindas!
 Este projeto está sob a licença **MIT**.
 Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-```
-## 🛠️ Instalação <a name="sites"></a>
+## 🌐 Sites utilizados <a name="sites"></a>
    - https://elevenlabs.io/pt/sound-effects/gaming (sound efects)
-   - https://chatgpt.com (muita ajuda com documentação)
-   - https://copilot.microsoft.com (muita ajuda com documentação)
+   - https://chatgpt.com (muita ajuda com documentação e indentificação de erros)
+   - https://copilot.microsoft.com (muita ajuda com documentação e indentificação de erros)
    - https://www.photoroom.com/ (removedor de fundo)
    - https://convertio.co (converter mp4 -> mp3)
    - https://clideo.com (editar)
    - https://www.iloveimg.com (redimensionar imagens)
    - https://giventofly-github-io.translate.goog/pixelit/ (converte para pixel arts)
    - https://www.youtube.com/@larissakich (muita ajuda com o css)
-
 ````
