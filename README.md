@@ -55,29 +55,20 @@ O jogador deve controlar o carro, coletar moedas, gerenciar o combustível e evi
 Para rodar o projeto localmente:
 
 1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/swimming-traffic.git
-   ```
 
-````
+   git clone https://github.com/seu-usuario/swimming-traffic.git
 
 2. Entre na pasta do projeto:
 
-   ```bash
    cd swimming-traffic
-   ```
 
 3. Instale as dependências:
 
-   ```bash
    npm install
-   ```
 
 4. Execute o projeto:
 
-   ```bash
    npm start
-   ```
 
 > ⚠️ Certifique-se de ter o **Node.js** instalado na versão recomendada.
 
@@ -120,21 +111,15 @@ Contribuições são muito bem-vindas!
 1. Faça um **fork** do projeto
 2. Crie uma branch com sua feature:
 
-   ```bash
    git checkout -b minha-feature
-   ```
 
 3. Faça commit das alterações:
 
-   ```bash
    git commit -m "Minha contribuição"
-   ```
 
 4. Envie para sua branch:
 
-   ```bash
    git push origin minha-feature
-   ```
 
 5. Abra um **Pull Request**
 
@@ -146,13 +131,13 @@ Este projeto está sob a licença **MIT**.
 Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## 🌐 Sites utilizados <a name="sites"></a>
-   - https://elevenlabs.io/pt/sound-effects/gaming (sound efects)
-   - https://chatgpt.com (muita ajuda com documentação e indentificação de erros)
-   - https://copilot.microsoft.com (muita ajuda com documentação e indentificação de erros)
-   - https://www.photoroom.com/ (removedor de fundo)
-   - https://convertio.co (converter mp4 -> mp3)
-   - https://clideo.com (editar)
-   - https://www.iloveimg.com (redimensionar imagens)
-   - https://giventofly-github-io.translate.goog/pixelit/ (converte para pixel arts)
-   - https://www.youtube.com/@larissakich (muita ajuda com o css)
-````
+
+- https://elevenlabs.io/pt/sound-effects/gaming (sound efects)
+- https://chatgpt.com (muita ajuda com documentação e indentificação de erros)
+- https://copilot.microsoft.com (muita ajuda com documentação e indentificação de erros)
+- https://www.photoroom.com/ (removedor de fundo)
+- https://convertio.co (converter mp4 -> mp3)
+- https://clideo.com (editar)
+- https://www.iloveimg.com (redimensionar imagens)
+- https://giventofly-github-io.translate.goog/pixelit/ (converte para pixel arts)
+- https://www.youtube.com/@larissakich (muita ajuda com o css)
