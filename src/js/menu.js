@@ -118,9 +118,12 @@ let btnGameOver = document.getElementById("btnGameOver");
 const resSelect = document.getElementById('resSelect');
 resSelect.addEventListener('change', function () {
   const scale = parseFloat(this.value);
-  const baseGap = 18;
+  localStorage.setItem("escalaSelecionada", scale);
+  aplicarEscala(scale);
+});
 
-  // Aplica o scale SOMENTE nos elementos desejados
+function aplicarEscala(scale) {
+  // Aplica o scale nos elementos desejados
   [perfil, btns, textTutorial, titulo, btnGameOver, titloGameOver].forEach(el => {
     if (el) {
       el.style.transform = `scale(${scale})`;
@@ -128,24 +131,23 @@ resSelect.addEventListener('change', function () {
     }
   });
 
-  // Aplica o gap proporcional em TODOS os elementos
+  // Aplica o gap proporcional em todos
+  const baseGap = 18;
   [menu, perfil, btns, textTutorial].forEach(el => {
-    let compressedGap;
-
-    if (scale === 1) {
-      // Volta ao valor original
-      compressedGap = baseGap;
-    } else if (el === menu) {
-      // Gap reduzido para o menu
-      compressedGap = (baseGap - 10) * scale;
-    } else {
-      // Gap normal para os outros
-      compressedGap = baseGap * scale;
+    if (el) {
+      let compressedGap;
+      if (scale === 1) {
+        compressedGap = baseGap;
+      } else if (el === menu) {
+        compressedGap = (baseGap - 10) * scale;
+      } else {
+        compressedGap = baseGap * scale;
+      }
+      el.style.gap = `${compressedGap}px`;
     }
-
-    el.style.gap = `${compressedGap}px`;
   });
-});
+}
+
 
 
 
@@ -244,6 +246,11 @@ document.getElementById("btnVoltarMenu").addEventListener("click", () => {
 let menu = document.getElementById("menu");
 window.addEventListener("load", () => {
   atualizarMoedasUI(); // mostra moedas assim que a página carrega
+  const savedScale = parseFloat(localStorage.getItem('escalaSelecionada'));
+  if (!isNaN(savedScale)) {
+    resSelect.value = savedScale.toString();
+    aplicarEscala(savedScale);
+  }
 });
 
 
