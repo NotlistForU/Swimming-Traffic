@@ -109,24 +109,44 @@ let textTutorial = document.getElementById("textTutorial");
 let btnOkTutorial = document.getElementById("btnOkTutorial");
 let perfil = document.getElementById("perfil");
 let titulo = document.getElementById("titulo");
+let titloGameOver = document.getElementById("tituloGameOver");
+let btnGameOver = document.getElementById("btnGameOver");
+
+
 
 
 const resSelect = document.getElementById('resSelect');
 resSelect.addEventListener('change', function () {
   const scale = parseFloat(this.value);
-  [perfil, btns, textTutorial, titulo].forEach(el => {
+  const baseGap = 18;
+
+  // Aplica o scale SOMENTE nos elementos desejados
+  [perfil, btns, textTutorial, titulo, btnGameOver, titloGameOver].forEach(el => {
     if (el) {
       el.style.transform = `scale(${scale})`;
       el.style.transformOrigin = 'center center';
     }
   });
 
+  // Aplica o gap proporcional em TODOS os elementos
   [menu, perfil, btns, textTutorial].forEach(el => {
-      const baseGap = 18;
-      const compressedGap = baseGap * scale; // curva de compressão
-      el.style.gap = `${compressedGap}px`;
+    let compressedGap;
+
+    if (scale === 1) {
+      // Volta ao valor original
+      compressedGap = baseGap;
+    } else if (el === menu) {
+      // Gap reduzido para o menu
+      compressedGap = (baseGap - 10) * scale;
+    } else {
+      // Gap normal para os outros
+      compressedGap = baseGap * scale;
+    }
+
+    el.style.gap = `${compressedGap}px`;
   });
 });
+
 
 
 $(document).ready(function() {
