@@ -15,10 +15,6 @@ body {
 /* utilitários */
 .hidden { display: none; }
 .flex { display: flex; }
-.label {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: rgb(80, 49, 49);
-}
 
 /* evita arrastar imagens */
 img {
@@ -383,7 +379,6 @@ img {
 }
 
 /* ranking / shop / config boxes */
-/* mantive exatamente os atributos que você usou (sem adicionar display:flex) */
 #divRanking, #shop, #config {
   flex-direction: column;
   gap: 2px;
@@ -529,3 +524,24 @@ img {
 }
 #musicControls button:hover { background: #e86d00; }
 
+
+/* =========================================================
+   CONTROLES DE RESOLUÇÃO
+   ========================================================= */
+
+#resolucao {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 2px solid rgb(221, 135, 36);
+  color: white;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 12px;
+}
+
+#resolucao select {
+  margin-left: 10px;
+  padding: 6px;
+  border-radius: 6px;
+  font-size: 12px;
+}

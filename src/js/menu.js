@@ -88,6 +88,7 @@ bgMusic.addEventListener("ended", () => {
 
 let imageIcon = document.getElementById("imageIcon");
 let config = document.getElementById("config");
+let btns = document.getElementById("btns");
 let btnConfig = document.getElementById("btnConfig");
 let btnPlay = document.getElementById("btnPlay");
 let btnRanking = document.getElementById("btnRanking");
@@ -106,6 +107,26 @@ let teclaD = document.getElementById("teclaD");
 let tutorial = document.getElementById("tutorial");
 let textTutorial = document.getElementById("textTutorial");
 let btnOkTutorial = document.getElementById("btnOkTutorial");
+let perfil = document.getElementById("perfil");
+let titulo = document.getElementById("titulo");
+
+
+const resSelect = document.getElementById('resSelect');
+resSelect.addEventListener('change', function () {
+  const scale = parseFloat(this.value);
+  [perfil, btns, textTutorial, titulo].forEach(el => {
+    if (el) {
+      el.style.transform = `scale(${scale})`;
+      el.style.transformOrigin = 'center center';
+    }
+  });
+
+  [menu, perfil, btns, textTutorial].forEach(el => {
+      const baseGap = 18;
+      const compressedGap = baseGap * scale; // curva de compressão
+      el.style.gap = `${compressedGap}px`;
+  });
+});
 
 
 $(document).ready(function() {
