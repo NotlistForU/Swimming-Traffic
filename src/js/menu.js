@@ -85,7 +85,7 @@ bgMusic.addEventListener("ended", () => {
 
 
 
-
+let pause = document.getElementById("pause");
 let imageIcon = document.getElementById("imageIcon");
 let config = document.getElementById("config");
 let btns = document.getElementById("btns");
@@ -99,6 +99,7 @@ let btnVoltar = document.getElementById("btnVoltar");
 let btnAjuda = document.getElementById("btnAjuda");
 let btnRestart = document.getElementById("btnRestart");
 let btnVoltarMenu = document.getElementById("btnVoltarMenu");
+let btnVoltarMenuPause = document.getElementById("btnVoltarMenuPause");
 let hud = document.getElementById("hud");
 let shop = document.getElementById("shop");
 let ranking = document.getElementById("divRanking");
@@ -111,6 +112,7 @@ let perfil = document.getElementById("perfil");
 let titulo = document.getElementById("titulo");
 let titloGameOver = document.getElementById("tituloGameOver");
 let btnGameOver = document.getElementById("btnGameOver");
+let btnsPause = document.getElementById("btnsPause");
 
 
 
@@ -124,7 +126,7 @@ resSelect.addEventListener('change', function () {
 
 function aplicarEscala(scale) {
   // Aplica o scale nos elementos desejados
-  [perfil, btns, textTutorial, titulo, btnGameOver, titloGameOver].forEach(el => {
+  [perfil, btns, textTutorial, titulo, btnGameOver, titloGameOver, btnsPause].forEach(el => {
     if (el) {
       el.style.transform = `scale(${scale})`;
       el.style.transformOrigin = 'center center';
@@ -229,7 +231,15 @@ document.getElementById("btnRestart").addEventListener("click", () => {
   startGame(gameMode);
 });
 
-document.getElementById("btnVoltarMenu").addEventListener("click", () => {
+document.getElementById("btnRestartPause").addEventListener("click", () => {
+  esconder(pause);
+  gamePaused = false;
+  gameOver();
+});
+
+function voltarMenu(){
+  gamePaused = false;
+  esconder(pause);
   esconder(telaGameOver);
   esconder(btnNormal);
   esconder(btnNevoa);
@@ -241,6 +251,13 @@ document.getElementById("btnVoltarMenu").addEventListener("click", () => {
   gameMode = "normal";
   atualizarVisibilidade(gameMode);
   mostrar(menu);
+}
+document.getElementById("btnVoltarMenuPause").addEventListener("click", () => {
+  gameOver();
+  voltarMenu();
+});
+document.getElementById("btnVoltarMenu").addEventListener("click", () => {
+  voltarMenu();
 });
 
 let menu = document.getElementById("menu");

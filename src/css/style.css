@@ -441,7 +441,12 @@ img {
   font-size: x-large;
 }
 
-#btns > div, #btnGameOver > div , #btnOkTutorial{
+#btnsPause {
+  display: flex;
+  gap: 3px;
+}
+
+#btns > div, #btnGameOver > div , #btnOkTutorial, #btnsPause > div{
   padding: 12px 20px;
   border-radius: 8px;
   background: #28a745;
@@ -450,7 +455,7 @@ img {
   font-family: cursive;
   user-select: none;
 }
-#btns > div:hover, #btnGameOver > div:hover, #btnOkTutorial:hover{ background: #218838; border-radius: 4px; }
+#btns > div:hover, #btnGameOver > div:hover, #btnOkTutorial:hover, #btnsPause > div:hover{ background: #218838; border-radius: 4px; }
 
 #btnSom { border-radius: 20px; }
 

@@ -20,13 +20,19 @@
         </div>  
     </div>
     <div id="road">
-      <div id="pause" class="hidden"> PAUSADO [P]<br> "P" Retomar</div>
+      <div id="pause" class="hidden"> 
+        <span>PAUSADO [P]<br> "P" Retomar</span>
+        <div id="btnsPause">
+          <div id="btnVoltarMenuPause">Ir ao menu</div>
+          <div id="btnRestartPause">🔁 Jogar novamente</div>
+        </div>
+      </div>
       <div id="gameOver" class="hidden">
         <h2 id="titloGameOver">💀 GAME OVER</h2>
         <p>Distância percorrida: <span id="kmFinal">0</span> km</p>
         <p>Moedas coletadas: <span id="moedasFinal">0</span></p>
         <div id="btnGameOver">
-          <div id="btnRestart">🔁 Jogar Novamente</div>
+          <div id="btnRestart">🔁 Jogar novamente</div>
           <div id="btnVoltarMenu">Ir ao menu</div>
         </div>
       </div>

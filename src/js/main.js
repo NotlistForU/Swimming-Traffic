@@ -14,13 +14,11 @@ document.addEventListener('wheel', function (event) {
 
 
 
-let pause = document.getElementById("pause");
-
 // escuta a tecla P
 document.addEventListener("keydown", (e) => {
   if (e.key.toLowerCase() === "p") {
+    if(!gameStarted) return;
     gamePaused = !gamePaused; // alterna entre true/false
-
     if (gamePaused) {
       // jogo pausado → mostra overlay
       pause.classList.add("flex");
