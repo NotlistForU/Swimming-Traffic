@@ -391,10 +391,14 @@ img {
 }
 
 /* moedas (mantive seletor e regras como você escreveu) */
-#Moedas , #MoedaShop h3 {
+#Moedas , #MoedaShop {
   margin-top: auto; /* cola o bloco no fim do container */
   text-align: center;
   font-size: 18px;
+  margin: 0;
+}
+
+h3 {
   margin: 0;
 }
 
