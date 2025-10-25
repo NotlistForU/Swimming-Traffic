@@ -467,6 +467,17 @@ img {
    CONTROLES DE MÚSICA (sliders / botões)
    ========================================================= */
 /* ===== SLIDERS BONITOS UNIVERSAIS ===== */
+#musicaDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+#musicaCapa {
+  width: 100px;
+  height: auto;
+  border: 4px solid rgb(221, 135, 36);
+}
+
 .range {
   -webkit-appearance: none;
   width: 100%;
@@ -534,19 +545,36 @@ img {
    CONTROLES DE RESOLUÇÃO
    ========================================================= */
 
-#resolucao {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 12px 20px;
-  border-radius: 12px;
+#resSelect {
+  padding: 8px 12px;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(90deg, #ff8800 0%, #ffc107 100%);
   border: 2px solid rgb(221, 135, 36);
-  color: white;
-  font-family: 'Press Start 2P', sans-serif;
-  font-size: 12px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-#resolucao select {
-  margin-left: 10px;
-  padding: 6px;
-  border-radius: 6px;
-  font-size: 12px;
+#resSelect option {
+  background-color: #ff8800;
+  color: #fff;
 }
+
+#resSelect:hover {
+  background: linear-gradient(90deg, #ffc107 0%, #ff8800 100%);
+}
+
+#resSelect:focus {
+  border-color: #ff8800;
+  box-shadow: 0 0 0 3px rgba(255, 136, 0, 0.3);
+}
+
+label[for="resSelect"] {
+  font-weight: bold;
+  margin-right: 8px;
+  color: rgb(221, 135, 36);
+}
+

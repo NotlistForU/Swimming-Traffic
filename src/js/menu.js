@@ -22,16 +22,26 @@ motorVol.addEventListener("input", () => {
 });
 
 const musicList = [
-  "src/assets/sounds/Running90s.mp3",
-  "src/assets/sounds/GetLow.mp3"
+{
+  nome: "Running in the 90s",
+  src: "src/assets/sounds/Running90s.mp3",
+  img: "src/assets/images/musics/Running90s.png"
+},
+{
+  nome: "GetLow",
+  src: "src/assets/sounds/GetLow.mp3",
+  img: "src/assets/images/musics/GetLow.png"
+}
 ];
 const seekBar = document.getElementById("musicSeek");
 let currentTrack = 0;
-let bgMusic = new Audio(musicList[currentTrack]);
+let bgMusic = new Audio(musicList[currentTrack].src);
 bgMusic.volume = 0.5;
 
 document.getElementById("playPauseMusic").addEventListener("click", () => {
   if (bgMusic.paused) {
+    attachEvents();   
+    updateMusicInfo();
     bgMusic.play();
   } else {   
     bgMusic.pause();
@@ -41,18 +51,22 @@ document.getElementById("playPauseMusic").addEventListener("click", () => {
 document.getElementById("nextMusic").addEventListener("click", () => {
   bgMusic.pause();
   currentTrack = (currentTrack + 1) % musicList.length;
-  bgMusic = new Audio(musicList[currentTrack]);
+  bgMusic = new Audio(musicList[currentTrack].src);
 
   bgMusic.volume = document.getElementById("musicVol").value;
+  attachEvents();   
+  updateMusicInfo();
   bgMusic.play();
 });
 
 document.getElementById("prevMusic").addEventListener("click", () => {
   bgMusic.pause();
   currentTrack = (currentTrack - 1 + musicList.length) % musicList.length;
-  bgMusic = new Audio(musicList[currentTrack]);
+  bgMusic = new Audio(musicList[currentTrack].src);
 
   bgMusic.volume = document.getElementById("musicVol").value;
+  attachEvents();   
+  updateMusicInfo();
   bgMusic.play();
 });
 
@@ -69,7 +83,7 @@ seekBar.addEventListener("input", () => {
 // 🔹 Quando a música acabar, toca a próxima
 bgMusic.addEventListener("ended", () => {
   currentTrack = (currentTrack + 1) % musicList.length;
-  bgMusic = new Audio(musicList[currentTrack]);
+  bgMusic = new Audio(musicList[currentTrack].src);
   bgMusic.volume = document.getElementById("musicVol").value;
   bgMusic.play();
 
@@ -82,9 +96,35 @@ bgMusic.addEventListener("ended", () => {
   });
 });
 
+function updateMusicInfo(){
+  musicaTitulo.textContent = musicList[currentTrack].nome;
+  musicaCapa.src = musicList[currentTrack].img;
+  musicaCapa.alt = "Capa da musica: " + musicList[currentTrack].nome;
+}
+
+function attachEvents() {
+  // Atualiza a barra de progresso enquanto a música toca
+  bgMusic.addEventListener("timeupdate", () => {
+    if (bgMusic.duration) {
+      const progress = (bgMusic.currentTime / bgMusic.duration) * 100;
+      seekBar.value = progress;
+    }
+  });
+
+  // Quando a música termina, toca a próxima
+  bgMusic.addEventListener("ended", () => {
+    currentTrack = (currentTrack + 1) % musicList.length;
+    bgMusic = new Audio(musicList[currentTrack].src);
+    bgMusic.volume = document.getElementById("musicVol").value;
+    attachEvents();       // reaplica os eventos no novo bgMusic
+    updateMusicInfo();    // atualiza capa e nome
+    bgMusic.play();       // toca a próxima
+  });
+}
 
 
-
+let musicaCapa = document.getElementById("musicaCapa");
+let musicaTitulo = document.getElementById("musicaTitulo");
 let pause = document.getElementById("pause");
 let imageIcon = document.getElementById("imageIcon");
 let config = document.getElementById("config");
@@ -126,7 +166,7 @@ resSelect.addEventListener('change', function () {
 
 function aplicarEscala(scale) {
   // Aplica o scale nos elementos desejados
-  [perfil, btns, textTutorial, titulo, btnGameOver, titloGameOver, btnsPause].forEach(el => {
+  [textTutorial, menu, btnGameOver, titloGameOver, btnsPause].forEach(el => {
     if (el) {
       el.style.transform = `scale(${scale})`;
       el.style.transformOrigin = 'center center';
