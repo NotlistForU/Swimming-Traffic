@@ -450,7 +450,7 @@ h3 {
   gap: 3px;
 }
 
-#btns > div, #btnGameOver > div , #btnOkTutorial, #btnsPause > div{
+.btns, #btns > div, #btnGameOver > div , #btnOkTutorial, #btnsPause > div{
   padding: 12px 20px;
   border-radius: 8px;
   background: #28a745;
@@ -459,7 +459,7 @@ h3 {
   font-family: cursive;
   user-select: none;
 }
-#btns > div:hover, #btnGameOver > div:hover, #btnOkTutorial:hover, #btnsPause > div:hover{ background: #218838; border-radius: 4px; }
+.btns:hover, #btns > div:hover, #btnGameOver > div:hover, #btnOkTutorial:hover, #btnsPause > div:hover{ background: #218838; border-radius: 4px; }
 
 #btnSom { border-radius: 20px; }
 

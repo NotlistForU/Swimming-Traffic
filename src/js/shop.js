@@ -49,7 +49,7 @@ function renderShop() {
       <h4 class="label">${carro.nome}</h4>
       <p class="label">Preço: ${carro.preco} 🪙</p>
       <p class="label">Desbloqueia com ${carro.kmNecessario} km</p>
-      <button class="btn"
+      <button class="btns"
         ${!desbloqueado ? "disabled" : ""}
         onclick="comprarCarro(${carro.id})">
         ${btnTexto}
