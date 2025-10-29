@@ -474,6 +474,8 @@ h3 {
 #musicaDiv {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 4px;
 }
 
 #musicaCapa {

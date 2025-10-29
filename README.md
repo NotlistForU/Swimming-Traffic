@@ -140,3 +140,4 @@ Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 - https://www.iloveimg.com (redimensionar imagens)
 - https://giventofly-github-io.translate.goog/pixelit/ (converte para pixel arts)
 - https://www.youtube.com/@larissakich (muita ajuda com o css)
+- https://pixabay.com/ (músicas e efeitos sonoros livres para uso sob a Pixabay Content License)

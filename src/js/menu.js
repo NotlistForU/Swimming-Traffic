@@ -23,14 +23,19 @@ motorVol.addEventListener("input", () => {
 
 const musicList = [
 {
-  nome: "Running in the 90s",
-  src: "src/assets/sounds/Running90s.mp3",
+  nome: "ZTMusic - Heartbeat Acceleration [Eurobeat]",
+  src: "src/assets/sounds/Eurobeat.mp3",
   img: "src/assets/images/musics/Running90s.png"
 },
 {
-  nome: "GetLow",
-  src: "src/assets/sounds/GetLow.mp3",
-  img: "src/assets/images/musics/GetLow.png"
+  nome: "You-want-it-by-Tyler-Havlicek",
+  src: "src/assets/sounds/TylerHavlicek.mp3",
+  img: "src/assets/images/musics/Tyler.png"
+},
+{
+  nome: "No Cyber Future",
+  src: "src/assets/sounds/NoCyberFuture.mp3",
+  img: "src/assets/images/musics/NoCyber.png"
 }
 ];
 const seekBar = document.getElementById("musicSeek");
