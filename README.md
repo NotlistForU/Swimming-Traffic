@@ -39,12 +39,11 @@ O jogador deve controlar o carro, coletar moedas, gerenciar o combustível e evi
 
 ## ✨ Funcionalidades <a name="funcionalidades"></a>
 
-- 🛣️ Diversas pistas para correr
 - ⛽ Sistema de combustível dinâmico
 - 💰 Coleta de moedas
 - 🚗 Diferentes carros desbloqueáveis
-- 🛠️ Modo desenvolvedor para testes
 - 🎮 Controles simples e intuitivos
+- 🎵 Músicas durante sua gameplay
 
 ![Loja/Garagem](src/assets/images/PlayerIcons/garagem.png)
 
