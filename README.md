@@ -2,7 +2,9 @@
 
 Jogo de corrida divertido e desafiador, onde você controla carros, coleta moedas e percorre pistas evitando obstáculos.
 
-## ![Banner](https://raw.githubusercontent.com/NotlistForU/swimming-traffic/SwimmingTraffic.V2.2.continuidadeExtra/src/assets/images/PlayerIcons/maxVerstappen.png)
+![Banner do jogo](src/assets/images/PlayerIcons/maxVerstappen.png)
+
+---
 
 ## 📖 Índice
 
