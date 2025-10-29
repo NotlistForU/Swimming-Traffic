@@ -53,7 +53,7 @@ Para rodar o projeto localmente:
 
 1. Clone o repositório:
 
-   git clone https://github.com/seu-usuario/swimming-traffic.git
+   git clone https://github.com/NotlistForU/Swimming-Traffic.git
 
 2. Entre na pasta do projeto:
 
