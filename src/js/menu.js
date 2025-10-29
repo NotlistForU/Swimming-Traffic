@@ -21,23 +21,9 @@ motorVol.addEventListener("input", () => {
   }, 2300);
 });
 
-const musicList = [
-{
-  nome: "ZTMusic - Heartbeat Acceleration [Eurobeat]",
-  src: "src/assets/sounds/Eurobeat.mp3",
-  img: "src/assets/images/musics/Running90s.png"
-},
-{
-  nome: "You-want-it-by-Tyler-Havlicek",
-  src: "src/assets/sounds/TylerHavlicek.mp3",
-  img: "src/assets/images/musics/Tyler.png"
-},
-{
-  nome: "No Cyber Future",
-  src: "src/assets/sounds/NoCyberFuture.mp3",
-  img: "src/assets/images/musics/NoCyber.png"
-}
-];
+/*------------------------------------------------------------*/
+/* -------- CONTROLE MUSICA DO MENU -------------------------- */
+/* ----- Para adicionar novas musicas vá para: music.js ----- */
 const seekBar = document.getElementById("musicSeek");
 let currentTrack = 0;
 let bgMusic = new Audio(musicList[currentTrack].src);
