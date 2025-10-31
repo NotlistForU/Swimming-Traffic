@@ -76,18 +76,12 @@ document.addEventListener('keyup', function(event) {
 // ======= Controles por Toque =======
 
 // --- Esquerda ---
-teclaA.addEventListener('touchstart', moverEsquerda);
-teclaA.addEventListener('mousedown', moverEsquerda); // desktop também
+teclaA.addEventListener('click', moverEsquerda);
 
-teclaA.addEventListener('touchend', resetarAngulo);
-teclaA.addEventListener('mouseup', resetarAngulo);
 
 // --- Direita ---
-teclaD.addEventListener('touchstart', moverDireita);
-teclaD.addEventListener('mousedown', moverDireita);
+teclaD.addEventListener('click', moverDireita);
 
-teclaD.addEventListener('touchend', resetarAngulo);
-teclaD.addEventListener('mouseup', resetarAngulo);
 
 // ======= Funções Reutilizáveis =======
 function moverEsquerda() {
@@ -96,6 +90,7 @@ function moverEsquerda() {
     colunaAtual--;
     anguloAtual = -5;
     atualizarVisibilidade(gameMode);
+    resetarAngulo();
   }
 }
 
@@ -105,6 +100,7 @@ function moverDireita() {
     colunaAtual++;
     anguloAtual = 5;
     atualizarVisibilidade(gameMode);
+    resetarAngulo();
   }
 }
 
