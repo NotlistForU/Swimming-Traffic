@@ -307,23 +307,39 @@ window.addEventListener("load", () => {
 document.addEventListener("keydown", function(event){
   if(!gameStarted){return};
   if (event.key === "a") {
+    if (celular){
+      teclaA.style.fontSize = "small";
+    }else{
     teclaA.style.fontSize = "x-large";
+    }
   }
 });
 document.addEventListener("keyup", function(event){
     if (event.key === "a") {
-    teclaA.style.fontSize = "xx-large";
+      if(celular){
+        teclaA.style.fontSize = "large";
+      }else {
+      teclaA.style.fontSize = "xx-large";
+      }
   }
 });
 document.addEventListener("keydown", function(event){
   if(!gameStarted){return};
   if (event.key === "d") {
-    teclaD.style.fontSize = "x-large";
+    if(celular){
+      teclaD.style.fontSize = "small";
+    }else{
+      teclaD.style.fontSize = "x-large";
+    }
   }
 });
 document.addEventListener("keyup", function(event){
-    if (event.key === "d") {
-    teclaD.style.fontSize = "xx-large";
+  if (event.key === "d") {
+    if(celular){
+      teclaD.style.fontSize = "large";
+    }else{
+      teclaD.style.fontSize = "xx-large";
+    }
   }
 });
 
