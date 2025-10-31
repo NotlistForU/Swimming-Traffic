@@ -725,6 +725,10 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     font-size: x-small;
   }
 
+  .player, #player {
+    margin-bottom: 50%;
+  }
+
   #gameArea {
     display: flex;
     flex-wrap: wrap; 
