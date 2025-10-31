@@ -6,6 +6,9 @@
   <title>Traffic-Game</title>
   <link rel="icon" href="IconTraffic.ico">
   <link rel="stylesheet" href="./src/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="gameArea">
@@ -24,7 +27,7 @@
         <span>PAUSADO [P]<br> "P" Retomar</span>
         <div id="btnsPause">
           <div id="btnVoltarMenuPause">Ir ao menu</div>
-          <div id="btnRestartPause">🔁 Jogar novamente</div>
+          <div id="btnRestartPause">Jogar novamente</div>
         </div>
       </div>
       <div id="gameOver" class="hidden">
@@ -32,7 +35,7 @@
         <p>Distância percorrida: <span id="kmFinal">0</span> km</p>
         <p>Moedas coletadas: <span id="moedasFinal">0</span></p>
         <div id="btnGameOver">
-          <div id="btnRestart">🔁 Jogar novamente</div>
+          <div id="btnRestart">Jogar novamente</div>
           <div id="btnVoltarMenu">Ir ao menu</div>
         </div>
       </div>
@@ -154,6 +157,7 @@
   </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="src/js/global.js"></script>
+    <script src="src/js/viewport.js"></script>
     <script src="src/js/music.js"></script>
     <script src="src/js/pista.js"></script>
     <script src="src/js/road.js"></script>

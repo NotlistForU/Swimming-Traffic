@@ -23,7 +23,7 @@ let velocidadeKmH = 60;
 // =====================
 // PISTAS E CENÁRIO
 // =====================
-const numPistas = 7;
+let numPistas = 7;
 let linhaAtual = 0;
 let caminhosLivresAtuais = [];
 

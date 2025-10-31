@@ -30,7 +30,11 @@ function updateFuelBar(delta) {
 
   // calcula porcentagem
   let fuelPercent = (currentFuel / maxFuel) * 100;
-  fuelBar.style.height = fuelPercent + "%";
+  if(celular){
+    fuelBar.style.width = fuelPercent + "%";
+  } else {
+    fuelBar.style.height = fuelPercent + "%";
+  }
 
   // cores
   if (fuelPercent > 50) {

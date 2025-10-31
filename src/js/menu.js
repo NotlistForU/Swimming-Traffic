@@ -339,7 +339,7 @@ function startGame(gameMode){
     atualizarMoedasRunUI();
     gameStarted = true;
     resetGame();
-    creatPlayer(4); // começa na coluna 3 (meio)
+    createPlayer(numPistas); // começa na coluna 3 (meio)
     spawnFileira();
     updatePlayer();
 }

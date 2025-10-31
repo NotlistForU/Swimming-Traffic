@@ -1,7 +1,7 @@
 
 // @ts-nocheck
 
-function creatPlayer(numPista) {
+function createPlayer(numPista) {
   colunaAtual = numPista;
   let col = document.getElementById(`col-${colunaAtual}`);
 

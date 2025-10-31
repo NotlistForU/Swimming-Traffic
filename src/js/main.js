@@ -131,4 +131,5 @@ function resetGame() {
 // Inicia o loop
 requestAnimationFrame(gameLoop);
 
-criarPista(7);
+criarPista(numPistas);
+console.log(numPistas);

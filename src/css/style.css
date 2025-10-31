@@ -8,7 +8,6 @@ body {
   height: 100vh;
   overflow: hidden;
   background-color: rgb(187, 216, 230);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: rgb(80, 49, 49);
 }
 
@@ -37,13 +36,13 @@ img {
   align-items: stretch;
 }
 
+
 /* ---------------------------------------------------------
    HUD ESQUERDA (Combustível)
    -------------------------------------------------------- */
 #hudLeft {
   flex: 1;
   gap: 20px;
-  min-width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,6 +82,12 @@ img {
   color: white;
 }
 
+@media screen and (max-width: 768px) {
+  #hudLeft {
+    min-width: 160px;
+  }
+}
+
 
 /* =========================================================
    ROAD (Centro) — múltiplas faixas + overlays
@@ -107,6 +112,12 @@ img {
   justify-content: center;
   align-items: stretch;
   background: linear-gradient(#1c1c1c, #151515);
+}
+
+@media screen and (max-width: 425px) {
+  #road {
+    flex: 3;
+  }
 }
 
 /* cada faixa (pista) */
@@ -210,13 +221,19 @@ img {
    ========================================================= */
 #hudRight {
   flex: 1;
-  min-width: 260px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 18px;
   gap: 18px;
+}
+
+@media screen and (max-width: 425px) {
+  #hudRigth {
+    width: 180px;
+  }
+  
 }
 
 /* velocímetro */
@@ -228,6 +245,19 @@ img {
   border: 8px solid #444;
   background: radial-gradient(circle, #111 70%, #222 100%);
   box-shadow: 0 6px 18px rgba(0,0,0,0.6) inset;
+}
+@media screen and (max-width: 768px) {
+  #speedometer {
+    width: 160px;
+    height: 160px;
+  }
+}
+@media screen and (max-width: 425px) {
+  #speedometer {
+    border: 2px solid #444;
+    width: 80px;
+    height: 50px;
+  }
 }
 
 #speedNeedle {
@@ -244,26 +274,51 @@ img {
   border-radius: 3px;
 }
 
+@media screen and (max-width: 768px) {
+  #speedNeedle {
+    height: 60px;
+  }
+}
+@media screen and (max-width: 425px) {
+  #speedNeedle {
+    height: 25px;
+    width: 3px;
+  }
+}
+
 .speedLabel {
   position: absolute;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 18px;
   color: white;
+  font-size: small;
+}
+
+@media screen and (max-width: 768px) {
+  .speedLabel{
+    font-size: large;
+  }
 }
 
 /* scoreboard */
 #scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   border-radius: 24px;
   border: 5px solid rgb(221, 135, 36);
   background-color: pink;
   padding: 18px 26px;
   text-align: center;
-  font-size: 18px;
-  font-family: cursive;
   color: rgb(80, 49, 49);
-  min-width: 180px;
+}
+
+@media screen and (max-width: 425px) {
+  #scoreboard {
+    border: 2px solid rgb(221, 135, 36);
+    padding: 8px 12px;
+  }
 }
 
 #scoreboard > div { margin: 6px 0; }
@@ -280,8 +335,14 @@ img {
   border: 5px solid rgb(221, 135, 36);
   border-radius: 10px;
   background-color: pink;
-  font-family: serif;
   font-size: xx-large;
+}
+
+@media screen and (max-width: 425px) {
+  .teclas {
+    padding: 5px 10px;
+    font-size: large;
+  }
 }
 /* =========================================================
    MENU / OVERLAYS (tutorial, menu principal, perfil, shop, config)
@@ -315,7 +376,7 @@ img {
   padding: 24px 32px;
   color: #fff;
   box-shadow: 0 0 20px rgb(221, 135, 36);
-  font-family: 'Press Start 2P', sans-serif; /* fonte estilo arcade (opcional) */
+  font-family: 'Press Start 2P', sans-serif; /* fonte estilo arcade  */
 }
 
 #textTutorial h1 {
@@ -324,16 +385,14 @@ img {
   text-shadow: 0 0 6px rgb(221, 135, 36);
 }
 
-#textTutorial p {
-  font-size: 14px;
-  line-height: 1.6;
-}
 
 #textTutorial span.etg {
   color: rgb(221, 135, 36);
   font-weight: bold;
   text-transform: uppercase;
 }
+
+
 #menu{
   position: fixed;
   top: 0;
@@ -345,20 +404,24 @@ img {
   justify-content: center;
   align-items: center;
   z-index: 999; /* sempre na frente */
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(8px);
 }
 
 
-#menu > div h1 {
-  padding: 30px;
+#titulo {
   border: 10px solid rgb(221, 135, 36);
   border-radius: 28px;
   background-color: rgb(187, 216, 230);
-  font-size: 2em;
   color: rgb(80, 49, 49);
   margin: 0;
-  font-family: cursive;
 }
+
+@media screen and (max-width: 768px) {
+  #titulo {
+    border: 5px solid rgb(221, 135, 36);
+  }
+}
+
 
 /* container do perfil/shop/ranking dentro do menu */
 #perfil {
@@ -366,6 +429,12 @@ img {
   gap: 18px;
   align-items: flex-start;
   justify-content: center;
+}
+
+@media screen and (max-width: 769px) {
+  #perfil {
+    flex-wrap: wrap;
+  }
 }
 
 #imageIcon {
@@ -378,23 +447,46 @@ img {
   background-position: center;
 }
 
+@media screen and (max-width: 768px) {
+  #imageIcon {
+    width: 190px;
+    height: 200px;
+    border: 5px solid rgb(221, 135, 36);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #imageIcon {
+    width: 160px;
+    height: 160px;
+    border: 5px solid rgb(221, 135, 36);
+  }
+}
+
 /* ranking / shop / config boxes */
 #divRanking, #shop, #config {
   flex-direction: column;
   gap: 2px;
   padding: 12px;
-  min-width: 360px;
   height: 440px;
   border-radius: 30px;
   border: 10px solid rgb(221, 135, 36);
   background-color: rgb(187, 216, 230);
 }
 
+@media screen and (max-width: 768px){
+  #divRanking, #shop, #config {
+    width: 320px;
+    height: 360px;
+    border: 10px solid rgb(221, 135, 36);
+    border: 5px solid rgb(221, 135, 36);
+  }
+}
+
 /* moedas (mantive seletor e regras como você escreveu) */
 #Moedas , #MoedaShop {
   margin-top: auto; /* cola o bloco no fim do container */
   text-align: center;
-  font-size: 18px;
   margin: 0;
 }
 
@@ -422,10 +514,19 @@ h3 {
   gap: 12px;
   flex-wrap: wrap;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 6px;
 }
 .carItem { width: 150px; background: rgb(187,216,230); padding: 10px; border-radius: 8px; text-align:center; }
 .carImg { width: 100%; border-radius: 5px; }
+
+@media screen and (max-width: 768px) {
+  .carImg { width: 90px; padding: 5px;}
+}
+
+@media screen and (min-width: 800px) {
+  .carItem {width: 200px;}
+}
 
 /* botoes do menu */
 #btns, #btnGameOver, #btnsVolume {
@@ -433,11 +534,17 @@ h3 {
   gap: 12px;
   align-items: center;
 }
+@media screen and (max-width: 425px) {
+  #btns {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 
 #btnsVolume {
   padding: 4px;
   border-radius: 10px;
-  border: 10px solid rgb(221, 135, 36);
+  border: 6px solid rgb(221, 135, 36);
   background: rgb(241, 225, 228);
 }
 
@@ -456,15 +563,19 @@ h3 {
   background: #28a745;
   color: #fff;
   cursor: pointer;
-  font-family: cursive;
   user-select: none;
+  font-family: 'Press Start 2P', sans-serif;
 }
+
+@media screen and (max-width: 768px) {
+  .btns, #btnGameOver{
+    padding: 6px 10px;
+  }
+}
+
 .btns:hover, #btns > div:hover, #btnGameOver > div:hover, #btnOkTutorial:hover, #btnsPause > div:hover{ background: #218838; border-radius: 4px; }
 
 #btnSom { border-radius: 20px; }
-
-/* utilitários */
-.smallLabel { font-size: 14px; color: rgb(80,49,49); }
 
 
 /* =========================================================
@@ -530,7 +641,6 @@ h3 {
 }
 .control-row span {
   color: rgb(80,49,49);
-  font-family: cursive;
   font-size: 16px;
 }
 
@@ -553,7 +663,6 @@ h3 {
 
 #resSelect {
   padding: 8px 12px;
-  font-size: 1rem;
   color: #fff;
   background: linear-gradient(90deg, #ff8800 0%, #ffc107 100%);
   border: 2px solid rgb(221, 135, 36);
@@ -567,6 +676,7 @@ h3 {
 #resSelect option {
   background-color: #ff8800;
   color: #fff;
+  
 }
 
 #resSelect:hover {
@@ -577,10 +687,122 @@ h3 {
   border-color: #ff8800;
   box-shadow: 0 0 0 3px rgba(255, 136, 0, 0.3);
 }
-
-label[for="resSelect"] {
-  font-weight: bold;
-  margin-right: 8px;
-  color: rgb(221, 135, 36);
+@media screen and (max-width: 768px) {
+  #resSelect{
+    padding: 6px 10px;
+    margin-top: 6px;
+  }
 }
 
+
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: small;
+  }
+
+  #gameOver > h2, #pause > span{
+    font-size: xx-large;
+  }
+  #gameOver > p{
+    font-size: x-large;
+  }
+
+  #btnGameOver, #btnsPause{
+    padding: 2px;
+    font-size: x-small;
+  }
+}
+
+@media screen and (max-width: 425px) {
+
+  #gameArea {
+    display: flex;
+    flex-wrap: wrap; 
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  /* HUDs no topo */
+  #hudLeft, #hudRight {
+    flex: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;   /* centraliza verticalmente o conteúdo */
+    align-items: center;       /* centraliza horizontalmente */
+    height: 60px;
+    padding: 0;
+    gap: 6px;
+  }
+
+  #hudLeft {
+    max-width: 30%;
+  }
+
+  #hudRight {
+    max-width: 70%;
+  }
+
+  /* GAME AREA embaixo */
+  #road {
+    flex: 1 1 100%;
+    order: 3;
+    height: calc(100vh - 60px);
+  }
+
+  /* barra de combustível horizontal */
+  #fuelContainer {
+    width: 160px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    background: #333;
+    border: 3px solid #666;
+    border-radius: 10px;
+    overflow: hidden;
+    padding-left: 6px;
+  }
+
+  #fuelBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 70%;
+    background: linear-gradient(to right, #28a745, #6fdc6f);
+    transition: width 0.2s;
+  }
+
+  #fuelContainer span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: white;
+  }
+
+
+
+  #scoreboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    height: auto;
+    border: 2px solid rgb(221, 135, 36);
+  }
+
+  /* Esconde teclas */
+  .teclas {
+    display: none;
+  }
+}
+
+
+
+/*font-family: 'Press Start 2P', sans-serif;*/
