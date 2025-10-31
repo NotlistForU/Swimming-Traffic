@@ -721,6 +721,9 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 }
 
 @media screen and (max-width: 425px) {
+  body {
+    font-size: x-small;
+  }
 
   #gameArea {
     display: flex;

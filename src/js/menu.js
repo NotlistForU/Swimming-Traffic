@@ -275,6 +275,7 @@ function voltarMenu(){
   esconder(btnNormal);
   esconder(btnNevoa);
   esconder(btnVoltar);
+  mostrar(btnAjuda);
   mostrar(btnRanking);
   mostrar(btnShop);
   mostrar(btnConfig);
