@@ -50,62 +50,70 @@ let keysPressed = {};
 
 let acelerarTimner = null;
 let acelerando = false;
+// ======= Controles de Teclado =======
 document.addEventListener('keydown', function(event) {
-  if (!gameStarted) return;
-  if (!gameStarted || gamePaused) return; // 🚫 ignora teclas se pausado
+  if (!gameStarted || gamePaused) return;
 
-  // if(!gameStarted) return;
-  // keysPressed[event.key.toLowerCase()] = true;
-  // if(event.key === 'w'){
-  //   acelerarTimner = setInterval(()=>{
-  //     acelerando = true;
-  //   }, 1000);
-  // }
-
-  // troca de faixa (executa só uma vez por pressionamento)
-  if (event.key === 'a'|| event.key === 'A'|| event.key === 'ArrowLeft') {
-    if (colunaAtual > 1) {
-      colunaAtual--; 
-      anguloAtual = -5;
-      atualizarVisibilidade(gameMode);
-    }
+  if (event.key === 'a' || event.key === 'A' || event.key === 'ArrowLeft') {
+    moverEsquerda();
   } 
   else if (event.key === 'd' || event.key === 'D' || event.key === 'ArrowRight') {
-    if (colunaAtual < numPistas) {
-      colunaAtual++; 
-      anguloAtual = 5;
-      atualizarVisibilidade(gameMode);
-    }
+    moverDireita();
   }
 });
 
-
-
-
-
 document.addEventListener('keyup', function(event) {
-  if (!gameStarted) return;
-  if (!gameStarted || gamePaused) return; // 🚫 ignora teclas se pausado
-  keysPressed[event.key.toLowerCase()] = false;
-  // if (event.key === 'w' || event.key === 'W'|| event.key === 'ArrowUp') {
-  //   acelerando = false;
-  //   console.log(acelerando);
-  //   AceleroSound.pause();
-  //   AceleroSound.currentTime = 0;
-    
-  //   motorSound.play().catch(err => console.log("Erro motor:", err));
-  // }
+  if (!gameStarted || gamePaused) return;
 
   if (
     event.key === 'A' || event.key === 'a' || event.key === 'ArrowLeft' ||
     event.key === 'D' || event.key === 'd' || event.key === 'ArrowRight'
   ) {
-    setTimeout(() => {
-      anguloAtual = 0;
-      updatePlayer();
-    }, 100);
+    resetarAngulo();
   }
 });
+
+// ======= Controles por Toque =======
+
+// --- Esquerda ---
+teclaA.addEventListener('touchstart', moverEsquerda);
+teclaA.addEventListener('mousedown', moverEsquerda); // desktop também
+
+teclaA.addEventListener('touchend', resetarAngulo);
+teclaA.addEventListener('mouseup', resetarAngulo);
+
+// --- Direita ---
+teclaD.addEventListener('touchstart', moverDireita);
+teclaD.addEventListener('mousedown', moverDireita);
+
+teclaD.addEventListener('touchend', resetarAngulo);
+teclaD.addEventListener('mouseup', resetarAngulo);
+
+// ======= Funções Reutilizáveis =======
+function moverEsquerda() {
+  if (!gameStarted || gamePaused) return;
+  if (colunaAtual > 1) {
+    colunaAtual--;
+    anguloAtual = -5;
+    atualizarVisibilidade(gameMode);
+  }
+}
+
+function moverDireita() {
+  if (!gameStarted || gamePaused) return;
+  if (colunaAtual < numPistas) {
+    colunaAtual++;
+    anguloAtual = 5;
+    atualizarVisibilidade(gameMode);
+  }
+}
+
+function resetarAngulo() {
+  setTimeout(() => {
+    anguloAtual = 0;
+    updatePlayer();
+  }, 100);
+}
 
 
 function atualizarVisibilidade(gameMode) {

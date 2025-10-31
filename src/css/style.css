@@ -300,6 +300,11 @@ img {
     font-size: large;
   }
 }
+@media screen and (max-width: 425px) {
+  .speedLabel{
+    font-size: x-small;
+  }
+}
 
 /* scoreboard */
 #scoreboard {
