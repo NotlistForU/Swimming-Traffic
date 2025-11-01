@@ -7,41 +7,41 @@ const musicList = [
 {
   nome: "You Want It by Tyler Havlicek",
   src: "src/assets/sounds/M-TylerHavlicek.mp3",
-  img: "src/assets/images/musics/Tyler.png"
+  img: "src/assets/images/Musics/Tyler.png"
 },
 {
   nome: "Dance It Out tBy Tyler Havlicek",
   src: "src/assets/sounds/M-DanceItOutByTylerHavlicek.mp3",
-  img: "src/assets/images/musics/Dance.png"
+  img: "src/assets/images/Musics/Dance.png"
 },
 {
   nome: "Its Getting Old By Tyler Havlicek",
   src: "src/assets/sounds/M-ItsGettingOldByTylerHavlicek.mp3",
-  img: "src/assets/images/musics/Old.png"
+  img: "src/assets/images/Musics/Old.png"
 },
 {
   nome: "Story By Tyler Havlicek",
   src: "src/assets/sounds/M-StoryByTylerHavlicek.mp3",
-  img: "src/assets/images/musics/Story.png"
+  img: "src/assets/images/Musics/Story.png"
 },
 {
   nome: "For You By Tyler Havlicek",
   src: "src/assets/sounds/M-ForYouByTylerHavlicek.mp3",
-  img: "src/assets/images/musics/ForU.png"
+  img: "src/assets/images/Musics/ForU.png"
 },
 {
   nome: "No Cyber Future",
   src: "src/assets/sounds/M-NoCyberFuture.mp3",
-  img: "src/assets/images/musics/NoCyber.png"
+  img: "src/assets/images/Musics/NoCyber.png"
 },
 {
   nome: "Fast Rock",
   src: "src/assets/sounds/M-FastRock.mp3",
-  img: "src/assets/images/musics/Rock.png"
+  img: "src/assets/images/Musics/Rock.png"
 },
 {
   nome: "In The Heat of Battle",
   src: "src/assets/sounds/M-InTheHeatOfBattle.mp3",
-  img: "src/assets/images/musics/Battle.png"
+  img: "src/assets/images/Musics/Battle.png"
 }
 ];
