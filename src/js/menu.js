@@ -113,7 +113,8 @@ function attachEvents() {
   });
 }
 
-
+let hudTeclaA = document.getElementById("hudTeclaA");
+let hudTeclaD = document.getElementById("hudTeclaD");
 let musicaCapa = document.getElementById("musicaCapa");
 let musicaTitulo = document.getElementById("musicaTitulo");
 let pause = document.getElementById("pause");
@@ -191,6 +192,7 @@ function aplicarEscala(scale) {
 $(document).ready(function() {
   mostrarRanking();
   renderShop();
+  esconder
 });
 
 document.getElementById("btnOkTutorial").addEventListener("click", () => {
@@ -274,6 +276,8 @@ document.getElementById("btnRestartPause").addEventListener("click", () => {
 
 function voltarMenu(){
   gamePaused = false;
+  esconder(hudTeclaA);
+  esconder(hudTeclaD);
   esconder(celularHud);
   esconder(pause);
   esconder(telaGameOver);
@@ -351,6 +355,8 @@ document.addEventListener("keyup", function(event){
 function mostrarHud () {
   if (celular) {
     mostrar(celularHud);
+    mostrar(hudTeclaA);
+    mostrar(hudTeclaD);
   } else { return }
 }
 
