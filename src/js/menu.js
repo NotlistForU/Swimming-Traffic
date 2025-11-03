@@ -157,33 +157,32 @@ resSelect.addEventListener('change', function () {
 });
 
 function aplicarEscala(scale) {
-  // Aplica o scale nos elementos desejados
-  if(celular) {
-    document.body.style.transform =`scale(${scale})`;
-  } else {
-    [textTutorial, menu, btnGameOver, titloGameOver, btnsPause].forEach(el => {
-      if (el) {
+  // Aplica o scale nos elementos desejados`
+  [road, textTutorial, menu, btnGameOver, titloGameOver, btnsPause].forEach(el => {
+    if (el) {
+      if(celular){
+        road.style.transformOrigin = `center top`
+      }
         el.style.transform = `scale(${scale})`;
         el.style.transformOrigin = 'center center';
+    }
+  });
+
+  // Aplica o gap proporcional em todos
+  const baseGap = 18;
+  [menu, perfil, btns, textTutorial].forEach(el => {
+    if (el) {
+      let compressedGap;
+      if (scale === 1) {
+        compressedGap = baseGap;
+      } else if (el === menu) {
+        compressedGap = (baseGap - 10) * scale;
+      } else {
+        compressedGap = baseGap * scale;
       }
-    });
-  
-    // Aplica o gap proporcional em todos
-    const baseGap = 18;
-    [menu, perfil, btns, textTutorial].forEach(el => {
-      if (el) {
-        let compressedGap;
-        if (scale === 1) {
-          compressedGap = baseGap;
-        } else if (el === menu) {
-          compressedGap = (baseGap - 10) * scale;
-        } else {
-          compressedGap = baseGap * scale;
-        }
-        el.style.gap = `${compressedGap}px`;
-      }
-    });
-  }
+      el.style.gap = `${compressedGap}px`;
+    }
+  });
 }
 
 
