@@ -144,6 +144,7 @@ let titulo = document.getElementById("titulo");
 let titloGameOver = document.getElementById("tituloGameOver");
 let btnGameOver = document.getElementById("btnGameOver");
 let btnsPause = document.getElementById("btnsPause");
+let celularHud = document.getElementById("celularHud");
 
 
 
@@ -157,28 +158,32 @@ resSelect.addEventListener('change', function () {
 
 function aplicarEscala(scale) {
   // Aplica o scale nos elementos desejados
-  [textTutorial, menu, btnGameOver, titloGameOver, btnsPause].forEach(el => {
-    if (el) {
-      el.style.transform = `scale(${scale})`;
-      el.style.transformOrigin = 'center center';
-    }
-  });
-
-  // Aplica o gap proporcional em todos
-  const baseGap = 18;
-  [menu, perfil, btns, textTutorial].forEach(el => {
-    if (el) {
-      let compressedGap;
-      if (scale === 1) {
-        compressedGap = baseGap;
-      } else if (el === menu) {
-        compressedGap = (baseGap - 10) * scale;
-      } else {
-        compressedGap = baseGap * scale;
+  if(celular) {
+    document.body.style.transform =`scale(${scale})`;
+  } else {
+    [textTutorial, menu, btnGameOver, titloGameOver, btnsPause].forEach(el => {
+      if (el) {
+        el.style.transform = `scale(${scale})`;
+        el.style.transformOrigin = 'center center';
       }
-      el.style.gap = `${compressedGap}px`;
-    }
-  });
+    });
+  
+    // Aplica o gap proporcional em todos
+    const baseGap = 18;
+    [menu, perfil, btns, textTutorial].forEach(el => {
+      if (el) {
+        let compressedGap;
+        if (scale === 1) {
+          compressedGap = baseGap;
+        } else if (el === menu) {
+          compressedGap = (baseGap - 10) * scale;
+        } else {
+          compressedGap = baseGap * scale;
+        }
+        el.style.gap = `${compressedGap}px`;
+      }
+    });
+  }
 }
 
 
@@ -270,6 +275,7 @@ document.getElementById("btnRestartPause").addEventListener("click", () => {
 
 function voltarMenu(){
   gamePaused = false;
+  esconder(celularHud);
   esconder(pause);
   esconder(telaGameOver);
   esconder(btnNormal);
@@ -343,6 +349,12 @@ document.addEventListener("keyup", function(event){
   }
 });
 
+function mostrarHud () {
+  if (celular) {
+    mostrar(celularHud);
+  } else { return }
+}
+
 
 function startGame(gameMode){
     esconder(menu);
@@ -350,7 +362,7 @@ function startGame(gameMode){
     tempoVivo = 0;
     kmPercorridos = 0;
     atualizarScoreUI();
-
+    mostrarHud(celularHud);
     atualizarMoedasUI();
     moedasRun = 0;
     atualizarMoedasRunUI();

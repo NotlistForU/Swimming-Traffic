@@ -7,7 +7,7 @@ function atualizarVelocimetro() {
   let velocimetro = Math.trunc(velocidadeKmH) ;
   speedLabel.textContent = `${velocimetro} KM/H`;
   let celularVelocimetro = document.getElementById("celularSpeedoMeter");
-  celularVelocimetro.textContent =`${velocimetro} KM/H`
+  celularVelocimetro.textContent =`${velocimetro} km/h`
   // 🔹 Atualiza o ponteiro (0–240 km/h → -90° até 90°)
   let maxVel = 240; 
   let minAngle = -90;
@@ -72,7 +72,12 @@ function reabastecer(qtd) {
 }
 // Moedas  da RUN HUD ========================================================================
 function atualizarMoedasRunUI() {
-  document.getElementById("coinsDisplay").textContent = "💰 " + moedasRun;
+  if (celular){
+     document.getElementById("celularCoinsDisplay").textContent = "💰 " + moedasRun;
+  } else {
+    document.getElementById("coinsDisplay").textContent = "💰 " + moedasRun;
+  }
+  
 }
 
 // Atualizar as moedas do menu ========================================================================
@@ -85,9 +90,15 @@ function atualizarMoedasUI() {
 
 //  Score run HUD ========================================================
 function atualizarScoreUI() {
-  document.getElementById("pointsDisplay").innerHTML =
-    `<div>🏆 ${kmPercorridos.toFixed(2)} km</div>
-     <div>⏱ ${tempoVivo.toFixed(1)}s</div>`;
+  if(celular){
+    let celularPointsDisplay = document.getElementById("celularPointsDisplay");
+    celularPointsDisplay.textContent = `🏆 ${kmPercorridos.toFixed(2)} km`
+
+  } else {
+    document.getElementById("pointsDisplay").innerHTML =
+      `<div>🏆 ${kmPercorridos.toFixed(2)} km</div>
+       <div>⏱ ${tempoVivo.toFixed(1)}s</div>`;
+  }
 }
 // Score Menu HUD ========================================================
 function mostrarRanking() {

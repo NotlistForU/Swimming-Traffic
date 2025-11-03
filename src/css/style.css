@@ -703,9 +703,6 @@ h3 {
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
 
-  #celularHud{
-    display: none;
-  }
 
 
 @media screen and (max-width: 768px) {
@@ -734,7 +731,6 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   #celularHud {
     margin: 4px;
     position: absolute;
-    display: flex;
     justify-content: center;
     gap: 10px;
     padding: 2px;
@@ -743,7 +739,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
   #celularSpeedoMeter, #celularScore {
     display: flex;
-    font-size: x-large;
+    font-size: medium;
     padding: 4px;
     color: rgb(80, 49, 49);
     border: solid 3px #ff8800;
