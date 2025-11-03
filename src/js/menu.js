@@ -112,7 +112,7 @@ function attachEvents() {
     bgMusic.play();       // toca a próxima
   });
 }
-
+let menu = document.getElementById("menu");
 let hudTeclaA = document.getElementById("hudTeclaA");
 let hudTeclaD = document.getElementById("hudTeclaD");
 let musicaCapa = document.getElementById("musicaCapa");
@@ -301,13 +301,24 @@ document.getElementById("btnVoltarMenu").addEventListener("click", () => {
   voltarMenu();
 });
 
-let menu = document.getElementById("menu");
+
+
 window.addEventListener("load", () => {
   atualizarMoedasUI(); // mostra moedas assim que a página carrega
   const savedScale = parseFloat(localStorage.getItem('escalaSelecionada'));
   if (!isNaN(savedScale)) {
     resSelect.value = savedScale.toString();
     aplicarEscala(savedScale);
+  }else {
+    if(celular) {
+      let defaultScaleCelular = 0.9;
+      resSelect.value = defaultScaleCelular.toString();
+      aplicarEscala(defaultScaleCelular);
+    } else {
+      let defaultScale = 0.9;
+      resSelect.value = defaultScale.toString();
+      aplicarEscala(defaultScale);
+    }
   }
 });
 
