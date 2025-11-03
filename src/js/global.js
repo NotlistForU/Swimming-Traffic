@@ -83,6 +83,7 @@ let moedasRun = 0;
 // =====================
 // COMBUSTÍVEL
 // =====================
+let celularFuelBar = document.getElementById("celularFuelBar");
 let fuelBar = document.getElementById("fuelBar");
 let maxFuel = 30;
 let currentFuel = maxFuel;

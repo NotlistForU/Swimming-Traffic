@@ -1,12 +1,13 @@
 // @ts-nocheck
 function atualizarVelocimetro() {
-  const speedLabel = document.querySelector(".speedLabel");
+  const speedLabel = document.getElementById("speedLabel");
   const needle = document.getElementById("speedNeedle");
 
   // Atualiza o texto
   let velocimetro = Math.trunc(velocidadeKmH) ;
   speedLabel.textContent = `${velocimetro} KM/H`;
-
+  let celularVelocimetro = document.getElementById("celularSpeedoMeter");
+  celularVelocimetro.textContent =`${velocimetro} KM/H`
   // 🔹 Atualiza o ponteiro (0–240 km/h → -90° até 90°)
   let maxVel = 240; 
   let minAngle = -90;
@@ -31,22 +32,37 @@ function updateFuelBar(delta) {
   // calcula porcentagem
   let fuelPercent = (currentFuel / maxFuel) * 100;
   if(celular){
-    fuelBar.style.width = fuelPercent + "%";
+    celularFuelBar.style.width = fuelPercent + "%";
   } else {
     fuelBar.style.height = fuelPercent + "%";
   }
 
   // cores
-  if (fuelPercent > 50) {
-    fuelBar.style.background = "linear-gradient(to top, #28a745, #6fdc6f)";
-  } else if (fuelPercent > 20) {
-    fuelBar.style.background = "linear-gradient(to top, #ffc107, #ffe066)";
-  } else {
-    fuelBar.style.background = "linear-gradient(to top, #dc3545, #ff6f6f)";
-  }
+  if (celular){
+    if (fuelPercent > 50) {
+      celularFuelBar.style.background = "linear-gradient(to top, #28a745, #6fdc6f)";
+    } else if (fuelPercent > 20) {
+      celularFuelBar.style.background = "linear-gradient(to top, #ffc107, #ffe066)";
+    } else {
+      celularFuelBar.style.background = "linear-gradient(to top, #dc3545, #ff6f6f)";
+    }
 
-  if (currentFuel <= 0) {
-    gameOver();
+    if (currentFuel <= 0) {
+      gameOver();
+    }
+
+  }else{
+    if (fuelPercent > 50) {
+      fuelBar.style.background = "linear-gradient(to top, #28a745, #6fdc6f)";
+    } else if (fuelPercent > 20) {
+      fuelBar.style.background = "linear-gradient(to top, #ffc107, #ffe066)";
+    } else {
+      fuelBar.style.background = "linear-gradient(to top, #dc3545, #ff6f6f)";
+    }
+
+    if (currentFuel <= 0) {
+      gameOver();
+    }
   }
 }
 

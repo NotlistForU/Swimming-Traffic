@@ -286,7 +286,7 @@ img {
   }
 }
 
-.speedLabel {
+#speedLabel {
   position: absolute;
   top: 60%;
   left: 50%;
@@ -702,6 +702,12 @@ h3 {
 
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
+
+  #celularHud{
+    display: none;
+  }
+
+
 @media screen and (max-width: 768px) {
   body {
     font-size: small;
@@ -725,46 +731,32 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     font-size: x-small;
   }
 
-  .player, #player {
-    margin-bottom: 50%;
-  }
-
-  #gameArea {
+  #celularHud {
+    margin: 4px;
+    position: absolute;
     display: flex;
-    flex-wrap: wrap; 
-    flex-direction: row;
-    height: 100vh;
+    justify-content: center;
+    gap: 10px;
+    padding: 2px;
+    z-index: 99999;
   }
 
-  /* HUDs no topo */
+  #celularSpeedoMeter, #celularScore {
+    display: flex;
+    font-size: x-large;
+    padding: 4px;
+    color: rgb(80, 49, 49);
+    border: solid 3px #ff8800;
+    border-radius: 10px;
+    background: rgb(187, 216, 230, 0.9) ;
+  }
+
   #hudLeft, #hudRight {
-    flex: 1;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;   /* centraliza verticalmente o conteúdo */
-    align-items: center;       /* centraliza horizontalmente */
-    height: 60px;
-    padding: 0;
-    gap: 6px;
-  }
-
-  #hudLeft {
-    max-width: 30%;
-  }
-
-  #hudRight {
-    max-width: 70%;
-  }
-
-  /* GAME AREA embaixo */
-  #road {
-    flex: 1 1 100%;
-    order: 3;
-    height: calc(100vh - 60px);
+    display: none;
   }
 
   /* barra de combustível horizontal */
-  #fuelContainer {
+  #celularFuelContainer {
     width: 160px;
     height: 40px;
     display: flex;
@@ -778,7 +770,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     padding-left: 6px;
   }
 
-  #fuelBar {
+  #celularFuelBar {
     position: absolute;
     left: 0;
     top: 0;
@@ -788,25 +780,13 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     transition: width 0.2s;
   }
 
-  #fuelContainer span {
+  #celularFuelContainer span {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     font-size: 18px;
     color: white;
-  }
-
-
-
-  #scoreboard {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 8px;
-    height: auto;
-    border: 2px solid rgb(221, 135, 36);
   }
 
   /* Esconde teclas */
@@ -822,6 +802,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   #teclaD { right: 20px; }
   #teclaA { left: 20px; }
 }
+
 
 
 
