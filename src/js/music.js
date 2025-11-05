@@ -2,7 +2,7 @@ const musicList = [
 {
   nome: "ZTMusic - Heartbeat Acceleration [Eurobeat]",
   src: "src/assets/sounds/M-Eurobeat.mp3",
-  img: "src/assets/images/musics/Running90s.png"
+  img: "src/assets/images/Musics/Running90s.png"
 },
 {
   nome: "You Want It by Tyler Havlicek",
