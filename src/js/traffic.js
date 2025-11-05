@@ -8,7 +8,7 @@ function spawnFileira() {
   if(gameStarted){
       linhaAtual++;
       // altura inicial da fileira (cada linha nasce mais acima que a anterior)
-      let posY = -alturaCarro - (linhaAtual * 220); // 150px de espaço entre fileiras
+      let posY = -alturaCarro - (linhaAtual * 320); //   espaço entre fileiras
       let novosLivres = new Set();
 
       // 🔹 Escolhe caminho principal
