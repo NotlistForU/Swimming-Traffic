@@ -82,12 +82,6 @@ img {
   color: white;
 }
 
-@media screen and (max-width: 768px) {
-  #hudLeft {
-    min-width: 160px;
-  }
-}
-
 
 /* =========================================================
    ROAD (Centro) — múltiplas faixas + overlays
@@ -100,12 +94,15 @@ img {
   top:0; left:0; right:0; bottom:0;
   background:rgba(0,0,0,0.6);
   color:white;
-  font-size:40px;
   align-items:center;
   justify-content:center;
   z-index:999;
 }
 
+#pauseText {
+  margin-bottom: 40px;
+  font-size:xx-large;
+}
 #road {
   flex: 8;
   display: flex;
@@ -114,11 +111,6 @@ img {
   background: linear-gradient(#1c1c1c, #151515);
 }
 
-@media screen and (max-width: 425px) {
-  #road {
-    flex: 3;
-  }
-}
 
 /* cada faixa (pista) */
 .faixa , .ultima {
@@ -181,6 +173,7 @@ img {
   transition: transform 0.08s linear;
   user-select: none;
   pointer-events: none;
+  margin-bottom: 100px;
 }
 
 .carroBaixo {
@@ -229,12 +222,6 @@ img {
   gap: 18px;
 }
 
-@media screen and (max-width: 425px) {
-  #hudRigth {
-    width: 180px;
-  }
-  
-}
 
 /* velocímetro */
 #speedometer {
@@ -245,19 +232,6 @@ img {
   border: 8px solid #444;
   background: radial-gradient(circle, #111 70%, #222 100%);
   box-shadow: 0 6px 18px rgba(0,0,0,0.6) inset;
-}
-@media screen and (max-width: 768px) {
-  #speedometer {
-    width: 160px;
-    height: 160px;
-  }
-}
-@media screen and (max-width: 425px) {
-  #speedometer {
-    border: 2px solid #444;
-    width: 80px;
-    height: 50px;
-  }
 }
 
 #speedNeedle {
@@ -274,17 +248,6 @@ img {
   border-radius: 3px;
 }
 
-@media screen and (max-width: 768px) {
-  #speedNeedle {
-    height: 60px;
-  }
-}
-@media screen and (max-width: 425px) {
-  #speedNeedle {
-    height: 25px;
-    width: 3px;
-  }
-}
 
 #speedLabel {
   position: absolute;
@@ -295,16 +258,6 @@ img {
   font-size: small;
 }
 
-@media screen and (max-width: 768px) {
-  .speedLabel{
-    font-size: large;
-  }
-}
-@media screen and (max-width: 425px) {
-  .speedLabel{
-    font-size: x-small;
-  }
-}
 
 /* scoreboard */
 #scoreboard {
@@ -317,13 +270,6 @@ img {
   padding: 18px 26px;
   text-align: center;
   color: rgb(80, 49, 49);
-}
-
-@media screen and (max-width: 425px) {
-  #scoreboard {
-    border: 2px solid rgb(221, 135, 36);
-    padding: 8px 12px;
-  }
 }
 
 #scoreboard > div { margin: 6px 0; }
@@ -343,12 +289,6 @@ img {
   font-size: xx-large;
 }
 
-@media screen and (max-width: 425px) {
-  .teclas {
-    padding: 5px 10px;
-    font-size: large;
-  }
-}
 /* =========================================================
    MENU / OVERLAYS (tutorial, menu principal, perfil, shop, config)
    ========================================================= */
@@ -421,12 +361,6 @@ img {
   margin: 0;
 }
 
-@media screen and (max-width: 768px) {
-  #titulo {
-    border: 5px solid rgb(221, 135, 36);
-  }
-}
-
 
 /* container do perfil/shop/ranking dentro do menu */
 #perfil {
@@ -452,21 +386,6 @@ img {
   background-position: center;
 }
 
-@media screen and (max-width: 768px) {
-  #imageIcon {
-    width: 190px;
-    height: 200px;
-    border: 5px solid rgb(221, 135, 36);
-  }
-}
-
-@media screen and (max-width: 425px) {
-  #imageIcon {
-    width: 160px;
-    height: 160px;
-    border: 5px solid rgb(221, 135, 36);
-  }
-}
 
 /* ranking / shop / config boxes */
 #divRanking, #shop, #config {
@@ -479,14 +398,6 @@ img {
   background-color: rgb(187, 216, 230);
 }
 
-@media screen and (max-width: 768px){
-  #divRanking, #shop, #config {
-    width: 320px;
-    height: 360px;
-    border: 10px solid rgb(221, 135, 36);
-    border: 5px solid rgb(221, 135, 36);
-  }
-}
 
 /* moedas (mantive seletor e regras como você escreveu) */
 #Moedas , #MoedaShop {
@@ -539,13 +450,6 @@ h3 {
   gap: 12px;
   align-items: center;
 }
-@media screen and (max-width: 425px) {
-  #btns {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
 #btnsVolume {
   padding: 4px;
   border-radius: 10px;
@@ -565,18 +469,15 @@ h3 {
 .btns, #btns > div, #btnGameOver > div , #btnOkTutorial, #btnsPause > div{
   padding: 12px 20px;
   border-radius: 8px;
+  text-align: center;
   background: #28a745;
   color: #fff;
   cursor: pointer;
   user-select: none;
   font-family: 'Press Start 2P', sans-serif;
+  font-size: small;
 }
 
-@media screen and (max-width: 768px) {
-  .btns, #btnGameOver{
-    padding: 6px 10px;
-  }
-}
 
 .btns:hover, #btns > div:hover, #btnGameOver > div:hover, #btnOkTutorial:hover, #btnsPause > div:hover{ background: #218838; border-radius: 4px; }
 
@@ -692,12 +593,6 @@ h3 {
   border-color: #ff8800;
   box-shadow: 0 0 0 3px rgba(255, 136, 0, 0.3);
 }
-@media screen and (max-width: 768px) {
-  #resSelect{
-    padding: 6px 10px;
-    margin-top: 6px;
-  }
-}
 
 
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -721,11 +616,72 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     padding: 2px;
     font-size: x-small;
   }
+
+  #resSelect{
+    padding: 6px 10px;
+    margin-top: 6px;
+  }
+
+  .btns, #btnGameOver{
+    padding: 6px 10px;
+  }
+
+  #divRanking, #shop, #config {
+    width: 320px;
+    height: 360px;
+    border: 10px solid rgb(221, 135, 36);
+    border: 5px solid rgb(221, 135, 36);
+  }
+
+  #imageIcon {
+    width: 190px;
+    height: 200px;
+    border: 5px solid rgb(221, 135, 36);
+  }
+
+  #titulo {
+    border: 5px solid rgb(221, 135, 36);
+  }
+
+  .speedLabel{
+    font-size: large;
+  }
+
+  #speedNeedle {
+    height: 60px;
+  }
+
+  #speedometer {
+    width: 160px;
+    height: 160px;
+  }
+
+  #hudLeft {
+    min-width: 160px;
+  }
+
 }
 
 @media screen and (max-width: 425px) {
   body {
     font-size: x-small;
+  }
+
+  #road {
+    flex: 3;
+  }
+
+  #textTutorial p {
+    font-size: 10px;
+  }
+
+  #textTutorial H1 {
+    font-size: 16px;
+  }
+
+  #textTutorial p {
+    padding: 0;
+    margin: 0;
   }
 
   #celularHud {
@@ -796,6 +752,21 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   }
   #teclaD { right: 20px; }
   #teclaA { left: 20px; }
+  .teclas {
+    padding: 5px 10px;
+    font-size: large;
+  }
+
+  #imageIcon {
+    width: 160px;
+    height: 160px;
+    border: 5px solid rgb(221, 135, 36);
+  }
+
+  #btns {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 
