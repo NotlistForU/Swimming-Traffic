@@ -26,13 +26,17 @@ motorVol.addEventListener("input", () => {
 /* ----- Para adicionar novas musicas vá para: music.js ----- */
 const seekBar = document.getElementById("musicSeek");
 let currentTrack = 0;
-let bgMusic = new Audio(musicList[currentTrack].src);
+let bgMusic = new Audio();
 bgMusic.volume = 0.5;
+
+function loadTrack(index) {
+  bgMusic.src = musicList[index].src;
+  bgMusic.currentTime = 0;
+  updateMusicInfo();
+}
 
 document.getElementById("playPauseMusic").addEventListener("click", () => {
   if (bgMusic.paused) {
-    attachEvents();   
-    updateMusicInfo();
     bgMusic.play();
   } else {   
     bgMusic.pause();
@@ -40,24 +44,14 @@ document.getElementById("playPauseMusic").addEventListener("click", () => {
 });
 
 document.getElementById("nextMusic").addEventListener("click", () => {
-  bgMusic.pause();
   currentTrack = (currentTrack + 1) % musicList.length;
-  bgMusic = new Audio(musicList[currentTrack].src);
-
-  bgMusic.volume = document.getElementById("musicVol").value;
-  attachEvents();   
-  updateMusicInfo();
+  loadTrack(currentTrack);
   bgMusic.play();
 });
 
 document.getElementById("prevMusic").addEventListener("click", () => {
-  bgMusic.pause();
   currentTrack = (currentTrack - 1 + musicList.length) % musicList.length;
-  bgMusic = new Audio(musicList[currentTrack].src);
-
-  bgMusic.volume = document.getElementById("musicVol").value;
-  attachEvents();   
-  updateMusicInfo();
+  loadTrack(currentTrack);
   bgMusic.play();
 });
 
@@ -74,17 +68,8 @@ seekBar.addEventListener("input", () => {
 // 🔹 Quando a música acabar, toca a próxima
 bgMusic.addEventListener("ended", () => {
   currentTrack = (currentTrack + 1) % musicList.length;
-  bgMusic = new Audio(musicList[currentTrack].src);
-  bgMusic.volume = document.getElementById("musicVol").value;
+  loadTrack(currentTrack);
   bgMusic.play();
-
-  // reanexa os eventos na nova música
-  bgMusic.addEventListener("timeupdate", () => {
-    if (bgMusic.duration) {
-      const progress = (bgMusic.currentTime / bgMusic.duration) * 100;
-      seekBar.value = progress;
-    }
-  });
 });
 
 function updateMusicInfo(){
@@ -93,25 +78,24 @@ function updateMusicInfo(){
   musicaCapa.alt = "Capa da musica: " + musicList[currentTrack].nome;
 }
 
-function attachEvents() {
-  // Atualiza a barra de progresso enquanto a música toca
-  bgMusic.addEventListener("timeupdate", () => {
-    if (bgMusic.duration) {
-      const progress = (bgMusic.currentTime / bgMusic.duration) * 100;
-      seekBar.value = progress;
-    }
-  });
+
+bgMusic.addEventListener("timeupdate", () => {
+  if (bgMusic.duration) {
+    const progress = (bgMusic.currentTime / bgMusic.duration) * 100;
+    seekBar.value = progress;
+  }
+});
 
   // Quando a música termina, toca a próxima
-  bgMusic.addEventListener("ended", () => {
-    currentTrack = (currentTrack + 1) % musicList.length;
-    bgMusic = new Audio(musicList[currentTrack].src);
-    bgMusic.volume = document.getElementById("musicVol").value;
-    attachEvents();       // reaplica os eventos no novo bgMusic
-    updateMusicInfo();    // atualiza capa e nome
-    bgMusic.play();       // toca a próxima
-  });
-}
+bgMusic.addEventListener("ended", () => {
+  currentTrack = (currentTrack + 1) % musicList.length;
+  bgMusic = new Audio(musicList[currentTrack].src);
+  bgMusic.volume = document.getElementById("musicVol").value;
+  attachEvents();       // reaplica os eventos no novo bgMusic
+  updateMusicInfo();    // atualiza capa e nome
+  bgMusic.play();       // toca a próxima
+});
+
 let menu = document.getElementById("menu");
 let hudTeclaA = document.getElementById("hudTeclaA");
 let hudTeclaD = document.getElementById("hudTeclaD");
@@ -398,4 +382,4 @@ function mostrarGameOver(){
 
 
 
-
+loadTrack(currentTrack);

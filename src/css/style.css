@@ -458,8 +458,9 @@ h3 {
 }
 
 #btnsVolume > div:hover {
-  font-size: x-large;
-}
+  font-size:large;
+} 
+
 
 #btnsPause {
   display: flex;
