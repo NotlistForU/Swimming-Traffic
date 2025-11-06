@@ -663,7 +663,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
 }
 
-@media screen and (max-width: 425px) {
+@media (max-width: 600px), (orientation: portrait) {
   body {
     font-size: x-small;
   }
