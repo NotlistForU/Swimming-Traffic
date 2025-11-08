@@ -38,7 +38,7 @@ function loadTrack(index) {
 document.getElementById("playPauseMusic").addEventListener("click", () => {
   if (bgMusic.paused) {
     bgMusic.play();
-  } else {   
+  } else {
     bgMusic.pause();
   }
 });
@@ -72,7 +72,7 @@ bgMusic.addEventListener("ended", () => {
   bgMusic.play();
 });
 
-function updateMusicInfo(){
+function updateMusicInfo() {
   musicaTitulo.textContent = musicList[currentTrack].nome;
   musicaCapa.src = musicList[currentTrack].img;
   musicaCapa.alt = "Capa da musica: " + musicList[currentTrack].nome;
@@ -86,15 +86,6 @@ bgMusic.addEventListener("timeupdate", () => {
   }
 });
 
-  // Quando a música termina, toca a próxima
-bgMusic.addEventListener("ended", () => {
-  currentTrack = (currentTrack + 1) % musicList.length;
-  bgMusic = new Audio(musicList[currentTrack].src);
-  bgMusic.volume = document.getElementById("musicVol").value;
-  attachEvents();       // reaplica os eventos no novo bgMusic
-  updateMusicInfo();    // atualiza capa e nome
-  bgMusic.play();       // toca a próxima
-});
 
 let menu = document.getElementById("menu");
 let hudTeclaA = document.getElementById("hudTeclaA");
@@ -145,11 +136,11 @@ function aplicarEscala(scale) {
   // Aplica o scale nos elementos desejados`
   [road, textTutorial, menu, btnGameOver, titloGameOver, btnsPause].forEach(el => {
     if (el) {
-      if(celular){
+      if (celular) {
         road.style.transformOrigin = `center top`
       }
-        el.style.transform = `scale(${scale})`;
-        el.style.transformOrigin = 'center center';
+      el.style.transform = `scale(${scale})`;
+      el.style.transformOrigin = 'center center';
     }
   });
 
@@ -173,7 +164,7 @@ function aplicarEscala(scale) {
 
 
 
-$(document).ready(function() {
+$(document).ready(function () {
   mostrarRanking();
   renderShop();
   esconder
@@ -219,13 +210,13 @@ document.getElementById("btnPlay").addEventListener("click", () => {
   mostrar(btnVoltar);
 });
 
-document.getElementById("btnNormal").addEventListener("click", () =>{
+document.getElementById("btnNormal").addEventListener("click", () => {
   gameMode = "normal";
   startGame(gameMode);
   atualizarVisibilidade(gameMode);
 });
 
-document.getElementById("btnNevoa").addEventListener("click", () =>{
+document.getElementById("btnNevoa").addEventListener("click", () => {
   gameMode = "nevoa";
   startGame(gameMode);
   atualizarVisibilidade(gameMode);
@@ -258,7 +249,7 @@ document.getElementById("btnRestartPause").addEventListener("click", () => {
   gameOver();
 });
 
-function voltarMenu(){
+function voltarMenu() {
   gamePaused = false;
   esconder(hudTeclaA);
   esconder(hudTeclaD);
@@ -293,8 +284,8 @@ window.addEventListener("load", () => {
   if (!isNaN(savedScale)) {
     resSelect.value = savedScale.toString();
     aplicarEscala(savedScale);
-  }else {
-    if(celular) {
+  } else {
+    if (celular) {
       let defaultScaleCelular = 0.9;
       resSelect.value = defaultScaleCelular.toString();
       aplicarEscala(defaultScaleCelular);
@@ -308,46 +299,46 @@ window.addEventListener("load", () => {
 
 
 /* telcas HUD ===================================== */
-document.addEventListener("keydown", function(event){
-  if(!gameStarted){return};
+document.addEventListener("keydown", function (event) {
+  if (!gameStarted) { return };
   if (event.key === "a") {
-    if (celular){
+    if (celular) {
       teclaA.style.fontSize = "small";
-    }else{
-    teclaA.style.fontSize = "x-large";
+    } else {
+      teclaA.style.fontSize = "x-large";
     }
   }
 });
-document.addEventListener("keyup", function(event){
-    if (event.key === "a") {
-      if(celular){
-        teclaA.style.fontSize = "large";
-      }else {
+document.addEventListener("keyup", function (event) {
+  if (event.key === "a") {
+    if (celular) {
+      teclaA.style.fontSize = "large";
+    } else {
       teclaA.style.fontSize = "xx-large";
-      }
+    }
   }
 });
-document.addEventListener("keydown", function(event){
-  if(!gameStarted){return};
+document.addEventListener("keydown", function (event) {
+  if (!gameStarted) { return };
   if (event.key === "d") {
-    if(celular){
+    if (celular) {
       teclaD.style.fontSize = "small";
-    }else{
+    } else {
       teclaD.style.fontSize = "x-large";
     }
   }
 });
-document.addEventListener("keyup", function(event){
+document.addEventListener("keyup", function (event) {
   if (event.key === "d") {
-    if(celular){
+    if (celular) {
       teclaD.style.fontSize = "large";
-    }else{
+    } else {
       teclaD.style.fontSize = "xx-large";
     }
   }
 });
 
-function mostrarHud () {
+function mostrarHud() {
   if (celular) {
     mostrar(celularHud);
     mostrar(hudTeclaA);
@@ -356,24 +347,24 @@ function mostrarHud () {
 }
 
 
-function startGame(gameMode){
-    esconder(menu);
-    startTime = Date.now();   // 🔹 marca o início da run
-    tempoVivo = 0;
-    kmPercorridos = 0;
-    atualizarScoreUI();
-    mostrarHud(celularHud);
-    atualizarMoedasUI();
-    moedasRun = 0;
-    atualizarMoedasRunUI();
-    gameStarted = true;
-    resetGame();
-    createPlayer(numPistas); // começa na coluna 3 (meio)
-    spawnFileira();
-    updatePlayer();
+function startGame(gameMode) {
+  esconder(menu);
+  startTime = Date.now();   // 🔹 marca o início da run
+  tempoVivo = 0;
+  kmPercorridos = 0;
+  atualizarScoreUI();
+  mostrarHud(celularHud);
+  atualizarMoedasUI();
+  moedasRun = 0;
+  atualizarMoedasRunUI();
+  gameStarted = true;
+  resetGame();
+  createPlayer(numPistas); // começa na coluna 3 (meio)
+  spawnFileira();
+  updatePlayer();
 }
 
-function mostrarGameOver(){
+function mostrarGameOver() {
   kmFinal.textContent = kmPercorridos.toFixed(1);
   moedasFinal.textContent = moedasRun;
   mostrar(telaGameOver);
