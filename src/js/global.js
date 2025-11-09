@@ -6,7 +6,7 @@
 let gameStarted = false;
 let gamePaused = false;
 let gameMode = "normal";
-let dificuldade = 1;
+let dificuldade = 1; // é usada para aumentar a velocidade  o velocimetro / usado no update coins, gas, e cars de forma que maior a dificuldade menos tempo entre o spwan deles.
 let dificuldadeTimer = 0;
 let dificuldadeIntervalo = 10;
 let spawnInterval = 1;

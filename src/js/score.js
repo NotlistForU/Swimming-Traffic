@@ -42,7 +42,6 @@ function atualizarScore(delta) {
   // distância percorrida em km
   kmPercorridos += (velocidadeKmH / 3600) * delta;
 
-  // opcional: aumenta a velocidade conforme a distância
   // ex: a cada 1 km percorrido, aumenta 5 km/h
   velocidadeKmH = 60 + kmPercorridos * 6;
 
