@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,33 +11,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div id="hudTeclaA" class="hidden">
     <div id="teclaA" class="teclas">A</div>
   </div>
   <div id="hudTeclaD" class="hidden">
     <div id="teclaD" class="teclas">D</div>
-  </div>  
+  </div>
   <div id="celularHud" class="hidden">
     <div id="celularFuelContainer">
       <div id="celularFuelBar"></div>
       <span>⛽</span>
     </div>
-      <span id="celularSpeedoMeter">60kmh</span>
-      <div id="celularScore">
-        <span id="celularCoinsDisplay">💰 0</span>
-        <span id="celularPointsDisplay">🏆 0</span>
-      </div>
+    <span id="celularSpeedoMeter">60kmh</span>
+    <div id="celularScore">
+      <span id="celularCoinsDisplay">💰 0</span>
+      <span id="celularPointsDisplay">🏆 0</span>
+    </div>
   </div>
   <div id="gameArea">
     <div id="hudLeft">
-        <div id="fuelContainer">
-          <div id="fuelBar"></div>
-          <span>⛽</span>
-        </div>
+      <div id="fuelContainer">
+        <div id="fuelBar"></div>
+        <span>⛽</span>
+      </div>
     </div>
     <div id="road">
-      <div id="pause" class="hidden"> 
+      <div id="pause" class="hidden">
         <span id="pauseText">PAUSADO [P]<br> "P" Retomar</span>
         <div id="btnsPause">
           <div id="btnVoltarMenuPause" class="btns">Ir ao menu</div>
@@ -56,8 +58,8 @@
     <div id="hudRight">
       <div id="speedometer">
         <div id="speedNeedle"></div>
-          <div id="speedLabel">60 KM/H</div>
-        </div>
+        <div id="speedLabel">60 KM/H</div>
+      </div>
       <div id="scoreboard">
         <div id="coinsDisplay">💰 0</div>
         <div id="pointsDisplay">🏆 0</div>
@@ -69,15 +71,15 @@
     <div id="textTutorial" class="flex">
       <h1>Como jogar <span>E</span>ndless <span>T</span>raffic <span>G</span>ame?</h1>
       <p>
-        <span class="etg">ETG</span> é um mini-game arcade em que você precisa desviar dos carros 
+        <span class="etg">ETG</span> é um mini-game arcade em que você precisa desviar dos carros
         enquanto eles ficam cada vez mais rápidos.
       </p>
       <p>
-        Para desviar, utilize as teclas <strong>[A]</strong> (ir para a esquerda) e 
+        Para desviar, utilize as teclas <strong>[A]</strong> (ir para a esquerda) e
         <strong>[D]</strong> (ir para a direita).
       </p>
       <p>
-        Fique atento à barra de combustível no lado esquerdo da tela — colete galões de gasolina 
+        Fique atento à barra de combustível no lado esquerdo da tela — colete galões de gasolina
         para reabastecê-la. Se ela esgotar, você perde!
       </p>
       <p>
@@ -85,11 +87,11 @@
         O velocímetro indica sua velocidade atual. Conforme o tempo passa, o jogo fica mais rápido!
       </p>
       <p>
-        Carros diferentes alteram a taxa de aceleração do velocímetro. Use suas moedas para comprar 
+        Carros diferentes alteram a taxa de aceleração do velocímetro. Use suas moedas para comprar
         novos veículos, desbloqueados de acordo com a distância percorrida.
       </p>
       <p>
-        Isso é tudo o que você precisa saber sobre o <span class="etg">ETG</span>. 
+        Isso é tudo o que você precisa saber sobre o <span class="etg">ETG</span>.
         Espero que se divirta bastante!
       </p>
       <div id="btnOkTutorial" class="btns">Ok</div>
@@ -97,22 +99,32 @@
   </div>
 
   <div id="menu" class="hidden">
-    <div id="titulo"><h1>🚗 Endless Traffic Game 🚦</h1></div>
+    <div id="titulo">
+      <h1>🚗 Endless Traffic Game 🚦</h1>
+    </div>
     <div id="perfil">
       <div id="imageIcon"></div>
       <div id="divRanking" class="hidden">
-          <div id="divInternaRanking">
-            <div id="lbRanking"> <h3>Ranking</h3></div>
-            <div id="ranking">
-              <ol id="rankingList"></ol>
-            </div>
+        <div id="divInternaRanking">
+          <div id="lbRanking">
+            <h3>Ranking</h3>
           </div>
-          <div id="Moedas"><h3>🪙 Moedas: </h3></div>
+          <div id="ranking">
+            <ol id="rankingList"></ol>
+          </div>
+        </div>
+        <div id="Moedas">
+          <h3>🪙 Moedas: </h3>
+        </div>
       </div>
       <div id="shop" class="hidden">
-          <div id="lbShop"><h3>Garagem</h3></div>
-          <div id="carList"></div>
-          <div id="MoedaShop"><h3>🪙 Moedas: </h3></div>
+        <div id="lbShop">
+          <h3>Garagem</h3>
+        </div>
+        <div id="carList"></div>
+        <div id="MoedaShop">
+          <h3>🪙 Moedas: </h3>
+        </div>
       </div>
       <div id="config" class="hidden">
         <h3>⚙️ Configurações</h3>
@@ -142,47 +154,48 @@
         </div>
 
         <div>
-            <label for="resSelect">Resolução:</label>
-            <select id="resSelect">
-              <option value="1">100% (Padrão)</option>
-              <option value="0.9">90%</option>
-              <option value="0.8">80%</option>
-              <option value="0.7">70%</option>
-            </select>
+          <label for="resSelect">Resolução:</label>
+          <select id="resSelect">
+            <option value="1">100% (Padrão)</option>
+            <option value="0.9">90%</option>
+            <option value="0.8">80%</option>
+            <option value="0.7">70%</option>
+          </select>
         </div>
-        
+
       </div>
 
     </div>
     <div id="btns">
-      <div id="btnPlay"  class="btns">Jogar</div>
+      <div id="btnPlay" class="btns">Jogar</div>
       <div id="btnNormal" class="hidden btns">Normal</div>
-      <div id="btnNevoa" class="hidden btns">Nevoa mode</div>
+      <div id="btnNevoa" class="hidden btns">Névoa mode</div>
       <div id="btnVoltar" class="hidden btns">Voltar</div>
       <div id="btnShop" class="btns">Garagem</div>
       <div id="btnRanking" class="btns">Ranking</div>
       <div id="btnConfig" class="btns">Configurações</div>
       <div id="btnAjuda" class="btns">?</div>
     </div>
-    </div>
   </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="src/js/global.js"></script>
-    <script src="src/js/viewport.js"></script>
-    <script src="src/js/music.js"></script>
-    <script src="src/js/pista.js"></script>
-    <script src="src/js/road.js"></script>
-    <script src="src/js/coins.js"></script>
-    <script src="src/js/gas.js"></script>
-    <script src="src/js/itens.js"></script>
-    <script src="src/js/traffic.js"></script>
-    <script src="src/js/nitro.js"></script>
-    <script src="src/js/score.js"></script>
-    <script src="src/js/shop.js"></script>
-    <script src="src/js/player.js"></script>
-    <script src="src/js/collision.js"></script>
-    <script src="src/js/main.js"></script>
-    <script src="src/js/hud.js"></script>
-    <script src="src/js/menu.js"></script>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="src/js/global.js"></script>
+  <script src="src/js/viewport.js"></script>
+  <script src="src/js/music.js"></script>
+  <script src="src/js/pista.js"></script>
+  <script src="src/js/road.js"></script>
+  <script src="src/js/coins.js"></script>
+  <script src="src/js/gas.js"></script>
+  <script src="src/js/itens.js"></script>
+  <script src="src/js/traffic.js"></script>
+  <script src="src/js/nitro.js"></script>
+  <script src="src/js/score.js"></script>
+  <script src="src/js/shop.js"></script>
+  <script src="src/js/player.js"></script>
+  <script src="src/js/collision.js"></script>
+  <script src="src/js/main.js"></script>
+  <script src="src/js/hud.js"></script>
+  <script src="src/js/menu.js"></script>
 </body>
+
 </html>
