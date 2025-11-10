@@ -47,4 +47,4 @@ function atualizarScore(delta) {
 
   atualizarVelocimetro();
   atualizarScoreUI();
-}
+} 

@@ -32,6 +32,7 @@ function spawnFileira() {
         }
       });
 
+      
       // Atualiza para próxima rodada
       caminhosLivresAtuais = Array.from(novosLivres);
 

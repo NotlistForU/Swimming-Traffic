@@ -18,7 +18,7 @@ let difIntervalo = 0;
 // =====================
 let velocidadeBase = 60;
 let velocidadeMultiplicador = 1;
-let velocidadeKmH = 60;
+let velocidadeKmH = 60; // influencia na distancia pecorrida, que por sua vez influencia no consumo de combustivel, influencia  tambem no velocimetro
 
 // =====================
 // PISTAS E CENÁRIO

@@ -26,7 +26,6 @@ let carroSelecionado = localStorage.getItem("carroSelecionado") || 1;
 // RENDERIZA A LOJA
 // =====================
 function renderShop() {
-  alert("cade o nome correto do carro q coloquei cara?");
 
   const carList = document.getElementById("carList");
   carList.innerHTML = "";
@@ -51,7 +50,6 @@ function renderShop() {
       <p class="label">Preço: ${carro.preco} 🪙</p>
       <p class="label">Desbloqueia com ${carro.kmNecessario} km</p>
       <button class="btns"
-        ${!desbloqueado ? "disabled" : ""}
         onclick="comprarCarro(${carro.id})">
         ${btnTexto}
       </button>
@@ -66,6 +64,7 @@ function renderShop() {
 // COMPRAR CARRO
 // =====================
 function comprarCarro(id) {
+  console.log("clicou no botão!");
   const carro = carros.find(c => c.id === id);
   const melhorKm = getMelhorKm();
 
@@ -84,8 +83,10 @@ function comprarCarro(id) {
     atualizarMoedasUI();
     renderShop();
     alert(`Você comprou o ${carro.nome}!`);
+  } else if (moedasJogador < carro.preco) {
+    alert("É necessario mais moedas!");
   } else {
-    alert("Você não tem moedas suficientes!");
+    alert("É necessario um Km maior para desbloquar!");
   }
 }
 
