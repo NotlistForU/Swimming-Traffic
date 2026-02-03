@@ -1,6 +1,6 @@
 # 🏎️ Swimming Traffic
 
-Jogo de corrida divertido e desafiador, onde você controla carros, coleta moedas e percorre pistas evitando obstáculos.
+Jogo de corrida divertido e desafiador, colete moedas e percorra pistas evitando obstáculos.
 [Jogar agora!](https://notlistforu.github.io/Swimming-Traffic/)
 
 ![Banner do jogo](src/assets/images/PlayerIcons/maxVerstappen.png)
